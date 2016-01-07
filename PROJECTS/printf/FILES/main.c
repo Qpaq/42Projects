@@ -3,7 +3,6 @@
 int		main(void)
 {
 	int		ret;
-	ret = ft_printf("%d", 5);
-	ft_putchar('\n');
+	ret = ft_printf("tag 1: %d, tag2: %f %t \n", 5, 3.14);
 	ft_putnbr(ret);
 }

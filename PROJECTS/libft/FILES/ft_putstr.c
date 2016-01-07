@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:36:04 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/11/27 15:59:31 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/07 14:45:33 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,5 @@ void	ft_putstr(char const *s)
 	if (!s)
 		write(1, "(null)", 6);
 	else
-	{
-		while (*s)
-			write(1, s++, 1);
-	}
+		write(1, s, ft_strlen(s));
 }

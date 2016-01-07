@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 15:37:41 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/11/25 15:05:33 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/07 13:45:37 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/07 13:45:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putnstr(char const *s, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!s)
+		write(1, "(null)", 6);
+	else
+	{
+		while (*s && n-- > 0)
+			write(1, s++, 1);
+	}
 }

@@ -5,7 +5,7 @@ CFLAGS	= -Wall -Wextra -Werror
 AR		= ar
 ARFLAGS	= rcs
 
-SRC		=	ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c \
+SRC		=	ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putnstr.c ft_putstr_fd.c \
 			ft_putendl.c ft_putendl_fd.c ft_putcolor.c ft_putrainbow.c \
 			ft_putstr_array.c \
 			ft_putnbr.c ft_putnbr_fd.c \

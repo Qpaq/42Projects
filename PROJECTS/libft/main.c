@@ -2,6 +2,8 @@
 
 int		main(void)
 {
-	ft_putstr("C'est genial génial !");
+	int		size;
+	size = ft_strlen("david");
+	ft_putnbr(size);
 	return (0);
 }
