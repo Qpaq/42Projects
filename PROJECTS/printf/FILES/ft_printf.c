@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 11:21:20 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 14:13:31 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/07 15:40:49 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	process_arg(char **format)
 static int	parse_format(const char *format, va_list *args, int ret)
 {
 	char	*next_tag;
-	int		handler_size;
 
 	next_tag = ft_strchr(format, '%');
 	if (next_tag == NULL)
@@ -44,8 +43,8 @@ static int	parse_format(const char *format, va_list *args, int ret)
 	}
 	else
 	{
-		handler_size = process_arg((char **)&format);
-		return (parse_format(format, args, ret + handler_size));
+		ret += process_arg((char **)&format);
+		return (parse_format(format, args, ret));
 	}
 }
 
