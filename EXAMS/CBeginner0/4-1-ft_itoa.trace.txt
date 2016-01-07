@@ -1,0 +1,85 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e3r11p3.42.fr
+Darwin 14.5.0 x86_64
+$> date
+Tue Nov 24 13:48:56 CET 2015
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2015/c-exam-beginner/exam_20151124/dtedgui
+
+= Git history ==================================================================
+$> git -C /var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user log --pretty='%H - %an, %ad : %s'
+b40790130ca9554892860903e6a6632ae9e846ee - Exam 42, Tue Nov 24 13:48:43 2015 +0100 : level 4-1
+b39fe151fa740bb96d1c0b769526a0a43f854f64 - Exam 42, Tue Nov 24 13:22:31 2015 +0100 : level 4
+e4486dd193dc423daf59980f71166fce0a8945b5 - Exam 42, Tue Nov 24 12:39:02 2015 +0100 : level3
+8dd7d0c860236146e6cd4b792de34729df04214d - Exam 42, Tue Nov 24 12:02:00 2015 +0100 : level 2-1
+c3ead73f0757d9e2c535c09cb9c008e4321d1937 - Exam 42, Tue Nov 24 11:49:21 2015 +0100 : level 2
+ca5c8a9cd0cc7288ee46045d6f7fbdf2f6cfe2df - Exam 42, Tue Nov 24 11:05:34 2015 +0100 : level 1-1
+0489b9d326ba69b53be571404215943b9022ea76 - Exam 42, Tue Nov 24 10:52:07 2015 +0100 : level 1
+63f8243bb7473f29081959ebfef4fe7d315a7141 - Exam 42, Tue Nov 24 10:12:25 2015 +0100 : level 0
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  1919 Nov 24 13:48 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 aff_z
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 first_word
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 ft_itoa
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 ft_strdup
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 paramsum
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 rostring
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 ulstr
+drwxr-xr-x  3 deepthought  deepthought   102 Nov 24 13:48 union
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/aff_z:
+total 8
+-rw-r--r--  1 deepthought  deepthought  968 Nov 24 13:48 aff_z.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/first_word:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1196 Nov 24 13:48 first_word.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/ft_itoa:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1698 Nov 24 13:48 ft_itoa.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/ft_strdup:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1154 Nov 24 13:48 ft_strdup.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/paramsum:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1145 Nov 24 13:48 paramsum.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/rostring:
+total 8
+-rw-r--r--  1 deepthought  deepthought  2003 Nov 24 13:48 rostring.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/ulstr:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1257 Nov 24 13:48 ulstr.c
+
+/var/folders/bx/37n9gfq92hx241478m5_39dc0000gp/T/tmpjaJ3Mj/user/union:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1839 Nov 24 13:48 union.c
+ 
+= ft_itoa ======================================================================
+$> clang -Wextra -Wall -Werror ft_itoa.c main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./by32de7e1w86pedo56eiavme
+Command './by32de7e1w86pedo56eiavme' timed out after 10 seconds
+Grade: 0
+
+= Final grade: 0 ===============================================================

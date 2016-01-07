@@ -1,0 +1,13 @@
+:Stdheader
+:17,19m 14
+:cal cursor(15,7)
+i
+<space>
+<echap>
+:cal cursor(29,18)
+i
+<space>
+<echap>
+:%s/\s\+$//g
+gg=G
+:wq

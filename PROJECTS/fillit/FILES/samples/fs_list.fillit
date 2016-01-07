@@ -1,0 +1,11 @@
+fs_1.0.fillit : 3 col on a line
+fs_1.1.fillit : Ret at line 1
+fs_1.2.fillit : Double Ret
+fs_1.3.fillit : more than 4 block per piece
+fs_1.4.fillit : less than 4 block per piece
+fs_1.5.fillit : wrong blocks position
+fs_1.6.fillit : wrong type of blocks
+fs_1.7.fillit : 5 col on a line
+fs_1.8.fillit : wrong number of line
+fs_1.9.fillit : more than 26 tetriminos
+fs_1.10.fillit : 1 piece, 1 \n

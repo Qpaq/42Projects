@@ -1,0 +1,44 @@
+gs_1.0.fillit : Basic 2 tetriminos
+
+1.0_map :
+
+AAAA
+BBBB
+....
+....
+
+gs_1.1.fillit : Basic 3 tetriminos
+
+1.1_map :
+
+AAAA
+BBBB
+CCCC
+....
+
+gs_1.2.fillit : Basic 4 tetriminos
+
+1.2_map :
+
+DDAA
+CDDA
+CCCA
+BBBB
+
+gs_1.3.fillit : Basic 3 tetriminos
+
+1.3_map :
+
+ABBBB.
+ACCCEE
+AFFCEE
+A.FFGG
+HHHDDG
+.HDD.G
+
+gs_1.4.fillit : Basic 3 tetriminos
+
+1.4_map :
+
+AA
+AA

@@ -1,0 +1,72 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e2r11p1.42.fr
+Darwin 14.5.0 x86_64
+$> date
+Tue Nov 24 10:52:47 CET 2015
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2015/c-exam-beginner/exam_20151124/dtedgui
+
+= Git history ==================================================================
+$> git -C /var/folders/_j/hwdykbhx58s8ylzsd9w64hvr0000gp/T/tmpuqFNht/user log --pretty='%H - %an, %ad : %s'
+0489b9d326ba69b53be571404215943b9022ea76 - Exam 42, Tue Nov 24 10:52:07 2015 +0100 : level 1
+63f8243bb7473f29081959ebfef4fe7d315a7141 - Exam 42, Tue Nov 24 10:12:25 2015 +0100 : level 0
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/_j/hwdykbhx58s8ylzsd9w64hvr0000gp/T/tmpuqFNht/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  452 Nov 24 10:52 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 10:52 aff_z
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 10:52 first_word
+
+/var/folders/_j/hwdykbhx58s8ylzsd9w64hvr0000gp/T/tmpuqFNht/user/aff_z:
+total 8
+-rw-r--r--  1 deepthought  deepthought  968 Nov 24 10:52 aff_z.c
+
+/var/folders/_j/hwdykbhx58s8ylzsd9w64hvr0000gp/T/tmpuqFNht/user/first_word:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1196 Nov 24 10:52 first_word.c
+ 
+= first_word ===================================================================
+$> clang -Wextra -Wall -Werror first_word.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./8jdfr86xutcj1j84l10hns75 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./kdkg6x7olckl6te44lcs8n5d "premier param" "deuxieme param"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./p3ugnczz4v3ysc3nmnf5t42t "rien ne sert de courir il faut partir a point"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./njjt7o3tnvw2nj4s4b5meua7 "  et le trim, c'est pour les andouilles en ski  "
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./3ylrcra8jiky9qtit5vnh4y9 "..."
+$> diff -U 3 user_output_test5 test5.output | cat -e
+Binary files user_output_test5 and test5.output differ$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================

@@ -1,0 +1,5 @@
+Credentials cache: API:14347
+        Principal: dtedgui@42.FR
+
+  Issued                Expires               Principal
+Aug  5 15:22:25 2015  Aug 12 15:17:39 2015  krbtgt/42.FR@42.FR

@@ -1,0 +1,70 @@
+= Host information =============================================================
+$> hostname; uname -msr
+e1p67.cluj.42.fr
+Darwin 14.5.0 x86_64
+
+$> date
+Sat Aug 29 10:10:28 CEST 2015
+
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+$> clang --version
+Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+= aff_first_param ==============================================================
+$> clang -Wextra -Wall -Werror aff_first_param.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./h32p3ne9jmgsgfaoqbqrgth0 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./sfm1r9c1q7q42zg38l50v7nz "SyP7blVq"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./61yvqck9siksibzn5cc1yr8e "hp6"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./tv1z5lmxe9fu1oxpywtibr74 "2T olXi EIFLiul qS84mvre YDS3 ALIXWdObE eHubvXgkj3 GAOEVcxTB LCGMnR l1OJrT UwVEf2Jd4 rGHwWc 3Mr8 lZ nxoD"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./3x62sg8m0abn3jshemj447vs "hzCHwR vp0KMsS1Dyu kiQXmF5nK0 AimHMCpYT1yk nLw31TSMDr 1Tazj D390 Jp2 J87Z Xm"
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./odcrx367nbo0vvwtxzh79hl2 "KVo0PXsq6" "aCx3Q5Zz" "Dv" "zEfg" "H" "U1NhTiFsCrGt" "Cw"
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./y142728ipaqwp689on74v65t "W4bwlH" "SCTosy60n" "kc9UJX0F" "I8XoUgjdkvLh" "yMbGpq" "3jlAEIxTPnhz" "M0qYSfCKI2" "ynFLgCQvxif" "GzCgJ6Eqb2o" "BYJQzsdSW" "OQDf1yt2" "j" "lPk4AuX"
+$> diff -U 3 user_output_test7 test7.output | cat -e
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./mv1u4pxarl3ir6h15i8tagy8 "OkDz5 NB" "u3qO8" "XBc91FohYys q0UQuS6fLiF" "ML4GmxgijIFK LHQE" "3fdI1QrAym EWiz5GYeL8d4" "z8R 4TDRY2 J 2" "mGubS5p tU 6O" "kKcf4y9E L4OeSh OhTR7Y" "BjqEFPW dE c" "u6fxVPT5DdvB ilvKa Z5rINUDp" "QLMBUOP Jm1WT tZKq r" "ptfSA zMwg" "uXLNKno LsI7jhq4DBdu oVRwiLjPt 2zKguBdti"
+$> diff -U 3 user_output_test8 test8.output | cat -e
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./x01ifylq5be7mwje4mxptu0z "v5hL NVo" "KIsTVZMHDSW lzZ8UBbHQt soC8TJd1 4VJPQOYXRt0S" "ucTZUelVL9va TJvHjKr" "pqYhDgeX" "U2" "yD57i3YZp9X 4O JLQ kCz" "t vHSc lK0TcVICv" "69jSuYg bBgHUh9iN6C yFOz1f" "Lbr49vDjWfU m7LSuvK Jwp1v0XqPI" "Q6x dBq8eQ 9Hvj6Q" "sa1yX" "thYGx" "xJh 2ivSojtyN0a ovdQghV pPOjgQHy1dMi"
+$> diff -U 3 user_output_test9 test9.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

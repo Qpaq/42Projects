@@ -1,0 +1,28 @@
+= Host information =============================================================
+$> hostname; uname -msr
+e1r6p9.42.fr
+Darwin 14.5.0 x86_64
+
+$> date
+Sat Aug 29 13:42:41 CEST 2015
+
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+$> clang --version
+Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+= ft_itoa_base =================================================================
+$> clang -Wextra -Wall -Werror ft_itoa_base.c main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./sj3eyizn2r7dkg6l9sdr3bf5
+Command './sj3eyizn2r7dkg6l9sdr3bf5' timed out after 10 seconds
+Grade: 0
+
+= Final grade: 0 ===============================================================

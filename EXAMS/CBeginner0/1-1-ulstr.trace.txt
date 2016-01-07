@@ -1,0 +1,82 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1r2p8.42.fr
+Darwin 14.5.0 x86_64
+$> date
+Tue Nov 24 11:05:48 CET 2015
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2015/c-exam-beginner/exam_20151124/dtedgui
+
+= Git history ==================================================================
+$> git -C /var/folders/f4/h8g9h25j6v1bsr4f13d9t4t40000gp/T/tmpqjdnji/user log --pretty='%H - %an, %ad : %s'
+ca5c8a9cd0cc7288ee46045d6f7fbdf2f6cfe2df - Exam 42, Tue Nov 24 11:05:34 2015 +0100 : level 1-1
+0489b9d326ba69b53be571404215943b9022ea76 - Exam 42, Tue Nov 24 10:52:07 2015 +0100 : level 1
+63f8243bb7473f29081959ebfef4fe7d315a7141 - Exam 42, Tue Nov 24 10:12:25 2015 +0100 : level 0
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/f4/h8g9h25j6v1bsr4f13d9t4t40000gp/T/tmpqjdnji/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  685 Nov 24 11:05 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:05 aff_z
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:05 first_word
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:05 ulstr
+
+/var/folders/f4/h8g9h25j6v1bsr4f13d9t4t40000gp/T/tmpqjdnji/user/aff_z:
+total 8
+-rw-r--r--  1 deepthought  deepthought  968 Nov 24 11:05 aff_z.c
+
+/var/folders/f4/h8g9h25j6v1bsr4f13d9t4t40000gp/T/tmpqjdnji/user/first_word:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1196 Nov 24 11:05 first_word.c
+
+/var/folders/f4/h8g9h25j6v1bsr4f13d9t4t40000gp/T/tmpqjdnji/user/ulstr:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1257 Nov 24 11:05 ulstr.c
+ 
+= ulstr ========================================================================
+$> clang -Wextra -Wall -Werror ulstr.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./zmm9iepyswez8vwic9c6x2kx "L'eSPrit nE peUt plUs pRogResSer s'Il staGne et sI peRsIsTent VAnIte et auto-justification."
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./qe1ols1b677cr8y8h3gx6b80 "S'enTOuRer dE sECreT eSt uN sIGnE De mAnQuE De coNNaiSSanCe.  "
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./rkjuvmkcris81964z7vql9bd "3:21 Ba  tOut  moUn ki Ka di KE m'en Ka fe fot"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./hkquvdwpcdvqfwhdplbv1hz3 "Pour l'Imperium de l'Humanite"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./t3a8y9627tw8cd1h5ffc66ju "..."
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./t2kje4g2rqyag1hyf4a4wza0 ""
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

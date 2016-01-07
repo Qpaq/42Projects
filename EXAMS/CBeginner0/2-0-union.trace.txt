@@ -1,0 +1,68 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1r5p10.42.fr
+Darwin 14.5.0 x86_64
+$> date
+Tue Nov 24 11:49:35 CET 2015
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.0 (clang-700.1.76)
+Target: x86_64-apple-darwin14.5.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2015/c-exam-beginner/exam_20151124/dtedgui
+
+= Git history ==================================================================
+$> git -C /var/folders/8z/044bj0sn50zgrtt3kp4qc0cr0000gp/T/tmpcAQ0D3/user log --pretty='%H - %an, %ad : %s'
+c3ead73f0757d9e2c535c09cb9c008e4321d1937 - Exam 42, Tue Nov 24 11:49:21 2015 +0100 : level 2
+ca5c8a9cd0cc7288ee46045d6f7fbdf2f6cfe2df - Exam 42, Tue Nov 24 11:05:34 2015 +0100 : level 1-1
+0489b9d326ba69b53be571404215943b9022ea76 - Exam 42, Tue Nov 24 10:52:07 2015 +0100 : level 1
+63f8243bb7473f29081959ebfef4fe7d315a7141 - Exam 42, Tue Nov 24 10:12:25 2015 +0100 : level 0
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/8z/044bj0sn50zgrtt3kp4qc0cr0000gp/T/tmpcAQ0D3/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  939 Nov 24 11:49 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:49 aff_z
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:49 first_word
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:49 ulstr
+drwxr-xr-x  3 deepthought  deepthought  102 Nov 24 11:49 union
+
+/var/folders/8z/044bj0sn50zgrtt3kp4qc0cr0000gp/T/tmpcAQ0D3/user/aff_z:
+total 8
+-rw-r--r--  1 deepthought  deepthought  968 Nov 24 11:49 aff_z.c
+
+/var/folders/8z/044bj0sn50zgrtt3kp4qc0cr0000gp/T/tmpcAQ0D3/user/first_word:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1196 Nov 24 11:49 first_word.c
+
+/var/folders/8z/044bj0sn50zgrtt3kp4qc0cr0000gp/T/tmpcAQ0D3/user/ulstr:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1257 Nov 24 11:49 ulstr.c
+
+/var/folders/8z/044bj0sn50zgrtt3kp4qc0cr0000gp/T/tmpcAQ0D3/user/union:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1839 Nov 24 11:49 union.c
+ 
+= union ========================================================================
+$> clang -Wextra -Wall -Werror union.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./tvedkj9gffaluov7j96392dz "bqwuiobqiwrvi-1,-1.-1-38901gbi" "u3bkjnqoq8dbiu1p1po,-8491"
+$> diff -U 3 user_output_test1 test1.output | cat -e
+--- user_output_test1	2015-11-24 11:49:36.000000000 +0100$
++++ test1.output	2015-11-24 11:49:36.000000000 +0100$
+@@ -1 +1 @@$
+-bqwuiorv-1,3890gkjndp4$
++bqwuiorv-1,.3890gkjndp4$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================
