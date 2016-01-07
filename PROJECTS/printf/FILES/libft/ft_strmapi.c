@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 10:16:40 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:01:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	char			*new;
+	unsigned int	i;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
+	if (!s)
 		return (NULL);
-	while (1)
+	i = 0;
+	if (!(new = (char*)malloc(ft_strlen(s) + 1)))
+		return (NULL);
+	while (s[i])
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		new[i] = (*f)(i, s[i]);
+		i++;
 	}
-	va_end(args);
+	new[i] = '\0';
 	return (new);
 }

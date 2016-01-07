@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/26 14:48:26 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/11/27 16:31:54 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+void	ft_strclr(char *s)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
-
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
-		return (NULL);
-	while (1)
+	if (s)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		while (*s)
+		{
+			*s = '\0';
+			s++;
+		}
 	}
-	va_end(args);
-	return (new);
 }

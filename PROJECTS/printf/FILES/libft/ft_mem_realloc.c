@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_mem_realloc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/12/04 16:43:06 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/04 20:44:46 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+char	*ft_mem_realloc(char *old, size_t size)
 {
 	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
-		return (NULL);
-	while (1)
-	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
-	}
-	va_end(args);
+	new = ft_strnew(size);
+	ft_memcpy(new, old, ft_strlen(old));
+	ft_memdel((void **)&old);
 	return (new);
 }

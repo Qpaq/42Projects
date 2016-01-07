@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_putrainbow.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/12/07 20:16:12 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/07 20:16:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+static void		ft_display(int color, int format)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	ft_putstr("\033[");
+	ft_putnbr(color);
+	ft_putchar(';');
+	ft_putnbr(format);
+	ft_putchar('m');
+}
+
+void			ft_putrainbow(char *str)
+{
+	int			i;
+	int			color;
+	int			format;
 
 	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
-		return (NULL);
-	while (1)
+	color = 31;
+	format = 5;
+	while (str[i])
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		ft_display(color, format);
+		ft_putchar(str[i]);
+		if (color == 37)
+			color = 90;
+		else if (color == 97)
+			color = 31;
+		else
+			color++;
+		i++;
 	}
-	va_end(args);
-	return (new);
 }

@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 11:18:22 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:04:18 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+char	*ft_strtrim(char const *s)
 {
+	int		end;
+	int		length;
 	char	*new;
-	char	*next;
 	int		i;
-	va_list	args;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
+	if (!s)
 		return (NULL);
-	while (1)
+	while (*s == ' ' || *s == '\t' || *s == '\n')
+		s++;
+	if ((end = ft_strlen(s) - 1) == 0)
+		return (new = ft_strnew(0));
+	while (end > 0 && (s[end] == ' ' || s[end] == '\t' || s[end] == '\n'))
+		end--;
+	length = end + 1;
+	if (!(new = (char*)malloc(length + 1)))
+		return (NULL);
+	i = 0;
+	while (length)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		length--;
+		new[i++] = *s++;
 	}
-	va_end(args);
+	new[i] = '\0';
 	return (new);
 }

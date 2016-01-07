@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/12/07 16:14:45 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:10:36 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	size_t	length;
+	char	*str;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
+	if (!s1)
 		return (NULL);
-	while (1)
-	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
-	}
-	va_end(args);
-	return (new);
+	length = ft_strlen(s1);
+	if (n < length)
+		length = n;
+	if (!(str = (char*)malloc(length + 1)))
+		return (NULL);
+	ft_strncpy(str, s1, length);
+	return (str);
 }

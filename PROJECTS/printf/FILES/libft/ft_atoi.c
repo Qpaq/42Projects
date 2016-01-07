@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/23 15:32:25 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 13:22:26 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+int		ft_atoi(char *str)
 {
-	char	*new;
-	char	*next;
 	int		i;
-	va_list	args;
+	int		result;
+	int		sign;
 
 	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
-		return (NULL);
-	while (1)
+	result = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+			|| str[i] == '\v' || str[i] == '\r' || str[i] == '\f')
+		i++;
+	sign = str[i] == '-' ? -1 : 1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		result = (result * 10) + (str[i] - 48);
+		i++;
 	}
-	va_end(args);
-	return (new);
+	return (result * sign);
 }

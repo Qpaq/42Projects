@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/26 13:02:48 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/11/26 13:59:13 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	unsigned int		i;
+	unsigned int		j;
+	unsigned int		length_s2;
 
 	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
-		return (NULL);
-	while (1)
+	length_s2 = ft_strlen(s2);
+	if (ft_strlen(s2) == 0)
+		return ((char*)s1);
+	while (s1[i] && i < n)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		j = 0;
+		while (s1[i + j] == s2[j])
+		{
+			if ((j == length_s2 - 1) && (i + j < n))
+				return ((char*)(s1 + i));
+			j++;
+		}
+		i++;
 	}
-	va_end(args);
-	return (new);
+	return (NULL);
 }

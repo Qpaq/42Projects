@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 18:24:40 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 13:44:20 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	unsigned char	ch;
+	unsigned char	*dst_pt;
+	unsigned char	*src_pt;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
+	if (!dst || !src)
 		return (NULL);
-	while (1)
+	ch = (unsigned char)c;
+	dst_pt = (unsigned char*)dst;
+	src_pt = (unsigned char*)src;
+	while (n-- > 0)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		*dst_pt = *src_pt;
+		if (*dst_pt++ == ch)
+			return (dst_pt);
+		src_pt++;
 	}
-	va_end(args);
-	return (new);
+	return (NULL);
 }

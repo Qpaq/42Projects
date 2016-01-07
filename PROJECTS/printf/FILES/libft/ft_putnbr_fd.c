@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 15:27:35 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 13:18:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
-
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
-		return (NULL);
-	while (1)
+	if ((long)n <= -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + 48, fd);
 	}
-	va_end(args);
-	return (new);
 }

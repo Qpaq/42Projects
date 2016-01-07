@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/30 10:51:30 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 13:12:52 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	t_list	*new_list;
+	t_list	*link;
+	t_list	*tmp;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
+	tmp = (*f)(lst);
+	if (!(new_list = ft_lstnew(tmp->content, tmp->content_size)))
 		return (NULL);
-	while (1)
+	lst = lst->next;
+	link = new_list;
+	while (lst)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		tmp = (*f)(lst);
+		link->next = ft_lstnew(tmp->content, tmp->content_size);
+		lst = lst->next;
+		link = link->next;
 	}
-	va_end(args);
-	return (new);
+	return (new_list);
 }

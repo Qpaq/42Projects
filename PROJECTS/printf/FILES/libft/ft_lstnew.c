@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/07 11:17:37 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/30 08:47:26 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 12:08:08 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
+	t_list	*new;
 
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	if (!(new = (char*)malloc(ft_strlen(s1) + 1)))
+	if (!(new = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
-	while (1)
+	if (content)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		if (!(new->content = ft_memalloc(content_size)))
+			return (NULL);
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
 	}
-	va_end(args);
+	else
+	{
+		new->content = NULL;
+		new->content_size = 0;
+	}
+	new->next = NULL;
 	return (new);
 }
