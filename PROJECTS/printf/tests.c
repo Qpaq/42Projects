@@ -2,6 +2,5 @@
 
 int		main(void)
 {
-	printf("%.3f", 3.14);
-	printf("%w", "test");
+	printf("Test couleur {cyan}%s{eoc} fin\n", "en couleur");
 }
