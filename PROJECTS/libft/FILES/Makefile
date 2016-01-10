@@ -8,7 +8,7 @@ ARFLAGS	= rcs
 SRC		=	ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putnstr.c ft_putstr_fd.c \
 			ft_putendl.c ft_putendl_fd.c ft_putcolor.c ft_putrainbow.c \
 			ft_putstr_array.c \
-			ft_putnbr.c ft_putnbr_fd.c \
+			ft_putnbr.c ft_putnbr_fd.c ft_putnbr_base.c \
 			ft_atoi.c ft_atoi_base.c ft_itoa.c ft_itoa_base.c \
 			ft_power.c ft_sqrt.c ft_sort_integer_table.c \
 			ft_tolower.c ft_toupper.c \
