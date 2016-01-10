@@ -1,9 +1,9 @@
 #include "FILES/libft.h"
 
+#include <stdio.h>
+
 int		main(void)
 {
-	int		size;
-	size = ft_strlen("david");
-	ft_putnbr(size);
+	printf("%s", ft_itoa_base(1594182358, 16));
 	return (0);
 }
