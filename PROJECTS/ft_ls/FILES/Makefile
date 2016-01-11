@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/28 11:02:45 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/11 15:45:12 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/11 18:58:18 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ FILES	= main.c \
 		  get_arguments.c \
 		  browse_directory.c \
 		  get_file_info.c \
-		  print_dir.c
+		  print_dir.c \
+		  error.c
 
 LIBFT	= ./libft
 

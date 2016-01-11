@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/11 16:57:48 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/11 19:27:39 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ t_file_infos	*read_directory(char *dir_name, t_ls_args *args)
 	t_file_infos	*head_list;
 
 	head_list = NULL;
-	dirp = opendir(dir_name);
-	ft_putstr(dir_name);
-	ft_putendl(":");
+	if (!(dirp = opendir(dir_name)))
+		return (NULL);
 	while ((dir_entry = readdir(dirp)))
 	{
 		if (!ft_strchr(args->options, 'a') && dir_entry->d_name[0] == '.')
@@ -47,7 +46,7 @@ t_file_infos	*read_directory(char *dir_name, t_ls_args *args)
 	return (head_list);
 }
 
-int		browse_directories(t_ls_args *args)
+int				browse_directories(t_ls_args *args)
 {
 	t_dir_info		*current_dir;
 	t_file_infos	*files_list;
@@ -55,11 +54,13 @@ int		browse_directories(t_ls_args *args)
 	current_dir = args->dirs;
 	while (current_dir)
 	{
-		files_list = read_directory(current_dir->name, args);
-		if (ft_strchr(args->options, 'l'))
-			print_dir_long(files_list);
-		else
-			print_dir_short(files_list);
+		if ((files_list = read_directory(current_dir->name, args)))
+		{
+			if (ft_strchr(args->options, 'l'))
+				print_dir_long(files_list, current_dir->name);
+			else
+				print_dir_short(files_list, current_dir->name);
+		}
 		current_dir = current_dir->next;
 		if (current_dir)
 			ft_putchar('\n');

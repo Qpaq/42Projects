@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/11 16:35:01 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/11 19:08:19 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int				browse_directories(t_ls_args *args);
 t_file_infos	*read_directory(char *dir_name, t_ls_args *args);
 t_file_infos	*get_file_info(char *file_name);
 
-void			print_dir_long(t_file_infos *head);
-void			print_dir_short(t_file_infos *head);
+void			print_dir_long(t_file_infos *head, char *name);
+void			print_dir_short(t_file_infos *head, char *name);
+
+void			print_error(char *message);
 
 #endif

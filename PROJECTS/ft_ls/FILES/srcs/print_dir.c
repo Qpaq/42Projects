@@ -6,14 +6,16 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 15:42:00 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/11 16:57:21 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/11 19:32:52 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_dir_long(t_file_infos *head)
+void	print_dir_long(t_file_infos *head, char *name)
 {
+	ft_putstr(name);
+	ft_putendl(":");
 	while (head)
 	{
 		ft_putchar(head->type);
@@ -34,13 +36,14 @@ void	print_dir_long(t_file_infos *head)
 	}
 }
 
-void	print_dir_short(t_file_infos *head)
+void	print_dir_short(t_file_infos *head, char *name)
 {
+	ft_putstr(name);
+	ft_putendl(":");
 	while (head)
 	{
 		ft_putstr(head->name);
-		ft_putchar('\t');
+		ft_putchar('\n');
 		head = head->next;
 	}
-	ft_putchar('\n');
 }
