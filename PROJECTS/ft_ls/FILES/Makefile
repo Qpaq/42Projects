@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/28 11:02:45 by dtedgui           #+#    #+#              #
-#    Updated: 2015/12/30 18:58:25 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/11 15:45:12 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS	= -Wall -Werror -Wextra -I.
 FILES	= main.c \
 		  get_arguments.c \
 		  browse_directory.c \
-		  get_file_info.c
+		  get_file_info.c \
+		  print_dir.c
 
 LIBFT	= ./libft
 

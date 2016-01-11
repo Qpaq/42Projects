@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:01:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/06 15:53:21 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/11 16:13:39 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char		*get_group(struct stat infos)
 	return (group_infos->gr_name);
 }
 
-// REFORMATER LA DATE EN FONCTION DES BESOINS
+// REFORMATER LA DATE
 static char		*get_date(struct stat infos)
 {
 	char	*time;
