@@ -1,10 +1,5 @@
 NAME = libft.a
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-AR		= ar
-ARFLAGS	= rcs
-
 SRC		=	ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putnstr.c ft_putstr_fd.c \
 			ft_putendl.c ft_putendl_fd.c ft_putcolor.c ft_putrainbow.c \
 			ft_putstr_array.c \
@@ -21,10 +16,17 @@ SRC		=	ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putnstr.c ft_putstr_fd.c \
 			ft_strcmp.c ft_strncmp.c ft_strequ.c ft_strnequ.c \
 			ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c \
 			ft_strjoin.c ft_strsub.c ft_strsplit.c ft_strtrim.c ft_strrev.c \
-			ft_lstadd_beginning.c ft_lstadd_end.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c \
-			get_next_line.c
+			get_next_line.c \
+			lists/ft_lstadd_beginning.c lists/ft_lstadd_end.c \
+			lists/ft_lstdel.c lists/ft_lstdelone.c lists/ft_lstiter.c \
+			lists/ft_lstmap.c lists/ft_lstnew.c
 
 OBJ		= $(SRC:.c=.o)
+
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror -I.
+AR		= ar
+ARFLAGS	= rcs
 
 all: $(NAME)
 
@@ -32,7 +34,7 @@ $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)
