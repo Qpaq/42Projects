@@ -6,13 +6,27 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:00 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:18:51 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 16:55:57 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-//void		free_everything(t_ls_args *args)
+void		free_everything(t_ls_args *args)
+{
+	t_dir_info	*dir;
+	t_dir_info	*next;
+
+	free(args->authorized_options);
+	free(args->options);
+	dir = args->dirs;
+	while (dir)
+	{
+		next = dir->next;
+		free(dir);
+		dir = next;
+	}
+}
 
 void		ft_ls(t_ls_args *args)
 {
@@ -26,7 +40,7 @@ void		ft_ls(t_ls_args *args)
 		args->dirs = new_dir;
 	}
 	browse_directories(args);
-//	free_everything(args);
+	free_everything(args);
 }
 
 int			main(int ac, char **av)
@@ -35,11 +49,11 @@ int			main(int ac, char **av)
 
 	// la on stocke toutes les options de notre LS dans une structure
 	// et on stocke les repertoires donnés en arguments dans une liste chainées
-	if (!(ls_args = (t_ls_args *)malloc(sizeof(t_ls_args))))
+	if (!(ls_args = (t_ls_args *)ft_memalloc(sizeof(t_ls_args))))
 		return (0);
-	ls_args->authorized_options = "Ralrt"; //ft_strdup("Ralrt");
-	ls_args->options = NULL;
-	ls_args->dirs = NULL;
+	ls_args->authorized_options = ft_strdup("Ralrt");
+//	ls_args->options = NULL;
+//	ls_args->dirs = NULL;
 
 	// ici on verifie les arguments donnés et on stocke les repertoires
 	// demandés dans un tableau

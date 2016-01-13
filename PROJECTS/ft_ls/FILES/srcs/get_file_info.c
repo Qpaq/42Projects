@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:01:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/11 19:30:47 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 17:03:06 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ t_file_infos	*get_file_info(char *file_name)
 	struct stat		buf;
 	t_file_infos	*file;
 
-	file = (t_file_infos *)malloc(sizeof(t_file_infos));
+	if (!(file = (t_file_infos *)ft_memalloc(sizeof(t_file_infos))))
+		return (NULL);
 	stat(file_name, &buf);
 	file->name = ft_strdup(file_name);
 	file->type = file_type(buf.st_mode);
