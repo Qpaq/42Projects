@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 15:22:29 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 16:30:05 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,6 @@ int				browse_directories(t_ls_args *args)
 	current_dir = args->dirs;
 	while (current_dir)
 	{
-		/*
-		modifier le prototype de read_directory()
-		*/
 		if ((files_list = read_directory(current_dir, args)))
 		{
 			if (ft_strchr(args->options, 'l'))

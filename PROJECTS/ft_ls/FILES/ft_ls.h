@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 14:35:30 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 15:57:16 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void			print_dir_long(t_file_infos *head, char *name);
 void			print_dir_short(t_file_infos *head, char *name);
 
 void			print_error(char *message);
+int				is_option(char *argm, t_ls_args *ls_args);
 
 #endif

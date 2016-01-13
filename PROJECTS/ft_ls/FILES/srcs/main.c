@@ -6,11 +6,13 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:00 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/11 17:11:37 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 16:18:51 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+//void		free_everything(t_ls_args *args)
 
 void		ft_ls(t_ls_args *args)
 {
@@ -24,6 +26,7 @@ void		ft_ls(t_ls_args *args)
 		args->dirs = new_dir;
 	}
 	browse_directories(args);
+//	free_everything(args);
 }
 
 int			main(int ac, char **av)

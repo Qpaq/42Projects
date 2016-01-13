@@ -6,12 +6,12 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/28 11:02:45 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/11 18:58:18 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/13 15:55:11 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME	= a.out
+NAME	= ft_ls
 
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra -I.
@@ -21,7 +21,7 @@ FILES	= main.c \
 		  browse_directory.c \
 		  get_file_info.c \
 		  print_dir.c \
-		  error.c
+		  errors.c
 
 LIBFT	= ./libft
 
