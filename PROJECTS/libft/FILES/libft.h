@@ -6,18 +6,19 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 14:09:27 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 16:36:10 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 99
+# define BUFF_SIZE 100
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 /*
 ** PRINTING
