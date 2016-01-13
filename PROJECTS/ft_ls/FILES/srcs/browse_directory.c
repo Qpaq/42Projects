@@ -6,13 +6,23 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/11 19:27:39 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 15:22:29 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_file_infos	*read_directory(t_dir_infos current_dir, t_ls_args *args)
+void	add_directory_to_list(t_dir_info *target, char *new)
+{
+	t_dir_info	*new_dir;
+
+	new_dir = (t_dir_info *)malloc(sizeof(t_dir_info));
+	new_dir->name = ft_strdup(new);
+	new_dir->next = target->next;
+	target->next = new_dir;
+}
+
+t_file_infos	*read_directory(t_dir_info *current_dir, t_ls_args *args)
 {
 	DIR				*dirp;
 	struct dirent	*dir_entry;
@@ -33,18 +43,24 @@ t_file_infos	*read_directory(t_dir_infos current_dir, t_ls_args *args)
 		{
 			head_list = get_file_info(full_name);
 			current_file = head_list;
-			
-			/*
-			if (head_list->type == 'd')
-				ft_lstinsert_after(args->dirs, current_dir)
-			*/
 			current_file->name = ft_strdup(dir_entry->d_name);
+			/* OPTION -R */
+			if (ft_strchr(args->options, 'R'))
+			{
+				if (current_file->type == 'd' && ft_strcmp(current_file->name, ".") && ft_strcmp(current_file->name, ".."))
+					add_directory_to_list(current_dir, full_name);
+			}
 		}
 		else
 		{
 			current_file->next = get_file_info(full_name);
 			current_file = current_file->next;
 			current_file->name = ft_strdup(dir_entry->d_name);
+			if (ft_strchr(args->options, 'R'))
+			{
+				if (current_file->type == 'd' && ft_strcmp(current_file->name, ".") && ft_strcmp(current_file->name, ".."))
+					add_directory_to_list(current_dir, full_name);
+			}
 		}
 	}
 	closedir(dirp);
