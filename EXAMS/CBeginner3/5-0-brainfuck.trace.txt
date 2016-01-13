@@ -1,0 +1,54 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e2r2p12.42.fr
+Darwin 15.2.0 x86_64
+$> date
+Tue Jan 12 11:28:31 CET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.2.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.2.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/c-exam-beginner/exam_20160112/dtedgui
+
+= Git history ==================================================================
+$> git -C /var/folders/4w/zjwwn9q14_j1x0trc7kp4f8c0000gq/T/tmpZlEM1n/user log --pretty='%H - %an, %ad : %s'
+d3335d6c4117a7e21178b12e6fce757b8e86a073 - Exam 42, Tue Jan 12 11:28:07 2016 +0100 : lvl 5 brainfuck
+58e054e0dac5e6a3c94cd4dbbd2218341589652d - Exam 42, Tue Jan 12 10:51:32 2016 +0100 : lvl4 ft_split
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/4w/zjwwn9q14_j1x0trc7kp4f8c0000gq/T/tmpZlEM1n/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  521 Jan 12 11:28 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Jan 12 11:28 brainfuck
+drwxr-xr-x  3 deepthought  deepthought  102 Jan 12 11:28 ft_split
+
+/var/folders/4w/zjwwn9q14_j1x0trc7kp4f8c0000gq/T/tmpZlEM1n/user/brainfuck:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1734 Jan 12 11:28 brainfuck.c
+
+/var/folders/4w/zjwwn9q14_j1x0trc7kp4f8c0000gq/T/tmpZlEM1n/user/ft_split:
+total 8
+-rw-r--r--  1 deepthought  deepthought  2028 Jan 12 11:28 ft_split.c
+ 
+= brainfuck ====================================================================
+$> clang -Wextra -Wall -Werror brainfuck.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./3fja8lzctfvfnoe6bljz1jnd "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>."
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./yaxhn17g201d67hxgkyh5t0k "+++++[>++sefs++[>++sef+dht+>+++++sfsfefijdgj<<-]>>>++efn<<<<-]>>esf-----sf---.>+++++.>."
+Command './yaxhn17g201d67hxgkyh5t0k "+++++[>++sefs++[>++sef+dht+>+++++sfsfefijdgj<<-]>>>++efn<<<<-]>>esf-----sf---.>+++++.>."' got killed by a Segmentation fault (Signal -11)
+Grade: 0
+
+= Final grade: 0 ===============================================================
