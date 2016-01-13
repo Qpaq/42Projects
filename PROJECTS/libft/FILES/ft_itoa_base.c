@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 16:39:36 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/10 17:39:08 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 13:27:18 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static long		ft_power_for_itoa(long nb, long power)
 	return (nb * ft_power(nb, power - 1));
 }
 
-char	*ft_itoa_base(int n, int base)
+char			*ft_itoa_base(int n, int base)
 {
 	char	*str;
 	int		i;

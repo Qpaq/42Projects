@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/20 16:08:22 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/12/20 16:08:26 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 13:54:34 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_beginning(t_list **alst, t_list *new)
 {
-	if (alst && *alst)
+	if (*alst)
 	{
 		new->next = *alst;
 		*alst = new;
