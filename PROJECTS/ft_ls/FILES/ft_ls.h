@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 09:04:16 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 10:35:46 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 # include <string.h> // strerror
 
-typedef struct	s_file_infos
+typedef struct	s_files
 {
 	char				type;
 	char				*permissions;
@@ -38,30 +38,27 @@ typedef struct	s_file_infos
 	char				*group;
 	int					size;
 	char				*date;
+	int					timestamp;
 	char				*name;
-	struct s_file_infos	*next;
-}				t_file_infos;
-
-typedef struct	s_dir_info
-{
-	char				*name;
-	struct s_dir_info	*next;
-}				t_dir_info;
+	char				*parent_dir;
+	struct s_files		*next;
+}				t_files;
 
 typedef struct	s_ls_args
 {
 	char		*authorized_options;
 	char		*options;
-	t_dir_info	*dirs;
+	t_files		*dirs;
 }				t_ls_args;
 
 void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 int				browse_directories(t_ls_args *args);
-int				read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **head_list, int head);
-t_file_infos	*get_file_info(char *file_name);
+int				read_directory(t_files *current_dir, t_ls_args *args, t_files **head_list, int head);
+t_files			*get_file_info(char *file_name);
 
-void			print_dir_long(t_file_infos *head, char *name);
-void			print_dir_short(t_file_infos *head, char *name);
+//void			print_dir_long(t_files *head, char *name);
+//void			print_dir_short(t_files *head, char *name);
+void			print_files(t_files *head, char *name, t_ls_args *args);
 
 void			print_error(char *message, int time);
 int				is_option(char *argm, t_ls_args *ls_args);

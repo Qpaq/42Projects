@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:00 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:55:57 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 10:45:21 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		free_everything(t_ls_args *args)
 {
-	t_dir_info	*dir;
-	t_dir_info	*next;
+	t_files		*dir;
+	t_files		*next;
 
 	free(args->authorized_options);
 	free(args->options);
@@ -30,15 +30,6 @@ void		free_everything(t_ls_args *args)
 
 void		ft_ls(t_ls_args *args)
 {
-	t_dir_info	*new_dir;
-
-	if (args->dirs == NULL)
-	{
-		new_dir = (t_dir_info *)malloc(sizeof(t_dir_info));
-		new_dir->name = ".";
-		new_dir->next = NULL;
-		args->dirs = new_dir;
-	}
 	browse_directories(args);
 	free_everything(args);
 }
@@ -52,8 +43,6 @@ int			main(int ac, char **av)
 	if (!(ls_args = (t_ls_args *)ft_memalloc(sizeof(t_ls_args))))
 		return (0);
 	ls_args->authorized_options = ft_strdup("Ralrt");
-//	ls_args->options = NULL;
-//	ls_args->dirs = NULL;
 
 	// ici on verifie les arguments donnés et on stocke les repertoires
 	// demandés dans un tableau

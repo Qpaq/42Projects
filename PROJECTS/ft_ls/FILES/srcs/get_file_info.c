@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:01:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 17:03:06 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 10:26:23 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,15 @@ char			*file_permissions(mode_t file_mode)
 	return (perms);
 }
 
-t_file_infos	*get_file_info(char *file_name)
+t_files			*get_file_info(char *file_name)
 {
 	struct stat		buf;
-	t_file_infos	*file;
+	t_files	*file;
 
-	if (!(file = (t_file_infos *)ft_memalloc(sizeof(t_file_infos))))
+	if (!(file = (t_files *)ft_memalloc(sizeof(t_files))))
 		return (NULL);
-	stat(file_name, &buf);
+	if (stat(file_name, &buf) == -1)
+		return (NULL);
 	file->name = ft_strdup(file_name);
 	file->type = file_type(buf.st_mode);
 	file->permissions = file_permissions(buf.st_mode);

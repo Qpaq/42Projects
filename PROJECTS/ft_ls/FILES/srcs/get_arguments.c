@@ -6,29 +6,27 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:13 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 09:05:50 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 10:44:15 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-
-/*
-** lorsqu'on opendir(), avant de renvoyer -1,
-** verifier qu'il ne s'agit pas d'un fichier.
-**  dans ce cas on l'affiche directement
-*/
 static int	store_requested_dir(char *dir_name, t_ls_args *ls_args)
 {
-	t_dir_info		*new_dir;
-	DIR				*dirp;
-	t_dir_info		*head;
-//	t_file_infos	*infos;
+	t_files			*new_dir;
+	t_files			*head;
 
 	head = ls_args->dirs;
-	new_dir = (t_dir_info *)malloc(sizeof(t_dir_info));
-	new_dir->name = ft_strdup(dir_name);
-	new_dir->next = NULL;
+	if (!(new_dir = get_file_info(dir_name)))
+		return (0);
+	/*
+	if (new_dir->type != 'd')
+	{
+		print_files(new_dir, new_dir->name, ls_args);
+		return (1);
+	}
+	*/
 	if (!(ls_args->dirs))
 		ls_args->dirs = new_dir;
 	else
@@ -37,9 +35,6 @@ static int	store_requested_dir(char *dir_name, t_ls_args *ls_args)
 			head = head->next;
 		head->next = new_dir;
 	}
-	if (!(dirp = opendir(dir_name)))
-		return (0);
-	closedir(dirp);
 	return (1);
 }
 
@@ -57,6 +52,8 @@ void			check_arguments(int ac, char **av, t_ls_args *ls_args)
 		args_list = ft_mem_realloc(args_list, ft_strlen(args_list) + ft_strlen(av[i]));
 		args_list = ft_strcat(args_list, &av[i][1]);
 	}
+	if (i == ac)
+		store_requested_dir(".", ls_args);
 	while (i < ac)
 	{
 		nb_of_dirs++;

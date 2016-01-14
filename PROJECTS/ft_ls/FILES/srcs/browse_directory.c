@@ -6,29 +6,29 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 09:22:54 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 10:34:52 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void			add_directory_to_list(t_dir_info *target, char *new)
+void			add_directory_to_list(t_files *target, char *new)
 {
-	t_dir_info	*new_dir;
+	t_files	*new_dir;
 
-	new_dir = (t_dir_info *)ft_memalloc(sizeof(t_dir_info));
+	new_dir = (t_files *)ft_memalloc(sizeof(t_files));
 	new_dir->name = ft_strdup(new);
 	new_dir->next = target->next;
 	target->next = new_dir;
 }
 
-int		read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **head_list, int head)
+int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head_list, int head)
 {
 	DIR				*dirp;
 	struct dirent	*dir_entry;
 	char			*full_name;
-	t_file_infos	*current_file;
-	t_file_infos	*tmp;
+	t_files			*current_file;
+	t_files			*tmp;
 
 	if (!(dirp = opendir(current_dir->name)))
 		return (0);
@@ -63,20 +63,15 @@ int		read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **hea
 
 int				browse_directories(t_ls_args *args)
 {
-	t_dir_info		*current_dir;
-	t_file_infos	*files_list;
+	t_files		*current_dir;
+	t_files			*files_list;
 
 	current_dir = args->dirs;
 	while (current_dir)
 	{
 		files_list = NULL;
 		if (read_directory(current_dir, args, &files_list, 1))
-		{
-			if (ft_strchr(args->options, 'l'))
-				print_dir_long(files_list, current_dir->name);
-			else
-				print_dir_short(files_list, current_dir->name);
-		}
+			print_files(files_list, current_dir->name, args);
 		else
 			print_error(current_dir->name, 2);
 		current_dir = current_dir->next;
