@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:01:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 10:26:23 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 12:12:24 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_files			*get_file_info(char *file_name)
 	file->group = get_group(buf);
 	file->size = buf.st_size;
 	file->date = get_date(buf);
+	file->timestamp = buf.st_mtimespec.tv_sec;
 	file->next = NULL;
 	return (file);
 }

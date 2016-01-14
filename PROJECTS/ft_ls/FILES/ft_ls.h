@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 10:35:46 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 12:11:24 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_files
 	char				*group;
 	int					size;
 	char				*date;
-	int					timestamp;
+	unsigned int		timestamp;
 	char				*name;
 	char				*parent_dir;
 	struct s_files		*next;
@@ -53,14 +53,17 @@ typedef struct	s_ls_args
 
 void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 int				browse_directories(t_ls_args *args);
-int				read_directory(t_files *current_dir, t_ls_args *args, t_files **head_list, int head);
+int				read_directory(t_files *current_dir, t_ls_args *args, t_files **head_list);
 t_files			*get_file_info(char *file_name);
 
-//void			print_dir_long(t_files *head, char *name);
-//void			print_dir_short(t_files *head, char *name);
-void			print_files(t_files *head, char *name, t_ls_args *args);
+void			print_dir(t_files *head, char *name, t_ls_args *args);
+void			print_file(t_files *file, t_ls_args *args);
 
 void			print_error(char *message, int time);
-int				is_option(char *argm, t_ls_args *ls_args);
+
+void			lst_add_end(t_files **head, t_files *new);
+void			lst_insert_after(t_files *target, char *new);
+t_files			*sort_by_time(t_files *head);
+t_files			*reverse_list(t_files *head);
 
 #endif

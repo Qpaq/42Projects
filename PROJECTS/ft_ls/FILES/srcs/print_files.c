@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_dir.c                                        :+:      :+:    :+:   */
+/*   print_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 15:42:00 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 10:34:17 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/14 11:01:30 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/14 11:07:33 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_dir_long(t_files *head, char *name)
+void	print_files_long(t_files *head)
 {
-	ft_putstr(name);
-	ft_putendl(":");
 	while (head)
 	{
 		ft_putchar(head->type);
@@ -36,10 +34,8 @@ void	print_dir_long(t_files *head, char *name)
 	}
 }
 
-void	print_dir_short(t_files *head, char *name)
+void	print_files_short(t_files *head)
 {
-	ft_putstr(name);
-	ft_putendl(":");
 	while (head)
 	{
 		ft_putstr(head->name);
@@ -48,10 +44,20 @@ void	print_dir_short(t_files *head, char *name)
 	}
 }
 
-void	print_files(t_files *head, char *name, t_ls_args *args)
+void	print_dir(t_files *head, char *name, t_ls_args *args)
+{
+	ft_putstr(name);
+	ft_putendl(":");
+	if (ft_strchr(args->options, 'l'))
+		print_files_long(head);
+	else
+		print_files_short(head);
+}
+
+void	print_file(t_files *file, t_ls_args *args)
 {
 	if (ft_strchr(args->options, 'l'))
-		print_dir_long(head, name);
+		print_files_long(file);
 	else
-		print_dir_short(head, name);
+		print_files_short(file);
 }
