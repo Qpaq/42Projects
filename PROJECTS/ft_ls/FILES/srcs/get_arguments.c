@@ -20,9 +20,10 @@
 */
 static int	store_requested_dir(char *dir_name, t_ls_args *ls_args)
 {
-	t_dir_info	*new_dir;
-	DIR			*dirp;
-	t_dir_info	*head;
+	t_dir_info		*new_dir;
+	DIR				*dirp;
+	t_dir_info		*head;
+//	t_file_infos	*infos;
 
 	head = ls_args->dirs;
 	new_dir = (t_dir_info *)malloc(sizeof(t_dir_info));

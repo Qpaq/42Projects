@@ -22,7 +22,7 @@ void			add_directory_to_list(t_dir_info *target, char *new)
 	target->next = new_dir;
 }
 
-t_file_infos	*read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **head_list, int head)
+int		read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **head_list, int head)
 {
 	DIR				*dirp;
 	struct dirent	*dir_entry;
@@ -31,7 +31,7 @@ t_file_infos	*read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_in
 	t_file_infos	*tmp;
 
 	if (!(dirp = opendir(current_dir->name)))
-		return (NULL);
+		return (0);
 	while ((dir_entry = readdir(dirp)))
 	{
 		if (!ft_strchr(args->options, 'a') && dir_entry->d_name[0] == '.')
@@ -58,7 +58,7 @@ t_file_infos	*read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_in
 		}
 	}
 	closedir(dirp);
-	return (*head_list);
+	return (1);
 }
 
 int				browse_directories(t_ls_args *args)
@@ -70,13 +70,15 @@ int				browse_directories(t_ls_args *args)
 	files_list = (t_file_infos *)ft_memalloc(sizeof(t_file_infos));
 	while (current_dir)
 	{
-		read_directory(current_dir, args, &files_list, 1);
-		if (files_list)
+		if (read_directory(current_dir, args, &files_list, 1))
 		{
-			if (ft_strchr(args->options, 'l'))
-				print_dir_long(files_list, current_dir->name);
-			else
-				print_dir_short(files_list, current_dir->name);
+			if (files_list)
+			{
+				if (ft_strchr(args->options, 'l'))
+					print_dir_long(files_list, current_dir->name);
+				else
+					print_dir_short(files_list, current_dir->name);
+			}
 		}
 		current_dir = current_dir->next;
 		if (current_dir)

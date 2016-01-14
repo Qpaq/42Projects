@@ -57,7 +57,7 @@ typedef struct	s_ls_args
 
 void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 int				browse_directories(t_ls_args *args);
-t_file_infos	*read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **head_list, int head);
+int				read_directory(t_dir_info *current_dir, t_ls_args *args, t_file_infos **head_list, int head);
 t_file_infos	*get_file_info(char *file_name);
 
 void			print_dir_long(t_file_infos *head, char *name);
