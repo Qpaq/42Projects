@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:13 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:29:01 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 09:05:50 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void			check_arguments(int ac, char **av, t_ls_args *ls_args)
 	{
 		nb_of_dirs++;
 		if (!store_requested_dir(av[i], ls_args))
-			print_error(av[i]);
+			print_error(av[i], 1);
 		i++;
 	}
 	ls_args->options = ft_strdup(args_list);

@@ -6,16 +6,30 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 15:54:53 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 15:55:58 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 09:14:07 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_error(char *message)
+/* "time" permet de savoir quand est ce qu'on recoit l'erreur.
+ * si c'est au debut (lorsqu'on verifie les arguments : 1,
+ * ou si c'est pendant le deroulement du programme : 2
+*/
+void	print_error(char *message, int time)
 {
-	ft_putstr("ls: ");
-	perror(message);
+	if (time == 1)
+	{
+		ft_putstr("ls: ");
+		perror(message);
+	}
+	else if (time == 2 && errno != 2)
+	{
+		ft_putstr(message);
+		ft_putendl(":");
+		ft_putstr("ls: ");
+		perror(message);
+	}
 }
 
 int		is_option(char *arg, t_ls_args *ls_args)

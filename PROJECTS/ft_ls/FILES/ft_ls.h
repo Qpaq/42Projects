@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 17:58:43 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 09:04:16 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <errno.h> // pour errno
 # include <time.h>
 
-//# include <string.h> // strerror
+# include <string.h> // strerror
 
 typedef struct	s_file_infos
 {
@@ -63,7 +63,7 @@ t_file_infos	*get_file_info(char *file_name);
 void			print_dir_long(t_file_infos *head, char *name);
 void			print_dir_short(t_file_infos *head, char *name);
 
-void			print_error(char *message);
+void			print_error(char *message, int time);
 int				is_option(char *argm, t_ls_args *ls_args);
 
 #endif

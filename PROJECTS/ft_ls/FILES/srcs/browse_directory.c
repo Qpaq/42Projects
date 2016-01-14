@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 17:59:58 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 09:22:54 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,18 @@ int				browse_directories(t_ls_args *args)
 	t_file_infos	*files_list;
 
 	current_dir = args->dirs;
-	files_list = (t_file_infos *)ft_memalloc(sizeof(t_file_infos));
 	while (current_dir)
 	{
+		files_list = NULL;
 		if (read_directory(current_dir, args, &files_list, 1))
 		{
-			if (files_list)
-			{
-				if (ft_strchr(args->options, 'l'))
-					print_dir_long(files_list, current_dir->name);
-				else
-					print_dir_short(files_list, current_dir->name);
-			}
+			if (ft_strchr(args->options, 'l'))
+				print_dir_long(files_list, current_dir->name);
+			else
+				print_dir_short(files_list, current_dir->name);
 		}
+		else
+			print_error(current_dir->name, 2);
 		current_dir = current_dir->next;
 		if (current_dir)
 			ft_putchar('\n');
