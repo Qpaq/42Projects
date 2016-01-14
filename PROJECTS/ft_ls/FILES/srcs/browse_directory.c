@@ -6,19 +6,21 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 12:14:07 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 16:00:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head_list)
+int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 {
 	DIR				*dirp;
 	struct dirent	*dir_entry;
 	char			*full_name;
 	t_files			*tmp;
+	t_files			*recursive_list;
 
+	recursive_list = NULL;
 	if (!(dirp = opendir(current_dir->name)))
 		return (0);
 	while ((dir_entry = readdir(dirp)))
@@ -33,10 +35,13 @@ int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head_list)
 		if (ft_strchr(args->options, 'R'))
 		{
 			if (tmp->type == 'd' && ft_strcmp(tmp->name, ".") && ft_strcmp(tmp->name, ".."))
-				lst_insert_after(current_dir, full_name);
+				lst_add_end(&recursive_list, tmp);
+			//	lst_insert_after(current_dir, full_name);
 		}
-		lst_add_end(head_list, tmp);
+		lst_add_end(head, tmp);
 	}
+//	if (ft_strchr(args->options, 'R'))
+//		lst_insert_after(current_dir, recursive_list);
 	closedir(dirp);
 	return (1);
 }

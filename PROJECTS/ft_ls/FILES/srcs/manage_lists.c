@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:25:48 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 11:48:50 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 15:54:10 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ void	lst_add_end(t_files **head, t_files *new)
 	}
 }
 
+/*
+void	lst_insert_after(t_files *target, t_files *new_list)
+{
+	t_files *tmp;
+	t_files	*ptr;
+
+	ptr = new_list;
+	tmp = target->next;
+	target->next = new_list;
+	while (ptr->next)
+		ptr = ptr->next;
+	ptr->next = tmp;
+}
+*/
+
+
 void	lst_insert_after(t_files *target, char *new)
 {
 	t_files	*new_dir;
@@ -36,6 +52,8 @@ void	lst_insert_after(t_files *target, char *new)
 	new_dir->next = target->next;
 	target->next = new_dir;
 }
+
+
 
 /*
 t_files	*sort_by_time(t_files *head)

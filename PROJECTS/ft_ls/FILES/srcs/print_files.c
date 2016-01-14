@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:01:30 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 11:07:33 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/14 15:16:58 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	print_files_short(t_files *head)
 	}
 }
 
-void	print_dir(t_files *head, char *name, t_ls_args *args)
+void	print_dir(t_files *head, char *dir_name, t_ls_args *args)
 {
-	ft_putstr(name);
+	ft_putstr(dir_name);
 	ft_putendl(":");
 	if (ft_strchr(args->options, 'l'))
 		print_files_long(head);
