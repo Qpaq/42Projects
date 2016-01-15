@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/06 16:52:05 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/06 16:53:13 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	convert_and_check_nb(char c, int base)
@@ -39,7 +51,7 @@ int			ft_atoi_base(char *nb, int base)
 
 	if (base == 10)
 		return (ft_atoi(nb));
-	while (*nb == ' ' || *nb == '\t' || *nb == '\n' 
+	while (*nb == ' ' || *nb == '\t' || *nb == '\n'
 			|| *nb == '\v' || *nb == '\r' || *nb == '\f')
 		nb++;
 	result = 0;

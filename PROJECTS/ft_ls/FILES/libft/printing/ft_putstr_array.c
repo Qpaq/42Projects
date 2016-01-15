@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_putstr_array.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:36:17 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/06 16:52:32 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/06 16:52:35 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+void	ft_putstr_array(char **array, char sep)
 {
-	char	*new;
-	char	*next;
 	int		i;
-	va_list	args;
 
-	if (!s1)
-		return (NULL);
 	i = 0;
-	va_start(args, s1);
-	next = s1;
-	new = ft_strnew(ft_strlen(s1));
-	while (1)
+	while (array[i])
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		ft_putstr(array[i]);
+		if (array[i + 1] || sep == '\n')
+			ft_putchar(sep);
+		i++;
 	}
-	va_end(args);
-	return (new);
 }

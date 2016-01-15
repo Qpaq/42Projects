@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_lstinsert_after.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:36:17 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/13 13:24:11 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/13 13:57:21 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+void	ft_lstinsert_after(t_list *target, t_list *new)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
-
-	if (!s1)
-		return (NULL);
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	new = ft_strnew(ft_strlen(s1));
-	while (1)
+	if (target)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		new->next = target->next;
+		target->next = new;
 	}
-	va_end(args);
-	return (new);
 }

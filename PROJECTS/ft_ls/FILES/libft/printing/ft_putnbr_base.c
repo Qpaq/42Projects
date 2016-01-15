@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:36:17 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/10 16:04:14 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/10 16:04:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_nolimit(char *s1, ...)
+void	ft_putnbr_base(int n, int base)
 {
-	char	*new;
-	char	*next;
-	int		i;
-	va_list	args;
-
-	if (!s1)
-		return (NULL);
-	i = 0;
-	va_start(args, s1);
-	next = s1;
-	new = ft_strnew(ft_strlen(s1));
-	while (1)
+	if (base == 10)
+		ft_putnbr(n);
+	else if (n < 0)
+		ft_putchar('0');
+	else
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (!next)
-			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		if (n >= base)
+			ft_putnbr_base(n / base, base);
+		if (n % base < 10)
+			ft_putchar((n % base) + 48);
+		else
+			ft_putchar((n % base) - 10 + 65);
 	}
-	va_end(args);
-	return (new);
 }

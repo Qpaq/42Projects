@@ -6,25 +6,33 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 16:39:36 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/12/04 16:39:40 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/13 13:27:18 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(int n, int base)
+static long		ft_power_for_itoa(long nb, long power)
+{
+	if (power == 0)
+		return (1);
+	else if (power < 0)
+		return (0);
+	return (nb * ft_power(nb, power - 1));
+}
+
+char			*ft_itoa_base(int n, int base)
 {
 	char	*str;
-	int		sign;
 	int		i;
 	int		length;
 
 	if (base < 2 || base > 16 || (base != 10 && n < 0))
 		return (NULL);
-	if ((sign = n) < 0)
-		n = -n;
+	if (base == 10)
+		return (ft_itoa(n));
 	length = 1;
-	while (ft_power(base, length) <= n)
+	while (ft_power_for_itoa(base, length) <= n)
 		length++;
 	str = (char*)malloc(sizeof(*str) * (length + 1));
 	i = 0;
@@ -36,8 +44,6 @@ char	*ft_itoa_base(int n, int base)
 			str[i++] = (n % base) + '0';
 		n /= base;
 	}
-	if (sign < 0)
-		str[i++] = '-';
 	str[i] = '\0';
 	return (ft_strrev(str));
 }

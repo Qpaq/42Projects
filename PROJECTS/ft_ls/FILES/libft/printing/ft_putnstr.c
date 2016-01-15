@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_beginning.c                              :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/20 16:08:22 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/12/20 16:08:26 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/07 13:45:37 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/07 13:45:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_beginning(t_list **alst, t_list *new)
+void	ft_putnstr(char const *s, size_t n)
 {
-	if (alst && *alst)
+	if (!s)
+		write(1, "(null)", 6);
+	else
 	{
-		new->next = *alst;
-		*alst = new;
+		while (*s && n-- > 0)
+			write(1, s++, 1);
 	}
 }

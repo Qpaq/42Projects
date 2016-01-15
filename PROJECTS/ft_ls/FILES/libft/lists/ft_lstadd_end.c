@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_end.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 15:36:04 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/11/27 15:59:31 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/12/20 16:10:24 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/13 13:54:26 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_lstadd_end(t_list **alst, t_list *new)
 {
-	if (!s)
-		write(1, "(null)", 6);
-	else
+	t_list	*node;
+
+	if (*alst)
 	{
-		while (*s)
-			write(1, s++, 1);
+		node = *alst;
+		while (node->next)
+			node = node->next;
+		node->next = new;
 	}
 }

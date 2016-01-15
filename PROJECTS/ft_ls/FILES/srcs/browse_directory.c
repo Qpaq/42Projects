@@ -20,7 +20,7 @@ int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 	t_files			*tmp;
 	t_files			*recursive_list;
 
-	recursive_list = NULL;
+	recursive_list = current_dir;
 	if (!(dirp = opendir(current_dir->name)))
 		return (0);
 	while ((dir_entry = readdir(dirp)))
@@ -35,13 +35,13 @@ int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 		if (ft_strchr(args->options, 'R'))
 		{
 			if (tmp->type == 'd' && ft_strcmp(tmp->name, ".") && ft_strcmp(tmp->name, ".."))
-				lst_add_end(&recursive_list, tmp);
-			//	lst_insert_after(current_dir, full_name);
+			{
+				lst_insert_after(recursive_list, full_name);
+				recursive_list = recursive_list->next;
+			}
 		}
 		lst_add_end(head, tmp);
 	}
-//	if (ft_strchr(args->options, 'R'))
-//		lst_insert_after(current_dir, recursive_list);
 	closedir(dirp);
 	return (1);
 }

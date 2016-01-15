@@ -16,11 +16,11 @@ void	lst_add_end(t_files **head, t_files *new)
 {
 	t_files		*tmp;
 
-	tmp = *head;
 	if (!(*head))
 		*head = new;
 	else
 	{
+		tmp = *head;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
