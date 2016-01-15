@@ -50,6 +50,7 @@ int		browse_directories(t_ls_args *args)
 {
 	t_files		*current_dir;
 	t_files		*files_list;
+	t_files		*tmp;
 
 	current_dir = args->dirs;
 	while (current_dir)
@@ -59,7 +60,10 @@ int		browse_directories(t_ls_args *args)
 			print_dir(files_list, current_dir->name, args);
 		else
 			print_error(current_dir->name, 2);
+		free_list(files_list);
+		tmp = current_dir;
 		current_dir = current_dir->next;
+		free_one(tmp);
 		if (current_dir)
 			ft_putchar('\n');
 	}

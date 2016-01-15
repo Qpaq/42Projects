@@ -55,6 +55,8 @@ void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 int				browse_directories(t_ls_args *args);
 int				read_directory(t_files *current_dir, t_ls_args *args, t_files **head);
 t_files			*get_file_info(char *file_name);
+void			free_list(t_files *head);
+void			free_one(t_files *head);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);
 void			print_file(t_files *file, t_ls_args *args);

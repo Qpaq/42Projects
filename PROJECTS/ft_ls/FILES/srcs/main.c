@@ -12,20 +12,55 @@
 
 #include "ft_ls.h"
 
+void		free_one(t_files *head)
+{
+	if (head)
+	{
+		if (head->permissions)
+			free(head->permissions);
+	//	if (head->owner)
+	//		free(head->owner);
+	//	if (head->group)
+	//		free(head->group);
+		if (head->date)
+			free(head->date);
+		if (head->name)
+			free(head->name);
+		if (head->parent_dir)
+			free(head->parent_dir);
+		free(head);
+	}
+}
+
+void		free_list(t_files *head)
+{
+	t_files	*next;
+
+	while (head)
+	{
+		next = head->next;
+		if (head->permissions)
+			free(head->permissions);
+	//	if (head->owner)
+	//		free(head->owner);
+	//	if (head->group)
+	//		free(head->group);
+		if (head->date)
+			free(head->date);
+		if (head->name)
+			free(head->name);
+		if (head->parent_dir)
+			free(head->parent_dir);
+		free(head);
+		head = next;
+	}
+}
+
 void		free_everything(t_ls_args *args)
 {
-	t_files		*dir;
-	t_files		*next;
-
 	free(args->authorized_options);
 	free(args->options);
-	dir = args->dirs;
-	while (dir)
-	{
-		next = dir->next;
-		free(dir);
-		dir = next;
-	}
+//	free_list(args->dirs);
 }
 
 void		ft_ls(t_ls_args *args)
