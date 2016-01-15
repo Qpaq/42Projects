@@ -26,7 +26,6 @@
 # include <sys/types.h>
 # include <errno.h> // pour errno
 # include <time.h>
-
 # include <string.h> // strerror
 
 typedef struct	s_files
@@ -53,20 +52,22 @@ typedef struct	s_ls_args
 
 void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 int				browse_directories(t_ls_args *args);
-int				read_directory(t_files *current_dir, t_ls_args *args, t_files **head);
 t_files			*get_file_info(char *file_name);
-void			free_list(t_files *head);
-void			free_one(t_files *head);
+
+void			lst_add_end(t_files **head, t_files *new);
+void			lst_insert_after(t_files *target, char *new);
+t_files			*sort_alphabetical(t_files *head);
+t_files			*sort_by_time(t_files *head);
+t_files			*reverse_list(t_files *head);
+t_files			*sort_from_options(t_files *head, char *options);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);
 void			print_file(t_files *file, t_ls_args *args);
 
 void			print_error(char *message, int time);
 
-void			lst_add_end(t_files **head, t_files *new);
-void			lst_insert_after(t_files *target, char *new);
-//void			lst_insert_after(t_files *target, t_files *new_list);
-t_files			*sort_by_time(t_files *head);
-t_files			*reverse_list(t_files *head);
+void			free_one(t_files *head);
+void			free_list(t_files *head);
+void			free_main_struct(t_ls_args *args);
 
 #endif

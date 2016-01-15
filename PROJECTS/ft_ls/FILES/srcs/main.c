@@ -12,63 +12,6 @@
 
 #include "ft_ls.h"
 
-void		free_one(t_files *head)
-{
-	if (head)
-	{
-		if (head->permissions)
-			free(head->permissions);
-	//	if (head->owner)
-	//		free(head->owner);
-	//	if (head->group)
-	//		free(head->group);
-		if (head->date)
-			free(head->date);
-		if (head->name)
-			free(head->name);
-		if (head->parent_dir)
-			free(head->parent_dir);
-		free(head);
-	}
-}
-
-void		free_list(t_files *head)
-{
-	t_files	*next;
-
-	while (head)
-	{
-		next = head->next;
-		if (head->permissions)
-			free(head->permissions);
-	//	if (head->owner)
-	//		free(head->owner);
-	//	if (head->group)
-	//		free(head->group);
-		if (head->date)
-			free(head->date);
-		if (head->name)
-			free(head->name);
-		if (head->parent_dir)
-			free(head->parent_dir);
-		free(head);
-		head = next;
-	}
-}
-
-void		free_everything(t_ls_args *args)
-{
-	free(args->authorized_options);
-	free(args->options);
-//	free_list(args->dirs);
-}
-
-void		ft_ls(t_ls_args *args)
-{
-	browse_directories(args);
-	free_everything(args);
-}
-
 int			main(int ac, char **av)
 {
 	t_ls_args		*ls_args;
@@ -77,6 +20,8 @@ int			main(int ac, char **av)
 		return (0);
 	ls_args->authorized_options = ft_strdup("Ralrt");
 	check_arguments(ac, av, ls_args);
-	ft_ls(ls_args);
+	ls_args->dirs = sort_from_options(ls_args->dirs, ls_args->options);
+	browse_directories(ls_args);
+	free_main_struct(ls_args);
 	return (0);
 }

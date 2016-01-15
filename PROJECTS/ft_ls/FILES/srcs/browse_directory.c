@@ -18,9 +18,9 @@ int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 	struct dirent	*dir_entry;
 	char			*full_name;
 	t_files			*tmp;
-	t_files			*recursive_list;
+	t_files			*recursive_option;
 
-	recursive_list = current_dir;
+	recursive_option = current_dir;
 	if (!(dirp = opendir(current_dir->name)))
 		return (0);
 	while ((dir_entry = readdir(dirp)))
@@ -36,11 +36,12 @@ int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 		{
 			if (tmp->type == 'd' && ft_strcmp(tmp->name, ".") && ft_strcmp(tmp->name, ".."))
 			{
-				lst_insert_after(recursive_list, full_name);
-				recursive_list = recursive_list->next;
+				lst_insert_after(recursive_option, full_name);
+				recursive_option = recursive_option->next;
 			}
 		}
 		lst_add_end(head, tmp);
+		ft_memdel((void **)&full_name);
 	}
 	closedir(dirp);
 	return (1);
@@ -48,23 +49,24 @@ int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 
 int		browse_directories(t_ls_args *args)
 {
-	t_files		*current_dir;
 	t_files		*files_list;
 	t_files		*tmp;
 
-	current_dir = args->dirs;
-	while (current_dir)
+	while (args->dirs)
 	{
 		files_list = NULL;
-		if (read_directory(current_dir, args, &files_list))
-			print_dir(files_list, current_dir->name, args);
+		if (read_directory(args->dirs, args, &files_list))
+		{
+			files_list = sort_from_options(files_list, args->options);
+			print_dir(files_list, (args->dirs)->name, args);
+		}
 		else
-			print_error(current_dir->name, 2);
+			print_error((args->dirs)->name, 2);
 		free_list(files_list);
-		tmp = current_dir;
-		current_dir = current_dir->next;
+		tmp = args->dirs;
+		args->dirs = (args->dirs)->next;
 		free_one(tmp);
-		if (current_dir)
+		if (args->dirs)
 			ft_putchar('\n');
 	}
 	return (1);
