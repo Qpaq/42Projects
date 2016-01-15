@@ -120,10 +120,13 @@ t_files	*reverse_list(t_files *head)
 
 t_files	*sort_from_options(t_files *head, char *options)
 {
-	head = sort_alphabetical(head);
-	if (ft_strchr(options, 't'))
-		head = sort_by_time(head);
-	if (ft_strchr(options, 'r'))
-		head = reverse_list(head);
+	if (head)
+	{
+		head = sort_alphabetical(head);
+		if (ft_strchr(options, 't'))
+			head = sort_by_time(head);
+		if (ft_strchr(options, 'r'))
+			head = reverse_list(head);
+	}
 	return (head);
 }
