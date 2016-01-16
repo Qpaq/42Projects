@@ -102,6 +102,7 @@ t_files			*get_file_info(char *file_name)
 	file->owner = get_owner(buf);
 	file->group = get_group(buf);
 	file->size = buf.st_size;
+	file->blocks = buf.st_blocks;
 	file->date = get_date(buf);
 	file->timestamp = buf.st_mtimespec.tv_sec;
 	file->next = NULL;

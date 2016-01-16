@@ -36,6 +36,7 @@ typedef struct	s_files
 	char				*owner;
 	char				*group;
 	int					size;
+	int					blocks;
 	char				*date;
 	unsigned int		timestamp;
 	char				*name;

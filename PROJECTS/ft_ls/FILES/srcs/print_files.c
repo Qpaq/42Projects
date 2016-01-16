@@ -15,14 +15,29 @@
 static void	add_color(t_files *file)
 {
 	if (file->type == 'd')
-		ft_putstr("\033[36m");
+		ft_putstr("\033[1;36m");
 	else if (file->type == 'l')
 		ft_putstr("\033[35m");
-	else if (file->permissions[2] == 'x')
+	else if (ft_strchr(file->permissions, 'x'))
 		ft_putstr("\033[31m");
 }
 
-void	print_files_long(t_files *file)
+static int	get_total_size(t_files *head)
+{
+	t_files	*ptr;
+	int		result;
+
+	ptr = head;
+	result = 0;
+	while (ptr)
+	{
+		result += ptr->blocks;
+		ptr = ptr->next;
+	}
+	return (result);
+}
+
+void		print_files_long(t_files *file, char *options)
 {
 	ft_putchar(file->type);
 	ft_putstr(file->permissions);
@@ -37,29 +52,42 @@ void	print_files_long(t_files *file)
 	ft_putchar('\t');
 	ft_putstr(file->date);
 	ft_putchar(' ');
-	add_color(file);
+	if (ft_strchr(options, 'G'))
+		add_color(file);
 	ft_putendl(file->name);
 	ft_putstr("\033[0m");
 }
 
-void	print_files_short(t_files *file)
+void		print_files_short(t_files *file, char *options)
 {
-	add_color(file);
+	if (ft_strchr(options, 'G'))
+		add_color(file);
 	ft_putstr(file->name);
 	ft_putstr("\033[0m");
 	ft_putchar('\n');
 }
 
-void	print_dir(t_files *head, char *dir_name, t_ls_args *args)
+void		print_dir(t_files *head, char *dir_name, t_ls_args *args)
 {
 	ft_putstr(dir_name);
 	ft_putendl(":");
+	if (ft_strchr(args->options, 'l'))
+	{
+		ft_putstr("total ");
+		ft_putnbr(get_total_size(head));
+		ft_putchar('\n');
+	}
 	while (head)
 	{
+		if (ft_strchr(args->options, 's'))
+		{
+			ft_putnbr(head->blocks);
+			ft_putchar(' ');
+		}
 		if (ft_strchr(args->options, 'l'))
-			print_files_long(head);
+			print_files_long(head, args->options);
 		else
-			print_files_short(head);
+			print_files_short(head, args->options);
 		head = head->next;
 	}
 }
@@ -67,7 +95,7 @@ void	print_dir(t_files *head, char *dir_name, t_ls_args *args)
 void	print_file(t_files *file, t_ls_args *args)
 {
 	if (ft_strchr(args->options, 'l'))
-		print_files_long(file);
+		print_files_long(file, args->options);
 	else
-		print_files_short(file);
+		print_files_short(file, args->options);
 }
