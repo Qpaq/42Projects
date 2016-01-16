@@ -51,7 +51,9 @@ static char		*get_date(struct stat infos)
 
 char			file_type(mode_t file_mode)
 {
-	if (S_ISDIR(file_mode))
+	if (S_ISLNK(file_mode))
+		return ('l');
+	else if (S_ISDIR(file_mode))
 		return ('d');
 	else if (S_ISFIFO(file_mode))
 		return ('p');
@@ -61,8 +63,6 @@ char			file_type(mode_t file_mode)
 		return ('b');
 	else if (S_ISREG(file_mode))
 		return ('-');
-	else if (S_ISLNK(file_mode))
-		return ('l');
 	else if (S_ISSOCK(file_mode))
 		return ('s');
 	else
