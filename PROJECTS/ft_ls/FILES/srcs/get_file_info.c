@@ -51,9 +51,7 @@ static char		*get_date(struct stat infos)
 
 char			file_type(mode_t file_mode)
 {
-	if (S_ISLNK(file_mode))
-		return ('l');
-	else if (S_ISDIR(file_mode))
+	if (S_ISDIR(file_mode))
 		return ('d');
 	else if (S_ISFIFO(file_mode))
 		return ('p');
@@ -63,6 +61,8 @@ char			file_type(mode_t file_mode)
 		return ('b');
 	else if (S_ISREG(file_mode))
 		return ('-');
+	else if (S_ISLNK(file_mode))
+		return ('l');
 	else if (S_ISSOCK(file_mode))
 		return ('s');
 	else
@@ -93,8 +93,14 @@ t_files			*get_file_info(char *file_name)
 
 	if (!(file = (t_files *)ft_memalloc(sizeof(t_files))))
 		return (NULL);
-	if (stat(file_name, &buf) == -1)
+
+	if (lstat(file_name, &buf) == -1)
 		return (NULL);
+	if (file_type(buf.st_mode) != 'l')
+	{
+		if (stat(file_name, &buf) == -1)
+			return (NULL);
+	}
 	file->name = ft_strdup(file_name);
 	file->type = file_type(buf.st_mode);
 	file->permissions = file_permissions(buf.st_mode);
