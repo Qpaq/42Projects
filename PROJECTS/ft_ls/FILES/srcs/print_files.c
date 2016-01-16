@@ -12,46 +12,56 @@
 
 #include "ft_ls.h"
 
-void	print_files_long(t_files *head)
+static void	add_color(t_files *file)
 {
-	while (head)
-	{
-		ft_putchar(head->type);
-		ft_putstr(head->permissions);
-		ft_putchar(' ');
-		ft_putnbr(head->links);
-		ft_putchar('\t');
-		ft_putstr(head->owner);
-		ft_putchar(' ');
-		ft_putstr(head->group);
-		ft_putchar(' ');
-		ft_putnbr(head->size);
-		ft_putchar('\t');
-		ft_putstr(head->date);
-		ft_putchar(' ');
-		ft_putendl(head->name);
-		head = head->next;
-	}
+	if (file->type == 'd')
+		ft_putstr("\033[36m");
+	else if (file->type == 'l')
+		ft_putstr("\033[35m");
+	else if (file->permissions[2] == 'x')
+		ft_putstr("\033[31m");
 }
 
-void	print_files_short(t_files *head)
+void	print_files_long(t_files *file)
 {
-	while (head)
-	{
-		ft_putstr(head->name);
-		ft_putchar('\n');
-		head = head->next;
-	}
+	ft_putchar(file->type);
+	ft_putstr(file->permissions);
+	ft_putchar(' ');
+	ft_putnbr(file->links);
+	ft_putchar('\t');
+	ft_putstr(file->owner);
+	ft_putchar(' ');
+	ft_putstr(file->group);
+	ft_putchar(' ');
+	ft_putnbr(file->size);
+	ft_putchar('\t');
+	ft_putstr(file->date);
+	ft_putchar(' ');
+	add_color(file);
+	ft_putendl(file->name);
+	ft_putstr("\033[0m");
+}
+
+void	print_files_short(t_files *file)
+{
+	add_color(file);
+	ft_putstr(file->name);
+	ft_putstr("\033[0m");
+	ft_putchar('\n');
 }
 
 void	print_dir(t_files *head, char *dir_name, t_ls_args *args)
 {
 	ft_putstr(dir_name);
 	ft_putendl(":");
-	if (ft_strchr(args->options, 'l'))
-		print_files_long(head);
-	else
-		print_files_short(head);
+	while (head)
+	{
+		if (ft_strchr(args->options, 'l'))
+			print_files_long(head);
+		else
+			print_files_short(head);
+		head = head->next;
+	}
 }
 
 void	print_file(t_files *file, t_ls_args *args)
