@@ -23,7 +23,8 @@ FILES	= main.c \
 		  print_files.c \
 		  errors.c \
 		  manage_lists.c \
-		  free.c
+		  free.c \
+		  sort_files.c
 
 LIBFT	= ./libft
 

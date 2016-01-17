@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-static char		*get_owner(struct stat infos)
+char		*get_owner(struct stat infos)
 {
 	struct passwd	*owner_infos;
 
@@ -24,7 +24,7 @@ static char		*get_owner(struct stat infos)
 	return (owner_infos->pw_name);
 }
 
-static char		*get_group(struct stat infos)
+char		*get_group(struct stat infos)
 {
 	struct group	*group_infos;
 
@@ -37,15 +37,14 @@ static char		*get_group(struct stat infos)
 }
 
 // REFORMATER LA DATE
-static char		*get_date(struct stat infos)
+char		*get_date(struct stat infos)
 {
 	char	*time;
 	char	**time_table;
 
-	time = ft_strdup(ctime(&(infos.st_mtimespec.tv_sec)));
+	time = ft_strtrim(ctime(&(infos.st_mtimespec.tv_sec)));
 	time_table = ft_strsplit(time, ' ');
-//	ft_putstr_array(time_table, '*');
-	time = ft_strtrim(time);
+	time = ft_strjoin_nolimit(time_table[4], time_table[1], time_table[2], NULL);
 	return (time);
 }
 
@@ -59,14 +58,14 @@ char			file_type(mode_t file_mode)
 		return ('c');
 	else if (S_ISBLK(file_mode))
 		return ('b');
-	else if (S_ISREG(file_mode))
-		return ('-');
 	else if (S_ISLNK(file_mode))
 		return ('l');
 	else if (S_ISSOCK(file_mode))
 		return ('s');
+	else if (S_ISREG(file_mode))
+		return ('-');
 	else
-		return ('O');
+		return ('-');
 }
 
 char			*file_permissions(mode_t file_mode)
@@ -84,33 +83,4 @@ char			*file_permissions(mode_t file_mode)
 	(file_mode & S_IWOTH) ? ft_strcat(perms, "w") : ft_strcat(perms, "-");
 	(file_mode & S_IXOTH) ? ft_strcat(perms, "x") : ft_strcat(perms, "-");
 	return (perms);
-}
-
-t_files			*get_file_info(char *file_name)
-{
-	struct stat		buf;
-	t_files	*file;
-
-	if (!(file = (t_files *)ft_memalloc(sizeof(t_files))))
-		return (NULL);
-
-	if (lstat(file_name, &buf) == -1)
-		return (NULL);
-	if (file_type(buf.st_mode) != 'l')
-	{
-		if (stat(file_name, &buf) == -1)
-			return (NULL);
-	}
-	file->name = ft_strdup(file_name);
-	file->type = file_type(buf.st_mode);
-	file->permissions = file_permissions(buf.st_mode);
-	file->links = buf.st_nlink;
-	file->owner = get_owner(buf);
-	file->group = get_group(buf);
-	file->size = buf.st_size;
-	file->blocks = buf.st_blocks;
-	file->date = get_date(buf);
-	file->timestamp = buf.st_mtimespec.tv_sec;
-	file->next = NULL;
-	return (file);
 }

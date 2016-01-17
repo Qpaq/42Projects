@@ -55,11 +55,14 @@ void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 int				browse_directories(t_ls_args *args);
 t_files			*get_file_info(char *file_name);
 
+char			*file_permissions(mode_t file_mode);
+char			file_type(mode_t file_mode);
+char			*get_date(struct stat infos);
+char			*get_group(struct stat infos);
+char			*get_owner(struct stat infos);
+
 void			lst_add_end(t_files **head, t_files *new);
 void			lst_insert_after(t_files *target, char *new);
-t_files			*sort_alphabetical(t_files *head);
-t_files			*sort_by_time(t_files *head);
-t_files			*reverse_list(t_files *head);
 t_files			*sort_from_options(t_files *head, char *options);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);

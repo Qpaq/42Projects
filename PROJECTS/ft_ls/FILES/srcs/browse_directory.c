@@ -12,6 +12,35 @@
 
 #include "ft_ls.h"
 
+t_files			*get_file_info(char *file_name)
+{
+	struct stat		buf;
+	t_files	*file;
+
+	if (!(file = (t_files *)ft_memalloc(sizeof(t_files))))
+		return (NULL);
+
+	if (lstat(file_name, &buf) == -1)
+		return (NULL);
+	if (file_type(buf.st_mode) != 'l')
+	{
+		if (stat(file_name, &buf) == -1)
+			return (NULL);
+	}
+	file->name = ft_strdup(file_name);
+	file->type = file_type(buf.st_mode);
+	file->permissions = file_permissions(buf.st_mode);
+	file->links = buf.st_nlink;
+	file->owner = get_owner(buf);
+	file->group = get_group(buf);
+	file->size = buf.st_size;
+	file->blocks = buf.st_blocks;
+	file->date = get_date(buf);
+	file->timestamp = buf.st_mtimespec.tv_sec;
+	file->next = NULL;
+	return (file);
+}
+
 int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 {
 	DIR				*dirp;

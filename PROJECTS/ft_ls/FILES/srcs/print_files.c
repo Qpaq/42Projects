@@ -18,6 +18,12 @@ static void	add_color(t_files *file)
 		ft_putstr("\033[1;36m");
 	else if (file->type == 'l')
 		ft_putstr("\033[35m");
+	else if (file->type == 'p')
+		ft_putstr("\033[33m");
+	else if (file->type == 'c')
+		ft_putstr("\033[34;43m");
+	else if (file->type == 'b')
+		ft_putstr("\033[34;46m");
 	else if (ft_strchr(file->permissions, 'x'))
 		ft_putstr("\033[31m");
 }
@@ -54,8 +60,9 @@ void		print_files_long(t_files *file, char *options)
 	ft_putchar(' ');
 	if (ft_strchr(options, 'G'))
 		add_color(file);
-	ft_putendl(file->name);
+	ft_putstr(file->name);
 	ft_putstr("\033[0m");
+	ft_putchar('\n');
 }
 
 void		print_files_short(t_files *file, char *options)

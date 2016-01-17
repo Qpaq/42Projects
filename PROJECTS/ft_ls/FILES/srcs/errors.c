@@ -12,10 +12,6 @@
 
 #include "ft_ls.h"
 
-/* "time" permet de savoir quand est ce qu'on recoit l'erreur.
- * si c'est au debut (lorsqu'on verifie les arguments : 1,
- * ou si c'est pendant le deroulement du programme : 2
-*/
 void	print_error(char *message, int time)
 {
 	if (time == 1)
