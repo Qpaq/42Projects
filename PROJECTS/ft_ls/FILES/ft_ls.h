@@ -67,6 +67,8 @@ t_files			*sort_from_options(t_files *head, char *options);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);
 void			print_file(t_files *file, t_ls_args *args);
+int				get_length_column(t_files *head, char field);
+void			pad_with_spaces(t_files *file, int size, char field);
 
 void			print_error(char *message, int time);
 

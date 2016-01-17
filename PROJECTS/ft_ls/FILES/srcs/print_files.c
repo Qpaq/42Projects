@@ -43,35 +43,59 @@ static int	get_total_size(t_files *head)
 	return (result);
 }
 
-void		print_files_long(t_files *file, char *options)
+void		print_files_long(t_files *head, char *options)
 {
-	ft_putchar(file->type);
-	ft_putstr(file->permissions);
-	ft_putchar(' ');
-	ft_putnbr(file->links);
-	ft_putchar('\t');
-	ft_putstr(file->owner);
-	ft_putchar(' ');
-	ft_putstr(file->group);
-	ft_putchar(' ');
-	ft_putnbr(file->size);
-	ft_putchar('\t');
-	ft_putstr(file->date);
-	ft_putchar(' ');
-	if (ft_strchr(options, 'G'))
-		add_color(file);
-	ft_putstr(file->name);
-	ft_putstr("\033[0m");
-	ft_putchar('\n');
+	int		links_column;
+	int		size_column;
+
+	links_column = get_length_column(head, 1);
+	size_column = get_length_column(head, 2);
+	while (head)
+	{
+		if (ft_strchr(options, 's'))
+		{
+			ft_putnbr(head->blocks);
+			ft_putchar(' ');
+		}
+		ft_putchar(head->type);
+		ft_putstr(head->permissions);
+		ft_putchar(' ');
+		pad_with_spaces(head, links_column, 1);
+		ft_putnbr(head->links);
+		ft_putchar(' ');
+		ft_putstr(head->owner);
+		ft_putchar(' ');
+		ft_putstr(head->group);
+		ft_putchar(' ');
+		pad_with_spaces(head, size_column, 2);
+		ft_putnbr(head->size);
+		ft_putchar(' ');
+		ft_putstr(head->date);
+		if (ft_strchr(options, 'G'))
+			add_color(head);
+		ft_putstr(head->name);
+		ft_putstr("\033[0m");
+		ft_putchar('\n');
+		head = head->next;
+	}
 }
 
-void		print_files_short(t_files *file, char *options)
+void		print_files_short(t_files *head, char *options)
 {
-	if (ft_strchr(options, 'G'))
-		add_color(file);
-	ft_putstr(file->name);
-	ft_putstr("\033[0m");
-	ft_putchar('\n');
+	while (head)
+	{
+		if (ft_strchr(options, 's'))
+		{
+			ft_putnbr(head->blocks);
+			ft_putchar(' ');
+		}
+		if (ft_strchr(options, 'G'))
+			add_color(head);
+		ft_putstr(head->name);
+		ft_putstr("\033[0m");
+		ft_putchar('\n');
+		head = head->next;
+	}
 }
 
 void		print_dir(t_files *head, char *dir_name, t_ls_args *args)
@@ -83,20 +107,10 @@ void		print_dir(t_files *head, char *dir_name, t_ls_args *args)
 		ft_putstr("total ");
 		ft_putnbr(get_total_size(head));
 		ft_putchar('\n');
+		print_files_long(head, args->options);
 	}
-	while (head)
-	{
-		if (ft_strchr(args->options, 's'))
-		{
-			ft_putnbr(head->blocks);
-			ft_putchar(' ');
-		}
-		if (ft_strchr(args->options, 'l'))
-			print_files_long(head, args->options);
-		else
-			print_files_short(head, args->options);
-		head = head->next;
-	}
+	else
+		print_files_short(head, args->options);
 }
 
 void	print_file(t_files *file, t_ls_args *args)

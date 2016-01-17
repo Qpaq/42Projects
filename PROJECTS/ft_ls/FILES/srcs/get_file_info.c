@@ -36,16 +36,27 @@ char		*get_group(struct stat infos)
 	return (group_infos->gr_name);
 }
 
-// REFORMATER LA DATE
 char		*get_date(struct stat infos)
 {
-	char	*time;
-	char	**time_table;
+	char	*time_file;
+	char	**time_table_file;
+	char	*time_now;
+	time_t	now;
+	char	**time_table_now;
 
-	time = ft_strtrim(ctime(&(infos.st_mtimespec.tv_sec)));
-	time_table = ft_strsplit(time, ' ');
-	time = ft_strjoin_nolimit(time_table[4], time_table[1], time_table[2], NULL);
-	return (time);
+	now = time(NULL);
+	time_now = ctime(&now);
+	time_table_now = ft_strsplit(ft_strtrim(time_now), ' ');
+	time_file = ft_strtrim(ctime(&(infos.st_mtimespec.tv_sec)));
+	time_table_file = ft_strsplit(time_file, ' ');
+	if (!ft_strcmp(time_table_now[4], time_table_file[4]))
+	{
+		time_table_file[3][5] = 0;
+		time_file = ft_strjoin_nolimit(' ', time_table_file[2], time_table_file[1], time_table_file[3],  NULL);
+	}
+	else
+		time_file = ft_strjoin_nolimit(' ', time_table_file[2], time_table_file[1], time_table_file[4], NULL);
+	return (time_file);
 }
 
 char			file_type(mode_t file_mode)

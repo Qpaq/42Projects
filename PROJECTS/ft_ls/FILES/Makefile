@@ -21,6 +21,7 @@ FILES	= main.c \
 		  browse_directory.c \
 		  get_file_info.c \
 		  print_files.c \
+		  print_columns.c \
 		  errors.c \
 		  manage_lists.c \
 		  free.c \

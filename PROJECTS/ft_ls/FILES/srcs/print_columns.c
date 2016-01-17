@@ -1,6 +1,6 @@
 #include "ft_ls.h"
 
-int		get_larger_size_or_links(t_files *head, char field)
+int		get_length_column(t_files *head, char field)
 {
 	t_files	*ptr;
 	int		largest;
@@ -10,9 +10,9 @@ int		get_larger_size_or_links(t_files *head, char field)
 	largest = 0;
 	while (ptr)
 	{
-		if (field == 0)
+		if (field == 1)
 			tmp = ptr->links;
-		else
+		else if (field == 2)
 			tmp = ptr->size;
 		if ((tmp = ft_strlen(ft_itoa(tmp))) > largest)
 			largest = tmp;
@@ -21,6 +21,17 @@ int		get_larger_size_or_links(t_files *head, char field)
 	return (largest);
 }
 
-void	pad_with_spaces(t_files *file)
+void	pad_with_spaces(t_files *file, int size, char field)
 {
+	int		tmp;
+
+	if (field == 1)
+		tmp = ft_strlen(ft_itoa(file->links));
+	else
+		tmp = ft_strlen(ft_itoa(file->size));
+	while (tmp < size)
+	{
+		ft_putchar(' ');
+		tmp++;
+	}
 }
