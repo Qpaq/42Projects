@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 12:47:44 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 17:53:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct	s_ls_args
 }				t_ls_args;
 
 void			check_arguments(int ac, char **av, t_ls_args *ls_args);
-int				browse_directories(t_ls_args *args);
+void			browse_directories(t_ls_args *args);
 t_files			*get_file_info(char *file_name);
 
 char			*file_permissions(mode_t file_mode);
@@ -63,7 +63,7 @@ void			lst_add_end(t_files **head, t_files *new);
 void			lst_insert_after(t_files *target, char *new);
 void			concat_list(t_files *target, t_files *new);
 t_files			*lst_copy_link(t_files *link);
-t_files			*sort_from_options(t_files *head, char *options);
+t_files			*sort_from_options(t_files *head, char *options, char by_name);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);
 void			print_file(t_files *file, t_ls_args *args, int links, int size);

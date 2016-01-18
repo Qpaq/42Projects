@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 12:46:49 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 17:56:48 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int				read_directory(t_files *current_dir,
 			continue ;
 		full_name = ft_strjoin_nolimit(0, current_dir->name,
 				"/", dir_entry->d_name, NULL);
-		tmp = get_file_info(full_name);
+		if (!(tmp = get_file_info(full_name)))
+			return (0);
 		if (ft_strchr(args->options, 'R') && tmp->type == 'd'
 				&& ft_strcmp(tmp->name, ".") && ft_strcmp(tmp->name, ".."))
 			lst_add_end(recursive, lst_copy_link(tmp));
@@ -64,31 +65,31 @@ int				read_directory(t_files *current_dir,
 	return (1);
 }
 
-int				browse_directories(t_ls_args *args)
+void			browse_directories(t_ls_args *args)
 {
 	t_files		*files_list;
 	t_files		*recursive;
+	t_files		*cur_dir;
 
-	while (args->dirs)
+	cur_dir = args->dirs;
+	while (cur_dir)
 	{
 		files_list = NULL;
 		recursive = NULL;
-		if (read_directory(args->dirs, args, &files_list, &recursive))
+		if (read_directory(cur_dir, args, &files_list, &recursive))
 		{
-			files_list = sort_from_options(files_list, args->options);
-			print_dir(files_list, (args->dirs)->name, args);
+			files_list = sort_from_options(files_list, args->options, 0);
+			print_dir(files_list, (cur_dir)->name, args);
 		}
 		else
-			print_error((args->dirs)->name, 2);
+			print_error((cur_dir)->name, 2);
 		free_list(files_list);
 		if (recursive)
 		{
-			recursive = sort_from_options(recursive, args->options);
-			concat_list(args->dirs, recursive);
+			recursive = sort_from_options(recursive, args->options, 1);
+			concat_list(cur_dir, recursive);
 		}
-		args->dirs = (args->dirs)->next;
-		if (args->dirs)
+		if ((cur_dir = cur_dir->next))
 			ft_putchar('\n');
 	}
-	return (1);
 }

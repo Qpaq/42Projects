@@ -1,4 +1,0 @@
-chmod 0 (permission denied)
-ls /dev
-ls -R ~
-ls -R /usr
