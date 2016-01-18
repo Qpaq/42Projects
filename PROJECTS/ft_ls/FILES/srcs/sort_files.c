@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:24:49 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 17:54:07 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 19:44:42 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,15 +124,12 @@ t_files		*sort_from_options(t_files *head, char *options, char by_name)
 {
 	if (head)
 	{
+		if (by_name)
+			head = sort_by_name(head);
 		if (ft_strchr(options, 't'))
 			head = sort_by_date(head);
 		else if (ft_strchr(options, 'S'))
 			head = sort_by_size(head);
-		else
-		{
-			if (by_name)
-				head = sort_by_name(head);
-		}
 		if (ft_strchr(options, 'r'))
 			head = reverse_list(head);
 	}

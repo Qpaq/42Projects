@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 18:33:20 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 19:47:11 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 typedef struct	s_files
 {
+	dev_t				device;
 	char				type;
 	char				*permissions;
 	int					links;

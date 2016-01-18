@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 19:05:49 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 19:44:14 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_files			*get_file_info(char *file_name, char is_link)
 		if (stat(file_name, &buf) == -1)
 			return (NULL);
 	}
+	file->device = buf.st_rdev;
 	file->name = ft_strdup(file_name);
 	file->type = file_type(buf.st_mode);
 	file->permissions = file_permissions(buf.st_mode);
@@ -82,7 +83,7 @@ void			browse_directories(t_ls_args *args)
 		recursive = NULL;
 		if (read_directory(cur_dir, args, &files_list, &recursive))
 		{
-			files_list = sort_from_options(files_list, args->options, 0);
+			files_list = sort_from_options(files_list, args->options, 1);
 			print_dir(files_list, (cur_dir)->name, args);
 		}
 		else

@@ -6,42 +6,56 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:01:30 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 18:54:28 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 19:32:57 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		print_files_long(t_files *head, char *options,
+void		print_file_size(t_files *file, int size_col)
+{
+	if (file->type == 'b' || file->type == 'c')
+	{
+		ft_putnbr((int)major(file->device));
+		ft_putstr(", ");
+		ft_putnbr((int)minor(file->device));
+	}
+	else
+	{
+		pad_with_spaces(file, size_col, 2);
+		ft_putnbr(file->size);
+	}
+}
+
+void		print_files_long(t_files *file, char *options,
 		int links_column, int size_column)
 {
-	ft_putchar(head->type);
-	ft_putstr(head->permissions);
+	ft_putchar(file->type);
+	ft_putstr(file->permissions);
 	ft_putchar(' ');
-	pad_with_spaces(head, links_column, 1);
-	ft_putnbr(head->links);
+	pad_with_spaces(file, links_column, 1);
+	ft_putnbr(file->links);
 	ft_putchar(' ');
-	ft_putstr(head->owner);
+	ft_putstr(file->owner);
 	ft_putchar(' ');
-	ft_putstr(head->group);
+	ft_putstr(file->group);
 	ft_putchar(' ');
-	pad_with_spaces(head, size_column, 2);
-	ft_putnbr(head->size);
+	print_file_size(file, size_column);
 	ft_putchar(' ');
-	ft_putstr(head->date);
+	ft_putstr(file->date);
 	ft_putchar(' ');
 	if (ft_strchr(options, 'G'))
-		add_color(head);
-	ft_putstr(head->name);
+		add_color(file);
+	ft_putstr(file->name);
 	ft_putstr("\033[0m");
 	ft_putchar('\n');
 }
 
-void		print_files_short(t_files *head, char *options)
+void		print_files_short(t_files *file, char *options)
 {
 	if (ft_strchr(options, 'G'))
-		add_color(head);
-	ft_putstr(head->name);
+		add_color(file);
+	ft_putstr(file->name);
 	ft_putstr("\033[0m");
 	ft_putchar('\n');
 }
