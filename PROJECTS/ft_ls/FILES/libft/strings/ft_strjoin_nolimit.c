@@ -29,9 +29,9 @@ char	*ft_strjoin_nolimit(char delimiter, char *s1, ...)
 	{
 		while (*next)
 			new[i++] = *next++;
-		if (delimiter)
-			new[i++] = delimiter;
 		next = va_arg(args, char *);
+		if (delimiter && next)
+			new[i++] = delimiter;
 		if (!next)
 			break ;
 		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
