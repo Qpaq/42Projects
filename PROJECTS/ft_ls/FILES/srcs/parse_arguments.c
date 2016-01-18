@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:02:23 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 11:27:56 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 12:19:51 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	store_requested_dir(char *dir_name, t_ls_args *ls_args)
 	}
 	if (new_dir->type != 'd')
 	{
-		print_file(new_dir, ls_args);
+		print_file(new_dir, ls_args, 0, 0);
 		return (1);
 	}
 	lst_add_end(&(ls_args->dirs), new_dir);

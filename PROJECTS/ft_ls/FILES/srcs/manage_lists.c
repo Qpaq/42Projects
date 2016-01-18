@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:25:48 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 11:00:23 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 12:23:29 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	lst_insert_after(t_files *target, char *new)
 	new_dir->next = target->next;
 	target->next = new_dir;
 }
-
 
 t_files	*lst_copy_link(t_files *link)
 {

@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:24:49 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 10:25:42 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 12:27:47 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ t_files		*sort_by_name(t_files *head)
 	{
 		if (ft_strcmp(ptr->name, (ptr->next)->name) > 0)
 		{
-			if (ptr == head)
-				head = ptr->next;
+			head = (ptr == head) ? ptr->next : head;
 			previous->next = ptr->next;
 			temp = (ptr->next)->next;
 			(ptr->next)->next = ptr;
@@ -54,8 +53,7 @@ t_files		*sort_by_date(t_files *head)
 	{
 		if (ptr->timestamp < (ptr->next)->timestamp)
 		{
-			if (ptr == head)
-				head = ptr->next;
+			head = (ptr == head) ? ptr->next : head;
 			previous->next = ptr->next;
 			temp = (ptr->next)->next;
 			(ptr->next)->next = ptr;
@@ -84,8 +82,7 @@ t_files		*sort_by_size(t_files *head)
 	{
 		if (ptr->size < (ptr->next)->size)
 		{
-			if (ptr == head)
-				head = ptr->next;
+			head = (ptr == head) ? ptr->next : head;
 			previous->next = ptr->next;
 			temp = (ptr->next)->next;
 			(ptr->next)->next = ptr;

@@ -21,12 +21,7 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c \
 			strings/ft_strcmp.c strings/ft_strncmp.c strings/ft_strequ.c strings/ft_strnequ.c \
 			strings/ft_striter.c strings/ft_striteri.c strings/ft_strmap.c strings/ft_strmapi.c \
 			strings/ft_strjoin.c strings/ft_strsub.c strings/ft_strsplit.c strings/ft_strtrim.c strings/ft_strrev.c \
-			strings/ft_strjoin_nolimit.c strings/ft_strcount.c \
-			get_next_line.c \
-			lists/ft_lstnew.c lists/ft_lstdel.c lists/ft_lstdelone.c \
-			lists/ft_lstadd_beginning.c lists/ft_lstadd_end.c \
-			lists/ft_lstinsert_before.c lists/ft_lstinsert_after.c \
-			lists/ft_lstiter.c lists/ft_lstmap.c lists/ft_lstconcat.c
+			strings/ft_strjoin_nolimit.c strings/ft_strcount.c
 
 OBJ		= $(SRC:.c=.o)
 

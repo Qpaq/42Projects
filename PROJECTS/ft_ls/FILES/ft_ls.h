@@ -6,14 +6,12 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 11:21:16 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 12:47:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
-
-# include <stdio.h> // le laisser pour perror()
 
 # include "libft/libft.h"
 # include <stdlib.h>
@@ -24,9 +22,9 @@
 # include <grp.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-# include <errno.h> // pour errno
+# include <errno.h>
 # include <time.h>
-//# include <string.h> // strerror
+# include <stdio.h>
 
 typedef struct	s_files
 {
@@ -68,9 +66,11 @@ t_files			*lst_copy_link(t_files *link);
 t_files			*sort_from_options(t_files *head, char *options);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);
-void			print_file(t_files *file, t_ls_args *args);
+void			print_file(t_files *file, t_ls_args *args, int links, int size);
 int				get_length_column(t_files *head, char field);
 void			pad_with_spaces(t_files *file, int size, char field);
+int				get_total_size(t_files *head);
+void			add_color(t_files *file);
 
 void			print_error(char *message, int time);
 void			error_message(char *message, int terminate);

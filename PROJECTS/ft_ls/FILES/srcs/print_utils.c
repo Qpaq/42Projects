@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_columns.c                                    :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 10:25:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 10:26:23 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/18 12:32:03 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/18 12:32:07 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,37 @@ void	pad_with_spaces(t_files *file, int size, char field)
 		ft_putchar(' ');
 		tmp++;
 	}
+}
+
+int		get_total_size(t_files *head)
+{
+	t_files	*ptr;
+	int		result;
+
+	ptr = head;
+	result = 0;
+	while (ptr)
+	{
+		result += ptr->blocks;
+		ptr = ptr->next;
+	}
+	return (result);
+}
+
+void	add_color(t_files *file)
+{
+	if (file->type == 'd' && ft_strcount(file->permissions, 'w') == 3)
+		ft_putstr("\033[30;43m");
+	else if (file->type == 'd')
+		ft_putstr("\033[1;36m");
+	else if (file->type == 'l')
+		ft_putstr("\033[35m");
+	else if (file->type == 'p')
+		ft_putstr("\033[33m");
+	else if (file->type == 'c')
+		ft_putstr("\033[34;43m");
+	else if (file->type == 'b')
+		ft_putstr("\033[34;46m");
+	else if (ft_strchr(file->permissions, 'x'))
+		ft_putstr("\033[31m");
 }

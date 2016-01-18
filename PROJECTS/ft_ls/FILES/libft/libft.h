@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 11:41:55 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 12:49:47 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,38 +114,5 @@ void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
 char			*ft_mem_realloc(char *old, size_t size);
-
-/*
-** LINKED LISTS
-*/
-typedef struct	s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
-
-t_list			*ft_lstnew(void const *content, size_t content_size);
-void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
-void			ft_lstdel(t_list **alst, void (*del)(void*, size_t));
-void			ft_lstadd_beginning(t_list **alst, t_list *new);
-void			ft_lstadd_end(t_list **alst, t_list *new);
-void			ft_lstinsert_before(t_list **alst, t_list *target, t_list *new);
-void			ft_lstinsert_after(t_list *target, t_list *new);
-void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void			ft_lstconcat(t_list *lnk_first_list, t_list *head_second_list);
-
-/*
-** GET NEXT LINE
-*/
-int				get_next_line(int const fd, char **line);
-
-typedef struct	s_list_gnl
-{
-	int					fd;
-	char				*temp;
-	struct s_list_gnl	*next;
-}				t_list_gnl;
 
 #endif

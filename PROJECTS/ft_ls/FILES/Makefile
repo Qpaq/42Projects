@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/28 11:02:45 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/14 11:33:53 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/18 12:32:19 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FILES	= main.c \
 		  browse_directory.c \
 		  get_file_info.c \
 		  print_files.c \
-		  print_columns.c \
+		  print_utils.c \
 		  errors.c \
 		  manage_lists.c \
 		  free.c \

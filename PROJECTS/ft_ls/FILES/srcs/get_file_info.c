@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:01:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 11:19:32 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 12:22:58 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char		*get_date(struct stat infos)
 	{
 		time_table_file[3][5] = 0;
 		time_file = ft_strjoin_nolimit(' ', time_table_file[2],
-				time_table_file[1], time_table_file[3],  NULL);
+				time_table_file[1], time_table_file[3], NULL);
 	}
 	else
 		time_file = ft_strjoin_nolimit(' ', time_table_file[2],
