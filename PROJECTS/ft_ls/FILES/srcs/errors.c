@@ -27,3 +27,9 @@ void	print_error(char *message, int time)
 		perror(message);
 	}
 }
+
+/*
+exit: 1 == YES, 0 == NO
+
+void	error_message(char *message, int exit)
+*/
