@@ -44,8 +44,11 @@ void			ft_putnbr_base(int n, int base);
 */
 int				ft_atoi(char *nb);
 int				ft_atoi_base(char *nb, int base);
+long			ft_atol(char *nb);
+long long		ft_atoll(char *nb);
 char			*ft_itoa(int nb);
 char			*ft_itoa_base(int n, int base);
+char			*ft_ltoa(long nb);
 int				ft_power(int nb, int pow);
 void			ft_sort_integer_table(int *tab, int size);
 

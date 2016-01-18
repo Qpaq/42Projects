@@ -7,6 +7,7 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c \
 			printing/ft_putstr_array.c \
 			printing/ft_putnbr.c printing/ft_putnbr_fd.c printing/ft_putnbr_base.c \
 			numbers/ft_atoi.c numbers/ft_atoi_base.c numbers/ft_itoa.c numbers/ft_itoa_base.c \
+			numbers/ft_atol.c numbers/ft_atoll.c numbers/ft_ltoa.c \
 			numbers/ft_power.c numbers/ft_sqrt.c numbers/ft_sort_integer_table.c \
 			ft_tolower.c ft_toupper.c \
 			ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
