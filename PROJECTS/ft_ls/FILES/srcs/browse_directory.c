@@ -6,21 +6,25 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 17:56:48 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 19:05:49 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_files			*get_file_info(char *file_name)
+t_files			*get_file_info(char *file_name, char is_link)
 {
 	struct stat	buf;
 	t_files		*file;
 
-	if (!(file = (t_files *)ft_memalloc(sizeof(t_files))))
-		return (NULL);
+	file = (t_files *)ft_memalloc(sizeof(t_files));
 	if (lstat(file_name, &buf) == -1)
 		return (NULL);
+	if (is_link)
+	{
+		if (stat(file_name, &buf) == -1)
+			return (NULL);
+	}
 	file->name = ft_strdup(file_name);
 	file->type = file_type(buf.st_mode);
 	file->permissions = file_permissions(buf.st_mode);
@@ -51,10 +55,10 @@ int				read_directory(t_files *current_dir,
 			continue ;
 		full_name = ft_strjoin_nolimit(0, current_dir->name,
 				"/", dir_entry->d_name, NULL);
-		if (!(tmp = get_file_info(full_name)))
+		if (!(tmp = get_file_info(full_name, 0)))
 			return (0);
-		if (ft_strchr(args->options, 'R') && tmp->type == 'd'
-				&& ft_strcmp(tmp->name, ".") && ft_strcmp(tmp->name, ".."))
+		if (ft_strchr(args->options, 'R') && tmp->type == 'd' &&
+	ft_strcmp(dir_entry->d_name, ".") && ft_strcmp(dir_entry->d_name, ".."))
 			lst_add_end(recursive, lst_copy_link(tmp));
 		tmp->name = ft_strdup(dir_entry->d_name);
 		tmp->parent_dir = ft_strdup(current_dir->name);

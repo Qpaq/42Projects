@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 17:53:44 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 18:33:20 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct	s_ls_args
 
 void			check_arguments(int ac, char **av, t_ls_args *ls_args);
 void			browse_directories(t_ls_args *args);
-t_files			*get_file_info(char *file_name);
+t_files			*get_file_info(char *file_name, char is_link);
 
 char			*file_permissions(mode_t file_mode);
 char			file_type(mode_t file_mode);
