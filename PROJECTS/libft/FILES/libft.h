@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:36:10 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 10:12:52 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void			ft_lstinsert_before(t_list **alst, t_list *target, t_list *new);
 void			ft_lstinsert_after(t_list *target, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void			ft_lstconcat(t_list *lnk_first_list, t_list *head_second_list);
 
 /*
 ** GET NEXT LINE
