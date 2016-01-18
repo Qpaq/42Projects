@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   ft_strcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/13 15:54:53 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 11:16:49 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/18 11:35:31 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/18 11:41:14 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "libft.h"
 
-void	print_error(char *message, int time)
+int		ft_strcount(char *str, char to_find)
 {
-	if (time == 1)
-	{
-		ft_putstr("ls: ");
-		perror(message);
-	}
-	else if (time == 2 && errno != 2)
-	{
-		ft_putstr(message);
-		ft_putendl(":");
-		ft_putstr("ls: ");
-		perror(message);
-	}
-}
+	int	count;
 
-void	error_message(char *message, int terminate)
-{
-	ft_putcolor("ERROR: ", "red");
-	perror(message);
-	if (terminate)
-		exit(0);
+	count = 0;
+	while (*str)
+	{
+		if (*str == to_find)
+			count++;
+		str++;
+	}
+	return (count);
 }

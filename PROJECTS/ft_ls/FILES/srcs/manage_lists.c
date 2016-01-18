@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:25:48 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 15:54:10 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 11:00:23 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,25 @@ void	lst_insert_after(t_files *target, char *new)
 	new_dir->name = ft_strdup(new);
 	new_dir->next = target->next;
 	target->next = new_dir;
+}
+
+
+t_files	*lst_copy_link(t_files *link)
+{
+	t_files	*copy;
+
+	copy = (t_files *)ft_memalloc(sizeof(t_files));
+	copy = (t_files *)ft_memcpy(copy, link, sizeof(t_files));
+	return (copy);
+}
+
+void	concat_list(t_files *target, t_files *new)
+{
+	t_files	*tmp;
+
+	tmp = target->next;
+	target->next = new;
+	while (new->next)
+		new = new->next;
+	new->next = tmp;
 }

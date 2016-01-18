@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:02:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 15:48:50 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 11:21:16 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <sys/types.h>
 # include <errno.h> // pour errno
 # include <time.h>
-# include <string.h> // strerror
+//# include <string.h> // strerror
 
 typedef struct	s_files
 {
@@ -63,6 +63,8 @@ char			*get_owner(struct stat infos);
 
 void			lst_add_end(t_files **head, t_files *new);
 void			lst_insert_after(t_files *target, char *new);
+void			concat_list(t_files *target, t_files *new);
+t_files			*lst_copy_link(t_files *link);
 t_files			*sort_from_options(t_files *head, char *options);
 
 void			print_dir(t_files *head, char *dir_name, t_ls_args *args);
@@ -71,6 +73,7 @@ int				get_length_column(t_files *head, char field);
 void			pad_with_spaces(t_files *file, int size, char field);
 
 void			print_error(char *message, int time);
+void			error_message(char *message, int terminate);
 
 void			free_one(t_files *head);
 void			free_list(t_files *head);

@@ -2,10 +2,6 @@
 
 int		main(void)
 {
-	char	a[] = "david";
-	char	b[20] = "TEDGUI";
-	char	*res;
-	res = ft_strjoin_nolimit(a, "/", b);
-	ft_putendl(res);
+	ft_putnbr(ft_strcount("ma chaine aaa", 'a'));
 	return (0);
 }

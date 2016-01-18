@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:02:23 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 12:01:34 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 11:27:56 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ static int	store_requested_dir(char *dir_name, t_ls_args *ls_args)
 	t_files			*new_dir;
 
 	if (!(new_dir = get_file_info(dir_name)))
+	{
+		error_message("get_file_info()", 0);
 		return (0);
+	}
 	if (new_dir->type != 'd')
 	{
 		print_file(new_dir, ls_args);
@@ -55,7 +58,8 @@ void		check_arguments(int ac, char **av, t_ls_args *ls_args)
 	args_list = ft_strnew(2);
 	while (++i < ac && av[i][0] == '-' && is_option(&av[i][1], ls_args))
 	{
-		args_list = ft_mem_realloc(args_list, ft_strlen(args_list) + ft_strlen(av[i]));
+		args_list = ft_mem_realloc(args_list,
+				ft_strlen(args_list) + ft_strlen(av[i]));
 		args_list = ft_strcat(args_list, &av[i][1]);
 	}
 	ls_args->options = ft_strdup(args_list);

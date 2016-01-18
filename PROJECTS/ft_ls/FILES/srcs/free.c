@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/18 10:23:36 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/18 10:29:37 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 void		free_one(t_files *head)
@@ -6,10 +18,6 @@ void		free_one(t_files *head)
 	{
 		if (head->permissions)
 			ft_memdel((void **)&head->permissions);
-	//	if (head->owner)
-	//		free(head->owner);
-	//	if (head->group)
-	//		free(head->group);
 		if (head->date)
 			ft_memdel((void **)&head->date);
 		if (head->name)

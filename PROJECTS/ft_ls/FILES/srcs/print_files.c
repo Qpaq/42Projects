@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:01:30 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 15:16:58 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 11:45:42 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 static void	add_color(t_files *file)
 {
-	if (file->type == 'd')
+	if (file->type == 'd' && ft_strcount(file->permissions, 'w') == 3)
+		ft_putstr("\033[30;46m");
+	else if (file->type == 'd')
 		ft_putstr("\033[1;36m");
 	else if (file->type == 'l')
 		ft_putstr("\033[35m");

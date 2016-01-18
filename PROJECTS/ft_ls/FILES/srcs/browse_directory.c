@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 10:58:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 16:00:31 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 11:28:05 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 t_files			*get_file_info(char *file_name)
 {
-	struct stat		buf;
-	t_files	*file;
+	struct stat	buf;
+	t_files		*file;
 
 	if (!(file = (t_files *)ft_memalloc(sizeof(t_files))))
 		return (NULL);
-
 	if (lstat(file_name, &buf) == -1)
 		return (NULL);
+	/*
 	if (file_type(buf.st_mode) != 'l')
 	{
 		if (stat(file_name, &buf) == -1)
 			return (NULL);
 	}
+	*/
 	file->name = ft_strdup(file_name);
 	file->type = file_type(buf.st_mode);
 	file->permissions = file_permissions(buf.st_mode);
@@ -41,42 +42,43 @@ t_files			*get_file_info(char *file_name)
 	return (file);
 }
 
-int		read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
+int				read_directory(t_files *current_dir, t_ls_args *args, t_files **head)
 {
 	DIR				*dirp;
 	struct dirent	*dir_entry;
 	char			*full_name;
 	t_files			*tmp;
-	t_files			*recursive_option;
+	t_files			*recursive;
 
-	recursive_option = current_dir;
+	recursive = NULL;
 	if (!(dirp = opendir(current_dir->name)))
 		return (0);
 	while ((dir_entry = readdir(dirp)))
 	{
 		if (!ft_strchr(args->options, 'a') && dir_entry->d_name[0] == '.')
 			continue ;
-		full_name = ft_strjoin("/", dir_entry->d_name);
-		full_name = ft_strjoin(current_dir->name, full_name);
+		full_name = ft_strjoin_nolimit(0, current_dir->name, "/", dir_entry->d_name, NULL);
 		tmp = get_file_info(full_name);
-		tmp->name = ft_strdup(dir_entry->d_name);
-		tmp->parent_dir = ft_strdup(current_dir->name);
 		if (ft_strchr(args->options, 'R'))
 		{
 			if (tmp->type == 'd' && ft_strcmp(tmp->name, ".") && ft_strcmp(tmp->name, ".."))
-			{
-				lst_insert_after(recursive_option, full_name);
-				recursive_option = recursive_option->next;
-			}
+				lst_add_end(&recursive, lst_copy_link(tmp));
 		}
+		tmp->name = ft_strdup(dir_entry->d_name);
+		tmp->parent_dir = ft_strdup(current_dir->name);
 		lst_add_end(head, tmp);
 		ft_memdel((void **)&full_name);
+	}
+	if (recursive)
+	{
+		recursive = sort_from_options(recursive, args->options);
+		concat_list(current_dir, recursive);
 	}
 	closedir(dirp);
 	return (1);
 }
 
-int		browse_directories(t_ls_args *args)
+int				browse_directories(t_ls_args *args)
 {
 	t_files		*files_list;
 	t_files		*tmp;
@@ -94,7 +96,6 @@ int		browse_directories(t_ls_args *args)
 		free_list(files_list);
 		tmp = args->dirs;
 		args->dirs = (args->dirs)->next;
-		free_one(tmp);
 		if (args->dirs)
 			ft_putchar('\n');
 	}

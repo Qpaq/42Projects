@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_files.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/18 10:24:49 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/18 10:25:42 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
-t_files	*sort_by_name(t_files *head)
+t_files		*sort_by_name(t_files *head)
 {
 	t_files		*ptr;
 	t_files		*previous;
@@ -30,7 +42,7 @@ t_files	*sort_by_name(t_files *head)
 	return (head);
 }
 
-t_files	*sort_by_date(t_files *head)
+t_files		*sort_by_date(t_files *head)
 {
 	t_files		*ptr;
 	t_files		*previous;
@@ -60,7 +72,7 @@ t_files	*sort_by_date(t_files *head)
 	return (head);
 }
 
-t_files	*sort_by_size(t_files *head)
+t_files		*sort_by_size(t_files *head)
 {
 	t_files		*ptr;
 	t_files		*previous;
@@ -90,7 +102,7 @@ t_files	*sort_by_size(t_files *head)
 	return (head);
 }
 
-t_files	*reverse_list(t_files *head)
+t_files		*reverse_list(t_files *head)
 {
 	t_files		*ptr;
 	t_files		*previous;
@@ -111,7 +123,7 @@ t_files	*reverse_list(t_files *head)
 	return (head);
 }
 
-t_files	*sort_from_options(t_files *head, char *options)
+t_files		*sort_from_options(t_files *head, char *options)
 {
 	if (head)
 	{

@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 11:01:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/14 12:12:24 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 11:19:32 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ char		*get_owner(struct stat infos)
 	struct passwd	*owner_infos;
 
 	if (!(owner_infos = getpwuid(infos.st_uid)))
-	{
-		ft_putendl("pb get_owner()"); // DELETE
-		exit(0);
-	}
+		error_message("get_owner()", 1);
 	return (owner_infos->pw_name);
 }
 
@@ -29,10 +26,7 @@ char		*get_group(struct stat infos)
 	struct group	*group_infos;
 
 	if (!(group_infos = getgrgid(infos.st_gid)))
-	{
-		ft_putendl("pb getgrgid"); // DELETE
-		exit(0);
-	}
+		error_message("get_group()", 1);
 	return (group_infos->gr_name);
 }
 
@@ -52,14 +46,16 @@ char		*get_date(struct stat infos)
 	if (!ft_strcmp(time_table_now[4], time_table_file[4]))
 	{
 		time_table_file[3][5] = 0;
-		time_file = ft_strjoin_nolimit(' ', time_table_file[2], time_table_file[1], time_table_file[3],  NULL);
+		time_file = ft_strjoin_nolimit(' ', time_table_file[2],
+				time_table_file[1], time_table_file[3],  NULL);
 	}
 	else
-		time_file = ft_strjoin_nolimit(' ', time_table_file[2], time_table_file[1], time_table_file[4], NULL);
+		time_file = ft_strjoin_nolimit(' ', time_table_file[2],
+				time_table_file[1], time_table_file[4], NULL);
 	return (time_file);
 }
 
-char			file_type(mode_t file_mode)
+char		file_type(mode_t file_mode)
 {
 	if (S_ISDIR(file_mode))
 		return ('d');
@@ -79,7 +75,7 @@ char			file_type(mode_t file_mode)
 		return ('-');
 }
 
-char			*file_permissions(mode_t file_mode)
+char		*file_permissions(mode_t file_mode)
 {
 	char	*perms;
 
