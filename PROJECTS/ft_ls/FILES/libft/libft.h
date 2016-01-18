@@ -6,14 +6,12 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 12:49:47 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 19:59:26 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-# define BUFF_SIZE 100
 
 # include <unistd.h>
 # include <stdlib.h>

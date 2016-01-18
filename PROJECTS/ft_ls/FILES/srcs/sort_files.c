@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:24:49 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 19:44:42 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 20:27:15 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_files		*reverse_list(t_files *head)
 
 t_files		*sort_from_options(t_files *head, char *options, char by_name)
 {
-	if (head)
+	if (head && !ft_strchr(options, 'f'))
 	{
 		if (by_name)
 			head = sort_by_name(head);

@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:01:30 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 19:32:57 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 20:28:50 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ void		print_files_long(t_files *file, char *options,
 	pad_with_spaces(file, links_column, 1);
 	ft_putnbr(file->links);
 	ft_putchar(' ');
-	ft_putstr(file->owner);
-	ft_putchar(' ');
+	if (!ft_strchr(options, 'g'))
+	{
+		ft_putstr(file->owner);
+		ft_putchar(' ');
+	}
 	ft_putstr(file->group);
 	ft_putchar(' ');
 	print_file_size(file, size_column);

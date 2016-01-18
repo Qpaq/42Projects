@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 11:02:23 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/18 19:00:18 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/18 20:24:07 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ static int	store_requested_dir(char *dir_name, t_ls_args *ls_args)
 	return (1);
 }
 
+static void	modify_options(char **options)
+{
+	char	*tmp;
+
+	if (ft_strchr(*options, 'g'))
+	{
+		tmp = ft_strjoin(*options, "l");
+		ft_memdel((void **)options);
+		*options = ft_strdup(tmp);
+	}
+	if (ft_strchr(*options, 'f'))
+	{
+		tmp = ft_strjoin(*options, "a");
+		ft_memdel((void **)options);
+		*options = ft_strdup(tmp);
+	}
+}
+
 void		check_arguments(int ac, char **av, t_ls_args *ls_args)
 {
 	int			i;
@@ -67,6 +85,7 @@ void		check_arguments(int ac, char **av, t_ls_args *ls_args)
 				ft_strlen(args_list) + ft_strlen(av[i]));
 		args_list = ft_strcat(args_list, &av[i][1]);
 	}
+	modify_options(&args_list);
 	ls_args->options = ft_strdup(args_list);
 	ft_memdel((void **)&args_list);
 	if (i == ac)
