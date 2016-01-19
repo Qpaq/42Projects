@@ -9,15 +9,13 @@ static long		ft_power_for_ltoa(long nb, long power)
 	return (nb * ft_power(nb, power - 1));
 }
 
-char			*ft_ltoa(long n)
+char			*ft_ltoa(long nb)
 {
 	int		length;
 	char	*result;
 	int		i;
 	long	sign;
-	long	nb;
 
-	nb = n;
 	length = 1;
 	if ((sign = nb) < 0)
 		nb = -nb;

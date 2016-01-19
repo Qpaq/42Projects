@@ -1,7 +1,8 @@
 #include "FILES/libft.h"
+#include <stdio.h>
 
 int		main(void)
 {
-	ft_putnbr(ft_strcount("ma chaine aaa", 'a'));
+	printf("%s\n", ft_ltoa(0));
 	return (0);
 }
