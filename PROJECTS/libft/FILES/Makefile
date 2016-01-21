@@ -13,7 +13,7 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c \
 			ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 			memory/ft_memalloc.c memory/ft_memcpy.c memory/ft_memccpy.c \
 			memory/ft_memchr.c memory/ft_memcmp.c memory/ft_memdel.c \
-			memory/ft_memmove.c memory/ft_memset.c memory/ft_mem_realloc.c \
+			memory/ft_memmove.c memory/ft_memset.c \
 			strings/ft_strlen.c strings/ft_strlen_char.c strings/ft_bzero.c \
 			strings/ft_strnew.c strings/ft_strclr.c strings/ft_strdel.c \
 			strings/ft_strcat.c strings/ft_strncat.c strings/ft_strlcat.c \
@@ -21,8 +21,10 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c \
 			strings/ft_strchr.c strings/ft_strrchr.c strings/ft_strstr.c strings/ft_strnstr.c \
 			strings/ft_strcmp.c strings/ft_strncmp.c strings/ft_strequ.c strings/ft_strnequ.c \
 			strings/ft_striter.c strings/ft_striteri.c strings/ft_strmap.c strings/ft_strmapi.c \
-			strings/ft_strjoin.c strings/ft_strsub.c strings/ft_strsplit.c strings/ft_strtrim.c strings/ft_strrev.c \
-			strings/ft_strjoin_nolimit.c strings/ft_strcount.c \
+			strings/ft_strsub.c strings/ft_strsplit.c strings/ft_strrev.c \
+			strings/ft_strjoin.c strings/ft_strjoin_nolimit.c \
+			strings/ft_strtrim.c strings/ft_strtrim_nolimit.c \
+			strings/ft_strcount.c strings/ft_str_realloc.c \
 			get_next_line.c \
 			lists/ft_lstnew.c lists/ft_lstdel.c lists/ft_lstdelone.c \
 			lists/ft_lstadd_beginning.c lists/ft_lstadd_end.c \

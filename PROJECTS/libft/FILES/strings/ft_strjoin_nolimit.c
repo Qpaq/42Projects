@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 16:36:17 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/21 18:13:43 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strjoin_nolimit(char delimiter, char *s1, ...)
 			new[i++] = delimiter;
 		if (!next)
 			break ;
-		new = ft_mem_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		new = ft_str_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
 	}
 	new[i] = '\0';
 	va_end(args);

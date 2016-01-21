@@ -3,6 +3,7 @@
 
 int		main(void)
 {
-	printf("%s\n", ft_ltoa(0));
+	char test[] = " \tje fais un test \n \t ";
+	printf("%s", ft_strtrim_nolimit(test, 't', 'i', NULL));
 	return (0);
 }

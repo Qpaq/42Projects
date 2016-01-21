@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mem_realloc.c                                   :+:      :+:    :+:   */
+/*   ft_str_realloc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 16:43:06 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/12/04 20:44:46 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/21 18:12:27 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/21 18:12:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_mem_realloc(char *old, size_t size)
+char	*ft_str_realloc(char *old, size_t size)
 {
 	char	*new;
 
