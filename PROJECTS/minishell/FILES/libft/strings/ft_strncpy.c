@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 19:08:08 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:50:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	char	*dst_ptr;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	if (!dst || !src)
+		return (NULL);
+	dst_ptr = dst;
+	while (*src && n > 0)
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		n--;
+		*dst_ptr++ = *src++;
 	}
-	return (0);
+	*dst_ptr = 0;
+	while (n-- > 0)
+		*dst_ptr++ = 0;
+	return (dst);
 }

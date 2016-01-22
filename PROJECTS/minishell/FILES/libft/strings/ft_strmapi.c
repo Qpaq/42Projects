@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 10:16:40 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:01:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	char			*new;
+	unsigned int	i;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	if (!s)
+		return (NULL);
+	i = 0;
+	if (!(new = (char*)malloc(ft_strlen(s) + 1)))
+		return (NULL);
+	while (s[i])
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		new[i] = (*f)(i, s[i]);
+		i++;
 	}
-	return (0);
+	new[i] = '\0';
+	return (new);
 }

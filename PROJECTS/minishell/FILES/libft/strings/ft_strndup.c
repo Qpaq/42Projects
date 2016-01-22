@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/12/07 16:14:45 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:10:36 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	size_t	length;
+	char	*str;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
-	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
-	}
-	return (0);
+	if (!s1)
+		return (NULL);
+	length = ft_strlen(s1);
+	if (n < length)
+		length = n;
+	if (!(str = (char*)malloc(length + 1)))
+		return (NULL);
+	ft_strncpy(str, s1, length);
+	return (str);
 }

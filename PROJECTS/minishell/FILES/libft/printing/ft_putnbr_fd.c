@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 15:27:35 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 13:18:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
-
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	if ((long)n <= -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + 48, fd);
 	}
-	return (0);
 }

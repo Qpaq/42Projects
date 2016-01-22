@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/26 13:02:48 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/11/26 13:59:13 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	unsigned int		i;
+	unsigned int		j;
+	unsigned int		length_s2;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	i = 0;
+	length_s2 = ft_strlen(s2);
+	if (ft_strlen(s2) == 0)
+		return ((char*)s1);
+	while (s1[i] && i < n)
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		j = 0;
+		while (s1[i + j] == s2[j])
+		{
+			if ((j == length_s2 - 1) && (i + j < n))
+				return ((char*)(s1 + i));
+			j++;
+		}
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

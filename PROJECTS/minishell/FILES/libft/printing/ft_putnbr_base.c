@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/10 16:04:14 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/10 16:04:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+void	ft_putnbr_base(int n, int base)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
-
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	if (base == 10)
+		ft_putnbr(n);
+	else if (n < 0)
+		ft_putchar('0');
+	else
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		if (n >= base)
+			ft_putnbr_base(n / base, base);
+		if (n % base < 10)
+			ft_putchar((n % base) + 48);
+		else
+			ft_putchar((n % base) - 10 + 65);
 	}
-	return (0);
 }

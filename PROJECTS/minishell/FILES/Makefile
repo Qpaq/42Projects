@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/21 17:43:13 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/21 17:50:16 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/22 20:00:34 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@ NAME		= minishell
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 
-FILES		= minishell.c
+FILES		= main.c
 
 LIBFT		= ./libft
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)
 
-HEADERS		= ./includes
+HEADERS		= ./
 
 all: $(NAME)
 

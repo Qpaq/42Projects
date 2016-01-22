@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstinsert_before.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/13 13:25:24 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/18 10:06:03 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+void	ft_lstinsert_before(t_list **alst, t_list *target, t_list *new)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	t_list	*previous;
+	t_list	*node;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	node = *alst;
+	previous = *alst;
+	while (node)
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		if (node == target)
+		{
+			if (node == *alst)
+				ft_lstadd_beginning(alst, new);
+			else
+			{
+				new->next = target;
+				previous->next = new;
+			}
+			break ;
+		}
+		previous = node;
+		node = node->next;
 	}
-	return (0);
 }

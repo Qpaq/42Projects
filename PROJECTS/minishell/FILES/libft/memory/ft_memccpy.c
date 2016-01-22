@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 18:24:40 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/01 13:44:20 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int		main(int ac, char **av, char **envp)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	unsigned char	ch;
+	unsigned char	*dst_pt;
+	unsigned char	*src_pt;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	if (!dst || !src)
+		return (NULL);
+	ch = (unsigned char)c;
+	dst_pt = (unsigned char*)dst;
+	src_pt = (unsigned char*)src;
+	while (n-- > 0)
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
-		commands = ft_strsplit(user_entry, ' ');
-		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		*dst_pt = *src_pt;
+		if (*dst_pt++ == ch)
+			return (dst_pt);
+		src_pt++;
 	}
-	return (0);
+	return (NULL);
 }
