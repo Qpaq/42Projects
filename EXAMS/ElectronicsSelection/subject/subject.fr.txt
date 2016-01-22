@@ -1,0 +1,20 @@
+QCM d'electronique pour departager les etudiants participant au TP/Projet.
+
+Instructions de rendu :
+
+- Vous devez avoir un fichier auteur, avec votre login dedans, suivi d'un retour a la ligne.
+- Vous allez mettre vos reponses dans le fichier "reponses"
+- Le fichier "reponses" a une syntaxe tres precise : 
+Q01:A
+Q02:C
+...
+Q11:D
+...
+
+- Toutes les questions doivent etre presentes (ne mettez rien apres les : si vous savez pas quoi repondre): la correction se fera grace a la commande diff sur un fichier de reponses complet.
+- Majuscule, lead zero, \n, pas d'espace, tout est important.
+
+
+Tout cela est bien sur a push sur votre rendu.
+
+Bon courage !
