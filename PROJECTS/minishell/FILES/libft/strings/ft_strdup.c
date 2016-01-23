@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 11:18:22 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/22 14:55:03 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/23 15:37:29 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/04 22:33:13 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+char	*ft_strdup(const char *s1)
 {
-	int		end;
 	int		length;
-	char	*new;
-	int		i;
+	char	*str;
 
-	if (!s)
+	length = ft_strlen(s1);
+	if (!(str = (char*)malloc(sizeof(*s1) * (length + 1))))
 		return (NULL);
-	while (*s && (*s == ' ' || *s == '\t' || *s == '\n'))
-		s++;
-	if ((end = ft_strlen(s) - 1) <= 0)
-		return (new = ft_strnew(0));
-	while (end > 0 && (s[end] == ' ' || s[end] == '\t' || s[end] == '\n'))
-		end--;
-	length = end + 1;
-	if (!(new = (char*)malloc(length + 1)))
-		return (NULL);
-	i = 0;
-	while (length)
-	{
-		new[i++] = *s++;
-		length--;
-	}
-	new[i] = '\0';
-	return (new);
+	ft_strcpy(str, s1);
+	return (str);
 }

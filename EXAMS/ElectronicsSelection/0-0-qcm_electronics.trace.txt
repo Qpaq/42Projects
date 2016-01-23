@@ -1,0 +1,40 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e3r9p18.42.fr
+Darwin 15.2.0 x86_64
+$> date
+Fri Jan 22 18:35:07 CET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.2.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.2.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/electronics-selection-test/exam_20160122/dtedgui
+
+= Git history ==================================================================
+$> git -C /var/folders/r3/tyk42bjj263bpjbrpl12xx340000gq/T/tmpBpV70s/user log --pretty='%H - %an, %ad : %s'
+6675e62a8a73ea4ea45c5112f9da96764676bad0 - Exam 42, Fri Jan 22 18:34:51 2016 +0100 : qcm
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/r3/tyk42bjj263bpjbrpl12xx340000gq/T/tmpBpV70s/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  258 Jan 22 18:35 __GIT_HISTORY
+drwxr-xr-x  4 deepthought  deepthought  136 Jan 22 18:35 qcm_electronics
+
+/var/folders/r3/tyk42bjj263bpjbrpl12xx340000gq/T/tmpBpV70s/user/qcm_electronics:
+total 16
+-rw-r--r--  1 deepthought  deepthought    8 Jan 22 18:35 auteur
+-rw-r--r--  1 deepthought  deepthought  138 Jan 22 18:35 reponses
+ 
+= qcm_electronics ==============================================================
+15/23 corrects answers
+Grade: 65
+
+= Final grade: 65 ==============================================================

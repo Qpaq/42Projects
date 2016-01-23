@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/21 18:13:43 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 10:04:22 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/12/14 15:01:47 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_nolimit(char delimiter, char *s1, ...)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*new;
-	char	*next;
 	int		i;
-	va_list	args;
 
-	if (!s1)
+	if (!s)
+		return (NULL);
+	if (!(new = (char*)malloc(ft_strlen(s) + 1)))
 		return (NULL);
 	i = 0;
-	va_start(args, s1);
-	next = s1;
-	new = ft_strnew(ft_strlen(s1));
-	while (1)
+	while (*s)
 	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (delimiter && next)
-			new[i++] = delimiter;
-		if (!next)
-			break ;
-		new = ft_str_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
+		new[i++] = (*f)(*s);
+		s++;
 	}
 	new[i] = '\0';
-	va_end(args);
 	return (new);
 }

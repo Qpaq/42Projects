@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mem_realloc.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 16:43:06 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/12/04 20:44:46 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/22 20:38:58 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-char	*ft_mem_realloc(char *old, size_t size)
+int		main(int ac, char **av, char **envp)
 {
-	char	*new;
+	char	*user_entry;
+	char	**commands;
+	char	*path;
 
-	new = ft_strnew(size);
-	ft_memcpy(new, old, ft_strlen(old));
-	ft_memdel((void **)&old);
-	return (new);
+	(void)ac;
+	(void)av;
+	user_entry = NULL;
+	while (!ft_strcmp(user_entry, "exit"))
+	{
+		write(1, "$>", 2);
+		get_next_line(0, &user_entry);
+		commands = ft_strsplit(user_entry, ' ');
+		path = ft_strjoin("/bin/", commands[0]);
+		execve(path, commands, envp);
+	}
+	return (0);
 }

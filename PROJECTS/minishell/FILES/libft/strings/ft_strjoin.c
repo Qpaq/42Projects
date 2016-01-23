@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_nolimit.c                               :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 16:31:34 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/21 18:13:43 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/27 11:08:06 by dtedgui           #+#    #+#             */
+/*   Updated: 2015/11/28 12:02:15 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_nolimit(char delimiter, char *s1, ...)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*new;
-	char	*next;
 	int		i;
-	va_list	args;
 
-	if (!s1)
+	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
-	va_start(args, s1);
-	next = s1;
-	new = ft_strnew(ft_strlen(s1));
-	while (1)
-	{
-		while (*next)
-			new[i++] = *next++;
-		next = va_arg(args, char *);
-		if (delimiter && next)
-			new[i++] = delimiter;
-		if (!next)
-			break ;
-		new = ft_str_realloc(new, ft_strlen(new) + ft_strlen(next) + 1);
-	}
+	if (!(new = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
+	while (*s1)
+		new[i++] = *s1++;
+	while (*s2)
+		new[i++] = *s2++;
 	new[i] = '\0';
-	va_end(args);
 	return (new);
 }
