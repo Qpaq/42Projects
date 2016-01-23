@@ -3,6 +3,6 @@
 
 int		main(void)
 {
-	printf("%s\n", ft_ltoa(0));
+	printf("%s\n", ft_itoa_base(14, 16, 1));
 	return (0);
 }

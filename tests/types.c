@@ -10,5 +10,6 @@ int		main(void)
 	printf("long %lu\n", sizeof(long));
 	printf("long long %lu\n", sizeof(long long));
 	printf("double %lu\n", sizeof(double));
+	printf("long double %lu\n", sizeof(long double));
 	printf("float %lu\n", sizeof(float));
 }
