@@ -6,29 +6,30 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/21 17:43:13 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/22 20:00:34 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/25 20:14:31 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= minishell
 
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -I$(HEADERS)
 
-FILES		= main.c
+FILES		= main.c \
+			  env_variables.c
 
 LIBFT		= ./libft
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)
 
-HEADERS		= ./
+HEADERS		= .
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
-	$(CC) $(CFLAGS) -I$(HEADERS) -o $@ $^ -L$(LIBFT) -lft
+	$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT) -lft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
