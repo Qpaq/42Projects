@@ -12,22 +12,28 @@
 
 #include "../minishell.h"
 
-int		main(int ac, char **av, char **envp)
+int		main(void)
 {
-	char	*user_entry;
-	char	**commands;
-	char	*path;
+	char		*user_entry;
+	char		**commands;
+	char		*path;
+	pid_t		forked;
+	extern char	**environ;
 
-	(void)ac;
-	(void)av;
-	user_entry = NULL;
-	while (!ft_strcmp(user_entry, "exit"))
+	user_entry = ft_strnew(0);
+	write(1, "$>", 2);
+	get_next_line(0, &user_entry);
+	if (!ft_strcmp(user_entry, "exit"))
+		exit(0);
+	forked = fork();
+//	ft_putstr_array(environ, '\n');
+	if (forked > 0)
 	{
-		write(1, "$>", 2);
-		get_next_line(0, &user_entry);
 		commands = ft_strsplit(user_entry, ' ');
 		path = ft_strjoin("/bin/", commands[0]);
-		execve(path, commands, envp);
+		execve(path, commands, environ);
 	}
+	if (forked == 0)
+		ft_putcolor("FINI", "red");
 	return (0);
 }
