@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/25 20:31:11 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/25 20:45:34 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@ int		main(void)
 		if (!ft_strcmp(user_entry, "exit"))
 			exit(0);
 		child = fork();
+
+		ft_putnbr(child);
+		ft_putchar('\n');
+
 		if (child == 0)
 		{
 			commands = ft_strsplit(user_entry, ' ');
 			path = ft_strjoin("/bin/", commands[0]);
 			execve(path, commands, environ);
 		}
-		wait(&child);
+		child = wait(&child);
+
+		ft_putnbr(child);
+		ft_putchar('\n');
 	}
 	return (0);
 }
