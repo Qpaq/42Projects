@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/21 17:43:13 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/25 20:14:31 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/26 15:30:08 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -I$(HEADERS)
 
 FILES		= main.c \
+			  commands.c \
 			  env_variables.c
 
 LIBFT		= ./libft

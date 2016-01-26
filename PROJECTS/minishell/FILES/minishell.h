@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/25 20:23:14 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 16:09:43 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct	s_env
 	struct s_env	*next;
 }				t_env;
 
-t_env	*store_env_variables(char **env);
-t_env	*new_env_variable(char *env);
-char	*search_in_env(char *name, t_env *list);
+char			*search_in_env(char *name, t_env *list);
+
+int				execute_command(char *user_entry, t_env *env_list, char **environ);
+char			*find_command(char *command, t_env *env_list);
 
 #endif

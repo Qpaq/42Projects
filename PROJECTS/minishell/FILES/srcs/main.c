@@ -6,54 +6,42 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/26 11:36:19 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 16:09:37 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// returns the path if found, NULL otherwise
-char	*find_command(char *command, t_env *env_list)
+t_env	*new_env_variable(char *env)
 {
-	char			**path_array;
-	char			*path;
-	DIR				*dirp;
-	struct dirent	*file;
+	t_env	*new;
+	char	*sep;
 
-	path_array = ft_strsplit(search_in_env("PATH", env_list), ':');
-	while (*path_array)
-	{
-		dirp = opendir(*path_array);
-		while ((file = readdir(dirp)))
-		{
-			if (ft_strcmp(file->d_name, command) == 0)
-			{
-				path = ft_strjoin_nolimit(0,
-						*path_array, "/", file->d_name, NULL);
-				return (path);
-			}
-		}
-		closedir(dirp);
-		path_array++;
-	}
-	return (NULL);
+	new = (t_env *)ft_memalloc(sizeof(t_env));
+	if (!(sep = ft_strchr(env, '=')))
+		return (NULL);
+	new->name = ft_strndup(env, sep - env);
+	new->value = ft_strdup(sep + 1);
+	new->next = NULL;
+	return (new);
 }
 
-int		execute_command(char *user_entry, t_env *env_list, char **environ)
+t_env	*store_env_variables(char **env)
 {
-	char		*path;
-	pid_t		child;
-	char		**command;
+	t_env	*head;
+	t_env	*ptr;
+	int		i;
 
-	command = ft_strsplit(user_entry, ' ');
-	if ((path = find_command(ft_tolower(command[0]), env_list)))
-		child = fork();
-	else
-		return (0);
-	if (child == 0)
-		execve(path, command, environ);
-	child = wait(&child);
-	return (1);
+	head = new_env_variable(env[0]);
+	i = 1;
+	ptr = head;
+	while (env[i])
+	{
+		ptr->next = new_env_variable(env[i]);
+		ptr = ptr->next;
+		i++;
+	}
+	return (head);
 }
 
 void	prompt(char **user_entry, t_env *env_list)
@@ -63,10 +51,10 @@ void	prompt(char **user_entry, t_env *env_list)
 
 	user = search_in_env("USER", env_list);
 	cwd = search_in_env("PWD", env_list);
-	ft_putstr(user);
-//	ft_putchar(':');
-//	ft_putstr(cwd);
-	ft_putstr("$>");
+	ft_putcolor(user, "cyan");
+	ft_putstr(" in ");
+	ft_putcolor(cwd, "light yellow");
+	ft_putstr(" $>");
 	get_next_line(0, user_entry);
 }
 
