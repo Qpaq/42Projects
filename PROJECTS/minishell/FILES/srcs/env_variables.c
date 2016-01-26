@@ -40,25 +40,30 @@ char	*search_in_env(char *name, t_env *list)
 }
 
 // rajoute une variable d'environnement (setenv)
-int		ft_setenv(char *name, char *value, t_env *head)
+int		ft_setenv(char *name, char *value, t_env **head)
 {
 	t_env	*ptr;
 	t_env	*new;
 
-	ptr = head;
-	while (ptr->next)
+	if (search_in_env(name, *head))
 	{
-		if (ft_strcmp(name, ptr->name) == 0)
-		{
-			change_env_variable(name, value, head);
-			return (1);
-		}
+		change_env_variable(name, value, *head);
+		return (1);
 	}
 	new = (t_env *)ft_memalloc(sizeof(t_env));
-	new->name = ft_strdup(name);
-	new->value = ft_strdup(value);
+	new->name = name;
+	new->value = value;
 	new->next = NULL;
-	ptr->next = new;
+	if (*head == NULL)
+		*head = new;
+	else
+	{
+		ptr = *head;
+		while (ptr->next)
+			ptr = ptr->next;
+		ptr->next = new;
+	}
+	return (0);
 }
 
 void	ft_unsetenv(char *name, t_env *list)

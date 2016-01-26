@@ -38,6 +38,35 @@ char	*find_command(char *command, t_env *env_list)
 	return (NULL);
 }
 
+void	change_cwd(char **args, t_env *list)
+{
+	char	*pwd;
+
+	pwd = NULL;
+	if (chdir(args[1]) == 0)
+	{
+		pwd = getcwd(pwd, 100);
+		ft_setenv("PWD", pwd, &list);
+	}
+	else
+		ft_putendl("cd: no such file or directory");
+}
+
+int		builtin_commands(char *name, char **args, t_env *env_list)
+{
+	if (ft_strcmp(name, "cd") == 0)
+	{
+		change_cwd(args, env_list);
+		return (1);
+	}
+	else if (ft_strcmp(name, "env") == 0)
+	{
+		print_env(env_list);
+		return (1);
+	}
+	return (0);
+}
+
 int		execute_command(char *user_entry, t_env *env_list, char **environ)
 {
 	char		*path;
@@ -45,6 +74,8 @@ int		execute_command(char *user_entry, t_env *env_list, char **environ)
 	char		**command;
 
 	command = ft_strsplit(user_entry, ' ');
+	if (builtin_commands(command[0], command, env_list))
+		return (1);
 	if ((path = find_command(ft_tolower(command[0]), env_list)))
 		child = fork();
 	else

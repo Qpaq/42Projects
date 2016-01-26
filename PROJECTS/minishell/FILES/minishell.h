@@ -30,6 +30,9 @@ typedef struct	s_env
 }				t_env;
 
 char			*search_in_env(char *name, t_env *list);
+void			change_env_variable(char *name, char *new_value, t_env *list);
+int				ft_setenv(char *name, char *value, t_env **head);
+void			print_env(t_env *head);
 
 int				execute_command(char *user_entry, t_env *env_list, char **environ);
 char			*find_command(char *command, t_env *env_list);

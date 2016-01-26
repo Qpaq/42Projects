@@ -12,33 +12,23 @@
 
 #include "minishell.h"
 
-t_env	*new_env_variable(char *env)
-{
-	t_env	*new;
-	char	*sep;
-
-	new = (t_env *)ft_memalloc(sizeof(t_env));
-	if (!(sep = ft_strchr(env, '=')))
-		return (NULL);
-	new->name = ft_strndup(env, sep - env);
-	new->value = ft_strdup(sep + 1);
-	new->next = NULL;
-	return (new);
-}
-
 t_env	*store_env_variables(char **env)
 {
 	t_env	*head;
-	t_env	*ptr;
 	int		i;
+	char	*sep;
+	char	*name;
+	char	*value;
 
-	head = new_env_variable(env[0]);
-	i = 1;
-	ptr = head;
+	i = 0;
+	head = NULL;
 	while (env[i])
 	{
-		ptr->next = new_env_variable(env[i]);
-		ptr = ptr->next;
+		if (!(sep = ft_strchr(env[i], '=')))
+			return (NULL);
+		name = ft_strndup(env[i], sep - env[i]);
+		value = ft_strdup(sep + 1);
+		ft_setenv(name, value, &head);
 		i++;
 	}
 	return (head);
