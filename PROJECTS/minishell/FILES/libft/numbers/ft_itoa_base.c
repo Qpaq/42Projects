@@ -21,7 +21,7 @@ static long		ft_power_for_itoa(long nb, long power)
 	return (nb * ft_power(nb, power - 1));
 }
 
-char			*ft_itoa_base(int n, int base)
+char			*ft_itoa_base(int n, int base, int uppercase)
 {
 	char	*str;
 	int		i;
@@ -38,8 +38,10 @@ char			*ft_itoa_base(int n, int base)
 	i = 0;
 	while (i < length)
 	{
-		if (base > 10 && (n % base >= 10))
+		if (base > 10 && (n % base >= 10) && uppercase)
 			str[i++] = (n % base) - 10 + 'A';
+		else if (base > 10 && (n % base >= 10))
+			str[i++] = (n % base) - 10 + 'a';
 		else
 			str[i++] = (n % base) + '0';
 		n /= base;

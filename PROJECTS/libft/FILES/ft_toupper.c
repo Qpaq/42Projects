@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:32 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/26 09:51:54 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 11:30:56 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_toupper(char *str)
 	char	*uppered;
 	int		i;
 
-	uppered = (char *)ft_memalloc(ft_strlen(str));
+	uppered = (char *)ft_memalloc(ft_strlen(str) + 1);
 	i = 0;
 	while (str[i])
 	{

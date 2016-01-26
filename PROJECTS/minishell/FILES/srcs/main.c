@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/25 20:45:34 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 11:36:19 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		execute_command(char *user_entry, t_env *env_list, char **environ)
 	char		**command;
 
 	command = ft_strsplit(user_entry, ' ');
-	if ((path = find_command(command[0], env_list)))
+	if ((path = find_command(ft_tolower(command[0]), env_list)))
 		child = fork();
 	else
 		return (0);
