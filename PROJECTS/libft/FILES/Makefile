@@ -1,7 +1,7 @@
 NAME = libft.a
 
-SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c \
-			printing/ft_putstr.c printing/ft_putnstr.c printing/ft_putstr_fd.c \
+SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
+			printing/ft_putstr.c printing/ft_putwstr.c printing/ft_putnstr.c printing/ft_putstr_fd.c \
 			printing/ft_putendl.c printing/ft_putendl_fd.c \
 			printing/ft_putcolor.c printing/ft_putrainbow.c \
 			printing/ft_putstr_array.c \

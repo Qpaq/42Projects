@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/26 09:50:34 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 14:09:06 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <wchar.h>
 
 /*
 ** PRINTING
 */
 void			ft_putchar(char c);
+void			ft_putwchar(wchar_t c);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr(char const *s);
+void			ft_putwstr(wchar_t *str);
 void			ft_putnstr(char const *s, size_t n);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl(char const *s);

@@ -3,10 +3,7 @@
 
 int		main(void)
 {
-	char	a[] = "aB387#@^&%^*^&CDEFGHijklmnopQRStuvWxYz";
-	ft_putendl(ft_tolower(a));
-	ft_putendl(a);
-	ft_putendl(ft_toupper(a));
-	ft_putendl(a);
+	wchar_t a[] = L"éא您好αдвуй";
+	ft_putwstr(a);
 	return (0);
 }

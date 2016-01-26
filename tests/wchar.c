@@ -2,26 +2,14 @@
 #include <stdio.h>
 #include <wchar.h>
 
-/*
-void	ft_putwchar(wchar_t c);
-
-void	ft_putwstr(wchar_t *str)
-{
-	while (*str)
-	{
-		ft_putwchar(*str);
-		str++;
-	}
-}
-*/
-
-
 int		main(void)
 {
-	char un = 206;
-	char deux = 177;
+	char un = 229;
+	char deux = 65;
+	char trois = 89;
 	write(1, &un, 1);
 	write(1, &deux, 1);
+	write(1, &trois, 1);
 
 	/*
 	int	ret;
