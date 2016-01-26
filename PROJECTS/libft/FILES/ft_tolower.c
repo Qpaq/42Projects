@@ -6,15 +6,26 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:15 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/11/23 15:38:16 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 09:49:41 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+char	*ft_tolower(char *str)
 {
-	if (c >= 65 && c <= 90)
-		c += 32;
-	return (c);
+	char	*lowered;
+	int		i;
+
+	lowered = (char *)ft_memalloc(ft_strlen(str));
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 65 && str[i] <= 90)
+			lowered[i] = str[i] + 32;
+		else
+			lowered[i] = str[i];
+		i++;
+	}
+	return (lowered);
 }

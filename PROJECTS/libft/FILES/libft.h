@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/21 20:13:32 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 09:50:34 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void			ft_sort_integer_table(int *tab, int size);
 /*
 ** STRINGS
 */
-int				ft_tolower(int c);
-int				ft_toupper(int c);
+char			*ft_tolower(char *str);
+char			*ft_toupper(char *str);
 
 int				ft_isascii(int c);
 int				ft_isdigit(int c);

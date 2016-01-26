@@ -13,15 +13,28 @@ void	ft_putstr(char *str)
 
 int		main(void)
 {
+	int	ret;
+
 	wchar_t	a = L'é';
 	wchar_t	b = L'א';
 	wchar_t	c = L'您';
-	wchar_t	d = L'好';	
-	wchar_t	e[] = L"двуй";
+	wchar_t	d = L'好';
+//	wchar_t	e[] = L"двуй";
 
 	printf("%d\n", a);
 	printf("%d\n", b);
 	printf("%d\n", c);
 	printf("%d\n", d);
-	printf("%S\n", e);
+
+	printf("\n");
+
+	printf("%zu\n", sizeof(a));
+	printf("%zu\n", sizeof(b));
+	printf("%zu\n", sizeof(c));
+	printf("%zu\n", sizeof(d));
+
+	printf("\n");
+
+	ret = printf("%S\n", L"двуй");
+	printf("%d", ret);
 }
