@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:13:45 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 14:48:35 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 16:16:23 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ void	change_cwd(char **args, t_env *list)
 	}
 	else
 		ft_putendl("cd: no such file or directory");
+}
+
+void	ft_echo(char **args, t_env *list)
+{
+	char	*to_print;
+
+	to_print = ft_strtrim_nolimit(args[1], '"');
+	if (to_print[0] == '$')
+		ft_putendl(search_in_env(&to_print[1], list));
+	else
+		ft_putendl(to_print);
 }
 
 int		builtin_commands(char *name, char **args, t_env *env_list)
@@ -48,6 +59,11 @@ int		builtin_commands(char *name, char **args, t_env *env_list)
 	else if (ft_strcmp(name, "unsetenv") == 0)
 	{
 		ft_unsetenv(args[1], env_list);
+		return (1);
+	}
+	else if (ft_strcmp(name, "echo") == 0)
+	{
+		ft_echo(args, env_list);
 		return (1);
 	}
 	return (0);
