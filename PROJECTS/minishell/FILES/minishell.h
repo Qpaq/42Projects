@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/26 16:09:43 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 14:24:13 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,19 @@ typedef struct	s_env
 	struct s_env	*next;
 }				t_env;
 
-char			*search_in_env(char *name, t_env *list);
-void			change_env_variable(char *name, char *new_value, t_env *list);
-int				ft_setenv(char *name, char *value, t_env **head);
-void			print_env(t_env *head);
+// env_variables.c
+char		*search_in_env(char *name, t_env *list);
+void		change_env_variable(char *name, char *new_value, t_env *list);
+int			ft_setenv(char *name, char *value, t_env **head);
+void		ft_unsetenv(char *name, t_env *list);
+void		print_env(t_env *head);
 
-int				execute_command(char *user_entry, t_env *env_list, char **environ);
-char			*find_command(char *command, t_env *env_list);
+// commands.c
+int			execute_command(char *user_entry, t_env *env_list, char **environ);
+char		*find_command(char *command, t_env *env_list);
+
+// builtins.c
+void		change_cwd(char **args, t_env *list);
+int			builtin_commands(char *name, char **args, t_env *env_list);
 
 #endif

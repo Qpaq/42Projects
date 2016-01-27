@@ -6,13 +6,12 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 20:09:40 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/26 16:20:42 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 14:20:53 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// s'affiche a l'appel de "env"
 void	print_env(t_env *head)
 {
 	while (head)
@@ -39,7 +38,6 @@ char	*search_in_env(char *name, t_env *list)
 	return (NULL);
 }
 
-// rajoute une variable d'environnement (setenv)
 int		ft_setenv(char *name, char *value, t_env **head)
 {
 	t_env	*ptr;

@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/26 16:09:37 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 15:22:37 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ t_env	*store_env_variables(char **env)
 void	prompt(char **user_entry, t_env *env_list)
 {
 	char	*user;
-	char	*cwd;
+	char	*pwd;
+	char	*home_dir;
 
+	home_dir = search_in_env("HOME", env_list);
 	user = search_in_env("USER", env_list);
-	cwd = search_in_env("PWD", env_list);
+	pwd = search_in_env("PWD", env_list);
+	pwd = ft_str_replace(pwd, home_dir, "~");
 	ft_putcolor(user, "cyan");
 	ft_putstr(" in ");
-	ft_putcolor(cwd, "light yellow");
+	ft_putcolor(pwd, "light yellow");
 	ft_putstr(" $>");
 	get_next_line(0, user_entry);
 }
@@ -53,8 +56,13 @@ int		main(void)
 	char		*user_entry;
 	extern char	**environ;
 	t_env		*env_list;
+	pid_t		clear;
 
 	env_list = store_env_variables(environ);
+	clear = fork();
+	if (clear == 0)
+		execve("/usr/bin/clear", NULL, environ);
+	clear = wait(&clear);
 	while (1)
 	{
 		user_entry = NULL;

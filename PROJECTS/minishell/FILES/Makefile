@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/21 17:43:13 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/26 15:30:08 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/01/27 14:15:18 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS		= -Wall -Werror -Wextra -I$(HEADERS)
 
 FILES		= main.c \
 			  commands.c \
-			  env_variables.c
+			  env_variables.c \
+			  builtins.c
 
 LIBFT		= ./libft
 
