@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:13:45 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 16:55:11 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 17:05:40 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int		builtin_commands(char *name, char **args, t_env *env_list)
 	}
 	else if (ft_strcmp(name, "setenv") == 0)
 	{
-		ft_setenv(args[1], args[2], &env_list);
+		//si on a le droit aux espaces :
+		ft_setenv(args[1], ft_strjoin_array(&args[2], " "), &env_list);
+		//sinon : ft_setenv(args[1], args[2], &env_list);
 		return (1);
 	}
 	else if (ft_strcmp(name, "unsetenv") == 0)

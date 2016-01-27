@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 15:22:37 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 17:04:22 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	prompt(char **user_entry, t_env *env_list)
 	ft_putcolor(user, "cyan");
 	ft_putstr(" in ");
 	ft_putcolor(pwd, "light yellow");
-	ft_putstr(" $>");
+	ft_putchar('\n');
+	ft_putstr("$> ");
 	get_next_line(0, user_entry);
 }
 
