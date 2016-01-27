@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 20:09:40 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 15:33:55 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 17:48:00 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		ft_setenv(char *name, char *value, t_env **head)
 	t_env	*ptr;
 	t_env	*new;
 
+	if (!head)
+		return (0);
 	if (search_in_env(name, *head))
 	{
 		change_env_variable(name, value, *head);
@@ -83,9 +85,12 @@ int		ft_unsetenv(char *name, t_env *list)
 		previous = ptr;
 		ptr = ptr->next;
 	}
-	ft_memdel((void **)&(ptr->name));
-	ft_memdel((void **)&(ptr->value));
-	ft_memdel((void **)&ptr);
+	if (ptr)
+	{
+		ft_memdel((void **)&(ptr->name));
+		ft_memdel((void **)&(ptr->value));
+		ft_memdel((void **)&ptr);
+	}
 	return (1);
 }
 

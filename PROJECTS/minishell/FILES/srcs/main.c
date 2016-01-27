@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 17:04:22 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 18:28:13 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,43 @@ void	prompt(char **user_entry, t_env *env_list)
 	home_dir = search_in_env("HOME", env_list);
 	user = search_in_env("USER", env_list);
 	pwd = search_in_env("PWD", env_list);
-	pwd = ft_str_replace(pwd, home_dir, "~");
-	ft_putcolor(user, "cyan");
-	ft_putstr(" in ");
-	ft_putcolor(pwd, "light yellow");
-	ft_putchar('\n');
+	if (user && pwd)
+	{
+		pwd = ft_str_replace(pwd, home_dir, "~");
+		ft_putcolor(user, "cyan");
+		ft_putstr(" in ");
+		ft_putcolor(pwd, "light yellow");
+		ft_putchar('\n');
+	}
 	ft_putstr("$> ");
 	get_next_line(0, user_entry);
+}
+
+void	run_commands(char *user_entry, t_env *env_list, char **environ)
+{
+	char	**commands;
+
+	if (ft_strchr(user_entry, ';'))
+	{
+		commands = ft_strsplit(user_entry, ';');
+		while (*commands)
+		{
+			if (!execute_command(ft_strtrim(*commands), env_list, environ))
+			{
+				ft_putstr("minishell: command not found: ");
+				ft_putendl(*commands);
+			}
+			commands++;
+		}
+	}
+	else
+	{
+		if (!execute_command(user_entry, env_list, environ))
+		{
+			ft_putstr("minishell: command not found: ");
+			ft_putendl(user_entry);
+		}
+	}
 }
 
 int		main(void)
@@ -57,22 +87,18 @@ int		main(void)
 	char		*user_entry;
 	extern char	**environ;
 	t_env		*env_list;
-	pid_t		clear;
 
 	env_list = store_env_variables(environ);
-	clear = fork();
-	if (clear == 0)
-		execve("/usr/bin/clear", NULL, environ);
-	clear = wait(&clear);
+	execute_command("clear", env_list, environ);
 	while (1)
 	{
 		user_entry = NULL;
 		while (user_entry == NULL || user_entry[0] == '\0')
 			prompt(&user_entry, env_list);
+		user_entry = ft_strtrim(user_entry);
 		if (ft_strcmp(user_entry, "exit") == 0)
 			exit(0);
-		if (!execute_command(user_entry, env_list, environ))
-			ft_putendl("erreur de commande");
+		run_commands(user_entry, env_list, environ);
 	}
 	return (0);
 }

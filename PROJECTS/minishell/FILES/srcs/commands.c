@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 15:27:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 14:32:39 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 18:29:22 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*find_command(char *command, t_env *env_list)
 	DIR				*dirp;
 	struct dirent	*file;
 
+	if (!env_list)
+		return (NULL);
 	path_array = ft_strsplit(search_in_env("PATH", env_list), ':');
 	while (*path_array)
 	{
