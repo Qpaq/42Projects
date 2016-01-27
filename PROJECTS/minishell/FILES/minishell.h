@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 14:24:13 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 15:34:05 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_env
 char		*search_in_env(char *name, t_env *list);
 void		change_env_variable(char *name, char *new_value, t_env *list);
 int			ft_setenv(char *name, char *value, t_env **head);
-void		ft_unsetenv(char *name, t_env *list);
+int			ft_unsetenv(char *name, t_env *list);
 void		print_env(t_env *head);
 
 // commands.c
