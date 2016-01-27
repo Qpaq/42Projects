@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:13:45 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 16:16:23 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 16:55:11 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	ft_echo(char **args, t_env *list)
 {
 	char	*to_print;
 
-	to_print = ft_strtrim_nolimit(args[1], '"');
+	to_print = ft_strjoin_array(&args[1], " ");
+	to_print = ft_strtrim_nolimit(to_print, '"');
 	if (to_print[0] == '$')
 		ft_putendl(search_in_env(&to_print[1], list));
 	else

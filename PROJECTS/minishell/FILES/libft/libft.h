@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 15:19:12 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/27 16:48:05 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strjoin_nolimit(char delimiter, char *s1, ...);
+char			*ft_strjoin_array(char **array, char *delimiter);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
 char			*ft_strtrim_nolimit(char *s, ...);

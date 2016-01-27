@@ -22,7 +22,7 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			strings/ft_strcmp.c strings/ft_strncmp.c strings/ft_strequ.c strings/ft_strnequ.c \
 			strings/ft_striter.c strings/ft_striteri.c strings/ft_strmap.c strings/ft_strmapi.c \
 			strings/ft_strsub.c strings/ft_strsplit.c strings/ft_strrev.c \
-			strings/ft_strjoin.c strings/ft_strjoin_nolimit.c \
+			strings/ft_strjoin.c strings/ft_strjoin_nolimit.c strings/ft_strjoin_array.c \
 			strings/ft_strtrim.c strings/ft_strtrim_nolimit.c \
 			strings/ft_strcount.c strings/ft_str_realloc.c \
 			strings/ft_str_replace.c \
