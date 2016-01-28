@@ -45,8 +45,15 @@ int		execute_command(char *user_entry, t_env *env_list, char **environ)
 	char		*path;
 	pid_t		child;
 	char		**command;
+	int			i;
 
+	i = 0;
 	command = ft_strsplit(user_entry, ' ');
+	while (command[i])
+	{
+		command[i] = ft_strtrim(command[i]);
+		i++;
+	}
 	if (builtin_commands(command[0], command, env_list))
 		return (1);
 	if ((path = find_command(ft_tolower(command[0]), env_list)))

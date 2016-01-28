@@ -3,7 +3,10 @@
 
 int		main(void)
 {
-	wchar_t a[] = L"éא您好αдвуй";
-	ft_putwstr(a);
+	char	a[] = "		\nt";
+	char	*b = ft_strtrim(a);
+
+	ft_putendl(a);
+	ft_putendl(b);
 	return (0);
 }

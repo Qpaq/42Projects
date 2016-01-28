@@ -11,6 +11,8 @@ int		main(void)
 
 	ft_printf("Test couleur {cyan}%s{eoc} fin\n", "en couleur");
 
+	ft_printf("J'imprime un %%x pour voir");
+
 	// int		ret;
 	// int		ret2;
 	// void	*test = "4";

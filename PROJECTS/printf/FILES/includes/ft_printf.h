@@ -52,6 +52,7 @@ int				convert_long(t_tag *tag, va_list *args);
 int				convert_wchar(t_tag *tag, va_list *args);
 int				convert_wstring(t_tag *tag, va_list *args);
 int				convert_binary(t_tag *tag, va_list *args);
+int				convert_float(t_tag *tag, va_list *args);
 uintmax_t		get_unsigned_length(uintmax_t nbr, t_tag *tag);
 intmax_t		get_signed_length(intmax_t nbr, t_tag *tag);
 int				add_color(char **format);

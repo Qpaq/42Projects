@@ -27,6 +27,7 @@ FILES	= ft_printf.c \
 		  converters/convert_wchar.c \
 		  converters/convert_wstring.c \
 		  converters/convert_binary.c \
+		  converters/convert_float.c \
 		  color.c \
 		  utils/print_width_pad.c \
 		  utils/nbr_strlen.c \
