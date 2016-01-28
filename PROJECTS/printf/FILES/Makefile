@@ -3,48 +3,68 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abungert <abungert@student.42.fr>          +#+  +:+       +#+         #
+#    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/01/05 14:22:12 by abungert          #+#    #+#              #
-#    Updated: 2016/01/10 15:39:25 by dtedgui          ###   ########.fr        #
+#    Created: 2016/01/28 16:04:57 by dtedgui           #+#    #+#              #
+#    Updated: 2016/01/28 16:07:19 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= a.out
+NAME	= libftprintf.a
 
-FILES	= main.c \
-		  ft_printf.c \
+FILES	= ft_printf.c \
 		  parse_tag.c \
-		  get_handler.c \
-		  handlers.c
+		  get_converter.c \
+		  converters/convert_int.c \
+		  converters/convert_unsigned_int.c \
+		  converters/convert_octal.c \
+		  converters/convert_hexa.c \
+		  converters/convert_char.c \
+		  converters/convert_string.c \
+		  converters/convert_address.c \
+		  converters/convert_escape.c \
+		  converters/convert_long.c \
+		  converters/convert_wchar.c \
+		  converters/convert_wstring.c \
+		  converters/convert_binary.c \
+		  color.c \
+		  utils/print_width_pad.c \
+		  utils/nbr_strlen.c \
+		  utils/print_forceprefix.c \
+		  utils/convert_length.c \
+		  utils/print_forceprefix_max.c \
+		  utils/print_uint.c
 
 SRC		= $(addprefix srcs/, $(FILES))
 OBJ		= $(SRC:.c=.o)
 
+INC     = ./includes
 LIBFT	= ./libft
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -I.
+AR      = ar
+ARFLAGS = rcs
 
-#ifdef FLAGS
-#    ifeq ($(FLAGS), no)
-#        CFLAGS	= -c -I.
-#    endif
-#    ifeq ($(FLAGS), debug)
-#        CFLAGS	= -c -I. -Wall -Wextra -Werror -ansi -pedantic -g
-#    endif
-#else
-#    CFLAGS      = -c -I. -Wall -Wextra -Werror
-#endif
+ifdef FLAGS
+    ifeq ($(FLAGS), no)
+        CFLAGS	= 
+    endif
+    ifeq ($(FLAGS), debug)
+        CFLAGS	= -Wall -Wextra -Werror -g
+    endif
+else
+    CFLAGS      = -Wall -Wextra -Werror
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
-	$(CC) -o $@ $(CFLAGS) $^ -L$(LIBFT) -lft
+	cp $(LIBFT)/libft.a $(NAME)
+	$(AR) r $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) -o $@ $(CFLAGS) -c $<
+	$(CC) -o $@ $(CFLAGS) -I $(INC) -c $<
 
 clean:
 	/bin/rm -f $(OBJ)

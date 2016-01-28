@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/10 13:32:11 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/10 15:41:22 by dtedgui          ###   ########.fr       */
+/*   Created: 2015/11/23 15:32:25 by abungert          #+#    #+#             */
+/*   Updated: 2016/01/26 17:02:49 by abungert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		main(void)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		ret;
-	ret = ft_printf("d: %d, s: %s, c: %c\n", 666, "david", 'x');
-	ft_putnbr(ret);
+	write(fd, &c, 1);
 }

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 11:30:41 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/10 13:26:31 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/26 11:55:25 by abungert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 void	get_flags(char **format, t_tag *tag)
 {
@@ -48,6 +47,11 @@ void	get_precision(char **format, t_tag *tag)
 	{
 		tag->has_precision = 1;
 		(*format)++;
+		if (!(ft_isdigit(**format)))
+		{
+			tag->has_precision = 2;
+			tag->precision = 1;
+		}
 		while (**format && ft_isdigit(**format))
 		{
 			tag->precision = tag->precision * 10 + (**format - 48);
