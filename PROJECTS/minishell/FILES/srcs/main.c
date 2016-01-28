@@ -58,27 +58,21 @@ void	prompt(char **user_entry, t_env *env_list)
 void	run_commands(char *user_entry, t_env *env_list, char **environ)
 {
 	char	**commands;
-
-	if (ft_strchr(user_entry, ';'))
+	char	*command;
+	
+	commands = ft_strsplit(user_entry, ';');
+	while (*commands)
 	{
-		commands = ft_strsplit(user_entry, ';');
-		while (*commands)
+		command = ft_strtrim(*commands);
+		if (ft_strlen(command) != 0)
 		{
-			if (!execute_command(ft_strtrim(*commands), env_list, environ))
+			if (!execute_command(command, env_list, environ))
 			{
 				ft_putstr("minishell: command not found: ");
 				ft_putendl(*commands);
 			}
-			commands++;
 		}
-	}
-	else
-	{
-		if (!execute_command(user_entry, env_list, environ))
-		{
-			ft_putstr("minishell: command not found: ");
-			ft_putendl(user_entry);
-		}
+		commands++;
 	}
 }
 
