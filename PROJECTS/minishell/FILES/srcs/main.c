@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 18:28:13 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/29 09:01:19 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	run_commands(char *user_entry, t_env *env_list, char **environ)
 {
 	char	**commands;
 	char	*command;
-	
+
 	commands = ft_strsplit(user_entry, ';');
 	while (*commands)
 	{
