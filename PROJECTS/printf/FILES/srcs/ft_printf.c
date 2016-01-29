@@ -6,7 +6,7 @@
 /*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 11:21:20 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/28 11:48:28 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/29 11:10:47 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int	specifier_not_handled(t_tag *tag)
 
 static int	parse_tag(char **format, va_list *args)
 {
-	int		ret;
-	t_tag	*tag_info;
-	int		(*converter)(t_tag *, va_list *);
+	int			ret;
+	t_tag		*tag_info;
+	t_converter	converter;
 
 	if (!(tag_info = (t_tag *)ft_memalloc(sizeof(t_tag))))
 		return (-1);

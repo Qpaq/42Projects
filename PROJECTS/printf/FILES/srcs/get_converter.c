@@ -6,13 +6,13 @@
 /*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:36:57 by abungert          #+#    #+#             */
-/*   Updated: 2016/01/28 16:24:26 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/29 11:12:35 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		is_valid_specifier(char c)
+int			is_valid_specifier(char c)
 {
 	char	*authorized;
 
@@ -38,7 +38,7 @@ void		adjust_format(t_tag *tag)
 		tag->precision = 0;
 }
 
-int		(*return_converter(char c))(t_tag *, va_list *)
+t_converter	return_converter(char c)
 {
 	if (c == 'd' || c == 'i')
 		return (&convert_int);

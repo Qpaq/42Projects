@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 16:07:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/28 16:12:52 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/29 11:10:01 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@
 
 int				ft_printf(const char *format, ...);
 
+typedef int		(*t_converter)(t_tag *, va_list *);
+t_converter		return_converter(char c);
+
 void			get_flags(char **format, t_tag *tag);
 void			get_width(char **format, t_tag *tag);
 void			get_precision(char **format, t_tag *tag);
 void			get_length(char **format, t_tag *tag);
 void			get_specifier(char **format, t_tag *tag);
 int				is_valid_specifier(char c);
-int				(*return_converter(char c))(t_tag *, va_list *);
 void			adjust_format(t_tag *tag);
 int				print_forceprefix(t_tag *tag, uintmax_t nbr,
 	char *prefix, char *base);
