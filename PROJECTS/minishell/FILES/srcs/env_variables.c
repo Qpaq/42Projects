@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 20:09:40 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 17:48:00 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/30 12:45:25 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,17 @@ char	*search_in_env(char *name, t_env *list)
 	t_env	*ptr;
 
 	ptr = list;
+	if (!name)
+		return (NULL);
 	while (ptr)
 	{
 		if (ft_strcmp(name, ptr->name) == 0)
-			return (ptr->value);
+		{
+			if (ptr->value)
+				return (ptr->value);
+			else
+				return ("(null)");
+		}
 		ptr = ptr->next;
 	}
 	return (NULL);
@@ -43,7 +50,7 @@ int		ft_setenv(char *name, char *value, t_env **head)
 	t_env	*ptr;
 	t_env	*new;
 
-	if (!head)
+	if (!head || !name)
 		return (0);
 	if (search_in_env(name, *head))
 	{
@@ -66,30 +73,27 @@ int		ft_setenv(char *name, char *value, t_env **head)
 	return (0);
 }
 
-int		ft_unsetenv(char *name, t_env *list)
+int		ft_unsetenv(char *name, t_env **list)
 {
 	t_env	*ptr;
 	t_env	*previous;
 
-	if (!search_in_env(name, list))
+	if (!search_in_env(name, *list))
 		return (0);
-	ptr = list;
-	previous = list;
+	ptr = *list;
+	previous = *list;
 	while (ptr)
 	{
 		if (ft_strcmp(name, ptr->name) == 0)
 		{
-			previous->next = ptr->next;
+			if (ptr == *list)
+				*list = (*list)->next;
+			else
+				previous->next = ptr->next;
 			break ;
 		}
 		previous = ptr;
 		ptr = ptr->next;
-	}
-	if (ptr)
-	{
-		ft_memdel((void **)&(ptr->name));
-		ft_memdel((void **)&(ptr->value));
-		ft_memdel((void **)&ptr);
 	}
 	return (1);
 }
@@ -102,7 +106,12 @@ void	change_env_variable(char *name, char *new_value, t_env *list)
 	while (ptr)
 	{
 		if (ft_strcmp(name, ptr->name) == 0)
-			ptr->value = ft_strdup(new_value);
+		{
+			if (new_value)
+				ptr->value = ft_strdup(new_value);
+			else
+				ptr->value = NULL;
+		}
 		ptr = ptr->next;
 	}
 }

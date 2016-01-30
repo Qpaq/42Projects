@@ -6,23 +6,23 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 14:13:45 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/29 09:17:12 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/30 12:30:18 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	change_cwd(char **args, t_env *list)
+void	change_cwd(char **args, t_env **list)
 {
 	char	*pwd;
 
 	pwd = NULL;
 	if (args[1] == NULL || ft_strcmp(args[1], "~") == 0)
-		args[1] = search_in_env("HOME", list);
+		args[1] = search_in_env("HOME", *list);
 	if (chdir(args[1]) == 0)
 	{
 		pwd = getcwd(pwd, 120);
-		ft_setenv("PWD", pwd, &list);
+		ft_setenv("PWD", pwd, list);
 	}
 	else
 	{
@@ -43,7 +43,7 @@ void	ft_echo(char **args, t_env *list)
 		ft_putendl(to_print);
 }
 
-int		builtin_commands(char *name, char **args, t_env *env_list)
+int		builtin_commands(char *name, char **args, t_env **env_list)
 {
 	int		ret;
 
@@ -51,12 +51,12 @@ int		builtin_commands(char *name, char **args, t_env *env_list)
 	if (ft_strcmp(name, "cd") == 0 && (ret = 1))
 		change_cwd(args, env_list);
 	else if (ft_strcmp(name, "env") == 0 && (ret = 1))
-		print_env(env_list);
+		print_env(*env_list);
 	else if (ft_strcmp(name, "setenv") == 0 && (ret = 1))
-		ft_setenv(args[1], args[2], &env_list);
+		ft_setenv(args[1], args[2], env_list);
 	else if (ft_strcmp(name, "unsetenv") == 0 && (ret = 1))
 		ft_unsetenv(args[1], env_list);
 	else if (ft_strcmp(name, "echo") == 0 && (ret = 1))
-		ft_echo(args, env_list);
+		ft_echo(args, *env_list);
 	return (ret);
 }

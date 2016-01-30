@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 17:01:26 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/29 09:01:19 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/01/30 12:42:20 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	prompt(char **user_entry, t_env *env_list)
 	home_dir = search_in_env("HOME", env_list);
 	user = search_in_env("USER", env_list);
 	pwd = search_in_env("PWD", env_list);
-	if (user && pwd)
+	if (user && pwd && home_dir)
 	{
 		pwd = ft_str_replace(pwd, home_dir, "~");
 		ft_putcolor(user, "cyan");
@@ -55,7 +55,7 @@ void	prompt(char **user_entry, t_env *env_list)
 	get_next_line(0, user_entry);
 }
 
-void	run_commands(char *user_entry, t_env *env_list, char **environ)
+void	run_commands(char *user_entry, t_env **env_list, char **environ)
 {
 	char	**commands;
 	char	*command;
@@ -83,7 +83,7 @@ int		main(void)
 	t_env		*env_list;
 
 	env_list = store_env_variables(environ);
-	execute_command("clear", env_list, environ);
+	execute_command("clear", &env_list, environ);
 	while (1)
 	{
 		user_entry = NULL;
@@ -92,7 +92,7 @@ int		main(void)
 		user_entry = ft_strtrim(user_entry);
 		if (ft_strcmp(user_entry, "exit") == 0)
 			exit(0);
-		run_commands(user_entry, env_list, environ);
+		run_commands(user_entry, &env_list, environ);
 	}
 	return (0);
 }
