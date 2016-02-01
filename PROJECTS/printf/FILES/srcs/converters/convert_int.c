@@ -62,7 +62,7 @@ int					print_int(t_tag *tag, intmax_t nbr)
 		print_width_pad(nbr_strlen - cut, tag->width, '0');
 	else if (tag->has_precision)
 		print_width_pad(ft_getsize(nbr), tag->precision, '0');
-	ft_putnbr(nbr);
+	ft_putnbr_max(nbr);
 	if (tag->has_width && tag->flag_minus)
 		print_width_pad(nbr_strlen - cut, tag->width, ' ');
 	if (tag->has_width)

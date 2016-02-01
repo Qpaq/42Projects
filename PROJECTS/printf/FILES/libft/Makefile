@@ -5,7 +5,6 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			printing/ft_putendl.c printing/ft_putendl_fd.c \
 			printing/ft_putcolor.c printing/ft_putrainbow.c \
 			printing/ft_putstr_array.c \
-			printing/ft_putnwstr.c \
 			printing/ft_putnbr.c printing/ft_putnbr_fd.c printing/ft_putnbr_base.c \
 			numbers/ft_atoi.c numbers/ft_atoi_base.c numbers/ft_itoa.c numbers/ft_itoa_base.c \
 			numbers/ft_atol.c numbers/ft_atoll.c numbers/ft_ltoa.c \
@@ -33,7 +32,10 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			lists/ft_lstadd_beginning.c lists/ft_lstadd_end.c \
 			lists/ft_lstinsert_before.c lists/ft_lstinsert_after.c \
 			lists/ft_lstiter.c lists/ft_lstmap.c lists/ft_lstconcat.c \
-			ft_max.c ft_strnlen.c ft_strwlen.c ft_strnwlen.c
+			printf/ft_max.c printf/ft_strnlen.c printf/ft_strwlen.c printf/ft_strnwlen.c \
+			printf/ft_putnbr_max.c printf/ft_putnbr_fd_max.c printf/ft_putnbr_base_max.c \
+			printf/ft_putnwstr.c
+
 
 OBJ		= $(SRC:.c=.o)
 

@@ -32,7 +32,7 @@ int		print_uint(t_tag *tag, uintmax_t nbr, char *base, char *prefix)
 		print_width_pad(nbr_len, tag->width - total, '0');
 	else if (tag->has_precision)
 		print_width_pad(nbr_len, nbr_strlen, '0');
-	ft_putnbr_base(nbr, base);
+	ft_putnbr_base_max(nbr, base);
 	if (tag->has_width && tag->flag_minus)
 		print_width_pad(nbr_strlen, tag->width - total, ' ');
 	if (tag->has_width)

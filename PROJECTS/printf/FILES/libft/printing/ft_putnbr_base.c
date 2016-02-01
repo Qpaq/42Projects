@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 15:32:25 by abungert          #+#    #+#             */
-/*   Updated: 2016/01/26 17:07:30 by abungert         ###   ########.fr       */
+/*   Created: 2016/01/10 16:04:14 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/10 16:04:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_putnbr_base_bis(uintmax_t nbr, char *base, size_t base_len)
+void	ft_putnbr_base(int n, int base)
 {
-	if (nbr >= base_len)
-	{
-		ft_putnbr_base_bis(nbr / base_len, base, base_len);
-		ft_putnbr_base_bis(nbr % base_len, base, base_len);
-	}
+	if (base == 10)
+		ft_putnbr(n);
+	else if (n < 0)
+		ft_putchar('0');
 	else
-		ft_putchar(base[nbr]);
-}
-
-void			ft_putnbr_base(uintmax_t nbr, char *base)
-{
-	ft_putnbr_base_bis(nbr, base, ft_strlen(base));
+	{
+		if (n >= base)
+			ft_putnbr_base(n / base, base);
+		if (n % base < 10)
+			ft_putchar((n % base) + 48);
+		else
+			ft_putchar((n % base) - 10 + 65);
+	}
 }

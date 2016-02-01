@@ -6,20 +6,11 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:33:59 by dtedgui           #+#    #+#             */
-/*   Updated: 2015/12/14 16:28:56 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 18:56:46 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static long		ft_power_for_itoa(long nb, long power)
-{
-	if (power == 0)
-		return (1);
-	else if (power < 0)
-		return (0);
-	return (nb * ft_power(nb, power - 1));
-}
 
 char			*ft_itoa(int n)
 {
@@ -33,7 +24,7 @@ char			*ft_itoa(int n)
 	length = 1;
 	if ((sign = nb) < 0)
 		nb = -nb;
-	while (ft_power_for_itoa(10, length) < nb)
+	while (ft_power_long(10, length) < nb)
 		length++;
 	if (!(result = (char*)malloc(length + 1)))
 		return (NULL);

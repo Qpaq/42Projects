@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/01 12:37:32 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 12:24:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr(char const *s);
 void			ft_putwstr(wchar_t *str);
 void			ft_putnstr(char const *s, size_t n);
-void			ft_putnwstr(wchar_t *str, size_t n);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl(char const *s);
 void			ft_putendl_fd(char const *s, int fd);
@@ -39,9 +38,9 @@ void			ft_putrainbow(char *str);
 
 void			ft_putstr_array(char **array, char sep);
 
-void			ft_putnbr(intmax_t n);
-void			ft_putnbr_fd(intmax_t n, int fd);
-void			ft_putnbr_base(uintmax_t nbr, char *base);
+void			ft_putnbr(int n);
+void			ft_putnbr_fd(int n, int fd);
+void			ft_putnbr_base(int n, int base);
 
 /*
 ** NUMBERS
@@ -71,7 +70,6 @@ int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 
 size_t			ft_strlen(const char *s);
-size_t			ft_strwlen(wchar_t *s);
 size_t			ft_strlen_char(const char *s, char c);
 
 void			ft_bzero(void *s, size_t n);
@@ -117,10 +115,6 @@ int				ft_strcount(char *str, char to_find);
 char			*ft_str_realloc(char *old, size_t size);
 char			*ft_str_replace(char *origin, char *rep, char *with);
 
-int				ft_max(int i, int y);
-size_t			ft_strnlen(const char *s, size_t len);
-size_t			ft_strnwlen(wchar_t *s, size_t len);
-
 /*
 ** MEMORY
 */
@@ -165,5 +159,17 @@ typedef struct	s_list_gnl
 	char				*temp;
 	struct s_list_gnl	*next;
 }				t_list_gnl;
+
+/*
+** PRINTF
+*/
+int				ft_max(int i, int y);
+size_t			ft_strnlen(const char *s, size_t len);
+size_t			ft_strnwlen(wchar_t *s, size_t len);
+size_t			ft_strwlen(wchar_t *s);
+void			ft_putnwstr(wchar_t *str, size_t n);
+void			ft_putnbr_max(intmax_t n);
+void			ft_putnbr_fd_max(intmax_t n, int fd);
+void			ft_putnbr_base_max(uintmax_t nbr, char *base);
 
 #endif

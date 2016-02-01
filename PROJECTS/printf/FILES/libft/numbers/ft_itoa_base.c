@@ -6,22 +6,13 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 16:39:36 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/13 13:27:18 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 18:57:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long		ft_power_for_itoa(long nb, long power)
-{
-	if (power == 0)
-		return (1);
-	else if (power < 0)
-		return (0);
-	return (nb * ft_power(nb, power - 1));
-}
-
-char			*ft_itoa_base(int n, int base, int uppercase)
+char	*ft_itoa_base(int n, int base, int uppercase)
 {
 	char	*str;
 	int		i;
@@ -31,9 +22,7 @@ char			*ft_itoa_base(int n, int base, int uppercase)
 		return (NULL);
 	if (base == 10)
 		return (ft_itoa(n));
-	length = 1;
-	while (ft_power_for_itoa(base, length) <= n)
-		length++;
+	length = ft_nbrlen(n, base);
 	str = (char*)malloc(sizeof(*str) * (length + 1));
 	i = 0;
 	while (i < length)
