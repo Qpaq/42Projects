@@ -6,7 +6,7 @@
 /*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:36:57 by abungert          #+#    #+#             */
-/*   Updated: 2016/01/26 16:50:40 by abungert         ###   ########.fr       */
+/*   Updated: 2016/02/01 13:06:57 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,15 @@ int		convert_hexa(t_tag *tag, va_list *args)
 	output_arg = get_unsigned_length(output_arg, tag);
 	if (output_arg == 0 && tag->has_precision &&
 		(tag->precision == 1 || tag->precision == 0))
-		return (tag->precision = 0);
+	{
+		if (!tag->has_width)
+			return (tag->precision = 0);
+		else
+		{
+			print_width_pad(0, tag->width, ' ');
+			return (tag->width);
+		}
+	}
 	if (tag->specifier == 'x')
 		return (print_uint(tag, output_arg, "0123456789abcdef", "0x"));
 	else

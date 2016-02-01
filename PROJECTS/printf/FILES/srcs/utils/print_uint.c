@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 12:06:29 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/28 12:07:29 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 16:43:41 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		print_uint(t_tag *tag, uintmax_t nbr, char *base, char *prefix)
 		print_width_pad(nbr_len, nbr_strlen, '0');
 	ft_putnbr_base(nbr, base);
 	if (tag->has_width && tag->flag_minus)
-		print_width_pad(nbr_strlen, tag->width, ' ');
+		print_width_pad(nbr_strlen, tag->width - total, ' ');
 	if (tag->has_width)
 		return (ft_max(tag->width, nbr_strlen));
 	else

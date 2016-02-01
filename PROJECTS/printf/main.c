@@ -4,14 +4,14 @@
 
 int		main(void)
 {
-	int ret;
-	ret = ft_printf("{yellow}%p{eoc}\n", &ret);
-	printf("%p\n", &ret);
-	ft_putnbr(ret);
+	int		ret_ft;
+	int		ret;
 
-	ft_printf("Test couleur {cyan}%s{eoc} fin\n", "en couleur");
+	ret_ft = ft_printf("%#-08x", 42);
+	ft_printf("%d\n\n", ret_ft);
 
-	ft_printf("J'imprime un %%x pour voir");
+	ret = printf("%#-08x", 42);
+	printf("%d\n\n", ret);
 
 	// int		ret;
 	// int		ret2;

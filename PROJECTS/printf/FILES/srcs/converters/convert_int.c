@@ -6,7 +6,7 @@
 /*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 14:31:37 by abungert          #+#    #+#             */
-/*   Updated: 2016/01/26 16:49:34 by abungert         ###   ########.fr       */
+/*   Updated: 2016/02/01 16:42:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int					print_int(t_tag *tag, intmax_t nbr)
 		print_width_pad(ft_getsize(nbr), tag->precision, '0');
 	ft_putnbr(nbr);
 	if (tag->has_width && tag->flag_minus)
-		print_width_pad(nbr_len, tag->width, ' ');
+		print_width_pad(nbr_strlen - cut, tag->width, ' ');
 	if (tag->has_width)
 		return (ft_max(tag->width + cut, nbr_strlen));
 	return (nbr_strlen);
@@ -78,6 +78,14 @@ int					convert_int(t_tag *tag, va_list *args)
 	output_arg = get_signed_length(output_arg, tag);
 	if (output_arg == 0 && tag->has_precision &&
 		(tag->precision == 1 || tag->precision == 0))
-		return (tag->precision = 0);
+	{
+		if (!tag->has_width)
+			return (tag->precision = 0);
+		else
+		{
+			print_width_pad(0, tag->width, ' ');
+			return (tag->width);
+		}
+	}
 	return (print_int(tag, output_arg));
 }

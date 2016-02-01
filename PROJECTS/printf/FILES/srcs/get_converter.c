@@ -6,7 +6,7 @@
 /*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:36:57 by abungert          #+#    #+#             */
-/*   Updated: 2016/02/01 11:51:57 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 16:38:10 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void		adjust_format(t_tag *tag)
 	if (tag->specifier != 'o' && tag->specifier != 'x' && tag->specifier != 'X'
 			&& tag->specifier != 'O')
 		tag->flag_sharp = 0;
-	if (tag->flag_plus || tag->specifier == 'p'
-		|| (tag->specifier != 'd' && tag->specifier != 'i'))
+	if ((tag->has_width && !tag->flag_zero) || tag->flag_plus
+			|| tag->specifier == 'p'
+			|| (tag->specifier != 'd' && tag->specifier != 'i'))
 		tag->flag_space = 0;
 	if (tag->specifier != 'd' && tag->specifier != 'i' && tag->specifier != 'D')
 		tag->flag_plus = 0;
