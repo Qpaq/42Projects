@@ -3,18 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 15:32:25 by abungert          #+#    #+#             */
-/*   Updated: 2016/01/26 17:05:49 by abungert         ###   ########.fr       */
+/*   Created: 2015/11/23 15:38:15 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/01/27 16:31:55 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+char	*ft_tolower(char *str)
 {
-	if (c >= 65 && c <= 90)
-		c += 32;
-	return (c);
+	char	*lowered;
+	int		i;
+
+	lowered = ft_strnew(ft_strlen(str));
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 65 && str[i] <= 90)
+			lowered[i] = str[i] + 32;
+		else
+			lowered[i] = str[i];
+		i++;
+	}
+	return (lowered);
 }

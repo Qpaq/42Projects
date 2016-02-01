@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 int		main(void)
 {
@@ -12,4 +13,6 @@ int		main(void)
 	printf("double %lu\n", sizeof(double));
 	printf("long double %lu\n", sizeof(long double));
 	printf("float %lu\n", sizeof(float));
+	printf("uintmax %lu\n", sizeof(uintmax_t));
+	printf("intmax %lu\n", sizeof(intmax_t));
 }

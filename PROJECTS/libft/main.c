@@ -3,10 +3,7 @@
 
 int		main(void)
 {
-	char	a[] = "		\nt";
-	char	*b = ft_strtrim(a);
-
-	ft_putendl(a);
-	ft_putendl(b);
+	int	n = 234;
+	printf("%ld\n", ft_nbrlen(n, 16));
 	return (0);
 }

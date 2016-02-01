@@ -1,30 +1,46 @@
 NAME = libft.a
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-AR		= ar
-ARFLAGS	= rcs
-
-SRC		=	ft_putchar.c ft_putwchar.c ft_putchar_fd.c ft_putstr.c ft_putnstr.c ft_putstr_fd.c \
-			ft_putwstr.c ft_putnwstr.c ft_putendl.c ft_putendl_fd.c ft_putcolor.c ft_putrainbow.c \
-			ft_putstr_array.c \
-			ft_putnbr.c ft_putnbr_fd.c ft_putnbr_base.c \
-			ft_atoi.c ft_atoi_base.c ft_itoa.c ft_itoa_base.c \
-			ft_power.c ft_sqrt.c ft_sort_integer_table.c \
+SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
+			printing/ft_putstr.c printing/ft_putwstr.c printing/ft_putnstr.c printing/ft_putstr_fd.c \
+			printing/ft_putendl.c printing/ft_putendl_fd.c \
+			printing/ft_putcolor.c printing/ft_putrainbow.c \
+			printing/ft_putstr_array.c \
+			printing/ft_putnwstr.c \
+			printing/ft_putnbr.c printing/ft_putnbr_fd.c printing/ft_putnbr_base.c \
+			numbers/ft_atoi.c numbers/ft_atoi_base.c numbers/ft_itoa.c numbers/ft_itoa_base.c \
+			numbers/ft_atol.c numbers/ft_atoll.c numbers/ft_ltoa.c \
+			numbers/ft_power.c numbers/ft_sqrt.c numbers/ft_sort_integer_table.c \
+			numbers/ft_power_long.c numbers/ft_nbrlen.c \
 			ft_tolower.c ft_toupper.c \
 			ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
-			ft_memalloc.c ft_memcpy.c ft_memccpy.c ft_memchr.c ft_memcmp.c \
-			ft_memdel.c ft_memmove.c ft_memset.c ft_mem_realloc.c \
-			ft_strlen.c ft_strlen_char.c ft_bzero.c ft_strnew.c ft_strclr.c ft_strdel.c \
-			ft_strcat.c ft_strncat.c ft_strlcat.c ft_strcpy.c ft_strncpy.c ft_strdup.c ft_strndup.c \
-			ft_strchr.c ft_strrchr.c ft_strstr.c ft_strnstr.c \
-			ft_strcmp.c ft_strncmp.c ft_strequ.c ft_strnequ.c \
-			ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c \
-			ft_strjoin.c ft_strsub.c ft_strsplit.c ft_strtrim.c ft_strrev.c \
-			ft_lstadd_beginning.c ft_lstadd_end.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c \
-			get_next_line.c ft_max.c ft_strnlen.c ft_strwlen.c ft_strnwlen.c
+			memory/ft_memalloc.c memory/ft_memcpy.c memory/ft_memccpy.c \
+			memory/ft_memchr.c memory/ft_memcmp.c memory/ft_memdel.c \
+			memory/ft_memmove.c memory/ft_memset.c \
+			strings/ft_strlen.c strings/ft_strlen_char.c strings/ft_bzero.c \
+			strings/ft_strnew.c strings/ft_strclr.c strings/ft_strdel.c \
+			strings/ft_strcat.c strings/ft_strncat.c strings/ft_strlcat.c \
+			strings/ft_strcpy.c strings/ft_strncpy.c strings/ft_strdup.c strings/ft_strndup.c \
+			strings/ft_strchr.c strings/ft_strrchr.c strings/ft_strstr.c strings/ft_strnstr.c \
+			strings/ft_strcmp.c strings/ft_strncmp.c strings/ft_strequ.c strings/ft_strnequ.c \
+			strings/ft_striter.c strings/ft_striteri.c strings/ft_strmap.c strings/ft_strmapi.c \
+			strings/ft_strsub.c strings/ft_strsplit.c strings/ft_strrev.c \
+			strings/ft_strjoin.c strings/ft_strjoin_nolimit.c strings/ft_strjoin_array.c \
+			strings/ft_strtrim.c strings/ft_strtrim_nolimit.c \
+			strings/ft_strcount.c strings/ft_str_realloc.c \
+			strings/ft_str_replace.c \
+			get_next_line.c \
+			lists/ft_lstnew.c lists/ft_lstdel.c lists/ft_lstdelone.c \
+			lists/ft_lstadd_beginning.c lists/ft_lstadd_end.c \
+			lists/ft_lstinsert_before.c lists/ft_lstinsert_after.c \
+			lists/ft_lstiter.c lists/ft_lstmap.c lists/ft_lstconcat.c \
+			ft_max.c ft_strnlen.c ft_strwlen.c ft_strnwlen.c
 
 OBJ		= $(SRC:.c=.o)
+
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror -I.
+AR		= ar
+ARFLAGS	= rcs
 
 all: $(NAME)
 
@@ -32,7 +48,7 @@ $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)

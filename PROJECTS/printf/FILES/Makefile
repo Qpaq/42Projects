@@ -6,7 +6,7 @@
 #    By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/28 16:04:57 by dtedgui           #+#    #+#              #
-#    Updated: 2016/01/28 16:07:19 by dtedgui          ###   ########.fr        #
+#    Updated: 2016/02/01 11:52:19 by dtedgui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ FILES	= ft_printf.c \
 		  converters/convert_wchar.c \
 		  converters/convert_wstring.c \
 		  converters/convert_binary.c \
-		  converters/convert_float.c \
 		  color.c \
 		  utils/print_width_pad.c \
 		  utils/nbr_strlen.c \

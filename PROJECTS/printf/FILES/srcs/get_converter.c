@@ -6,7 +6,7 @@
 /*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 10:36:57 by abungert          #+#    #+#             */
-/*   Updated: 2016/01/29 11:12:35 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 11:51:57 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			is_valid_specifier(char c)
 {
 	char	*authorized;
 
-	authorized = "sSpdDioOuUxXcCbf%";
+	authorized = "sSpdDioOuUxXcCb%";
 	if (!ft_strchr(authorized, c))
 		return (0);
 	return (1);
@@ -64,7 +64,5 @@ t_converter	return_converter(char c)
 		return (&convert_wstring);
 	else if (c == 'b')
 		return (&convert_binary);
-	else if (c == 'f')
-		return (&convert_float);
 	return (NULL);
 }

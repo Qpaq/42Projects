@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 16:07:46 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/29 11:10:01 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 11:52:29 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int				convert_long(t_tag *tag, va_list *args);
 int				convert_wchar(t_tag *tag, va_list *args);
 int				convert_wstring(t_tag *tag, va_list *args);
 int				convert_binary(t_tag *tag, va_list *args);
-int				convert_float(t_tag *tag, va_list *args);
 uintmax_t		get_unsigned_length(uintmax_t nbr, t_tag *tag);
 intmax_t		get_signed_length(intmax_t nbr, t_tag *tag);
 int				add_color(char **format);
