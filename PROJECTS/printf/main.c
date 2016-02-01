@@ -7,10 +7,10 @@ int		main(void)
 	int		ret_ft;
 	int		ret;
 
-	ret_ft = ft_printf("%#-08x", 42);
+	ret_ft = ft_printf("%ld", NULL);
 	ft_printf("%d\n\n", ret_ft);
 
-	ret = printf("%#-08x", 42);
+	ret = printf("%p", NULL);
 	printf("%d\n\n", ret);
 
 	// int		ret;
