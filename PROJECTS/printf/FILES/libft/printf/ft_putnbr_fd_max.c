@@ -12,8 +12,8 @@ void	ft_putnbr_fd_max(intmax_t n, int fd)
 	}
 	if (nbr >= 10)
 	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putnbr_fd(nbr % 10, fd);
+		ft_putnbr_fd_max(nbr / 10, fd);
+		ft_putnbr_fd_max(nbr % 10, fd);
 	}
 	else
 		ft_putchar_fd(nbr + '0', fd);
