@@ -29,3 +29,9 @@ fclean: clean
 	@make -C $(LIBFT) fclean
 
 re: fclean all
+
+git: fclean
+	git add .
+	@echo "Enter your commit message: "
+	@read commit_ftselect ; git commit -m "$$commit_ftselect"
+	git push
