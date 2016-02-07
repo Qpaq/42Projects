@@ -9,16 +9,18 @@ LIBFT		= ./libft
 HEADERS		= .
 
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -I $(HEADERS)
+CFLAGS		= -Wall -Werror -Wextra -I $(HEADERS) 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ -L $(LIBFT) -lft
+	@$(CC) $(CFLAGS) -o $@ $^ -L $(LIBFT) -lft
+	@echo "\033[1;32m$@ COMPILED ✓\033[0m"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	@echo "Building: \033[34m$@\033[0m"
 
 clean:
 	rm -f $(OBJ)

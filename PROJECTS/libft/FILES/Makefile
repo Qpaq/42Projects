@@ -49,7 +49,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
-	@echo "Compiling: $<"
+	@echo "Building: $@"
 
 clean:
 	@rm -f $(OBJ)
