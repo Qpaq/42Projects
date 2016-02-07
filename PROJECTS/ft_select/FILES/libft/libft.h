@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/01/27 16:48:05 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/01 12:24:44 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			ft_putnbr_base(int n, int base);
 /*
 ** NUMBERS
 */
+long			ft_nbrlen(long nb, long base);
 int				ft_atoi(char *nb);
 int				ft_atoi_base(char *nb, int base);
 long			ft_atol(char *nb);
@@ -53,6 +54,7 @@ char			*ft_itoa(int nb);
 char			*ft_itoa_base(int n, int base, int uppercase);
 char			*ft_ltoa(long nb);
 int				ft_power(int nb, int pow);
+long			ft_power_long(long nb, long pow);
 void			ft_sort_integer_table(int *tab, int size);
 
 /*
@@ -74,6 +76,7 @@ void			ft_bzero(void *s, size_t n);
 char			*ft_strnew(size_t size);
 void			ft_strclr(char *s);
 void			ft_strdel(char **as);
+void			ft_strdel_array(char ***as);
 
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
