@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 12:12:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 12:13:00 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/08 14:07:31 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	get_key(void)
 {
-	char	key[3];
+	char	*key;
 
 	while (42)
 	{
+		key = ft_strnew(3);
 		read(0, key, 3);
-		if (key[0] == 97)
+		if (key[0] == 27 && key[1] == 0)
 			break ;
-		ft_printf("0: %d\n1: %d\n2: %d\n\n", key[0], key[1], key[2]);
+		ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
+		free(key);
 	}
 }
 
@@ -34,7 +36,7 @@ int		reset_struct(struct termios *term)
 	return (0);
 }
 
-int		init_struct(struct termios *term)
+int		raw_mode(struct termios *term)
 {
 	term->c_lflag &= ~ICANON;
 	term->c_lflag &= ~ECHO;
@@ -56,7 +58,7 @@ int		main(void)
 		return (-1);
 	if (tcgetattr(0, &term) == -1)
 		return (-1);
-	init_struct(&term);
+	raw_mode(&term);
 	get_key();
 	reset_struct(&term);
 	return (0);
