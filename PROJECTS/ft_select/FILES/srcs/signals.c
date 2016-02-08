@@ -12,11 +12,23 @@
 
 #include "ft_select.h"
 
+void	catch_signal(int code)
+{
+	if (code == SIGINT || code == SIGQUIT || code == SIGCONT || code == SIGKILL)
+	{
+		reset_settings();
+		ft_putendl("exiting");
+		exit(0);
+	}
+	if (code == SIGTSTP)
+		ft_putendl("ctrlZ");
+}
+
 void	ft_signals(void)
 {
-	void	*one;
-	void	*two;
-
-	signal(SIGWINCH, one);
-	signal(SIGCONT, two);
+	signal(SIGINT, catch_signal);
+	signal(SIGQUIT, catch_signal);
+	signal(SIGKILL, catch_signal);
+	signal(SIGCONT, catch_signal);
+	signal(SIGTSTP, catch_signal);
 }

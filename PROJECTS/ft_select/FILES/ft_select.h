@@ -21,4 +21,9 @@
 # include <term.h>
 # include <termios.h>
 
+int		reset_settings(void);
+int		raw_mode(struct termios *term);
+
+void	ft_signals(void);
+
 #endif

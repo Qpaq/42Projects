@@ -1,6 +1,8 @@
 NAME		= ft_select
 
-FILES		= main.c
+FILES		= main.c \
+			  settings.c \
+			  signals.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)

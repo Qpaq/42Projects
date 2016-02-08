@@ -27,26 +27,6 @@ void	get_key(void)
 	}
 }
 
-int		reset_struct(struct termios *term)
-{
-	term->c_lflag |= ICANON;
-	term->c_lflag |= ECHO;
-	if (tcsetattr(0, 0, term) == -1)
-		return (-1);
-	return (0);
-}
-
-int		raw_mode(struct termios *term)
-{
-	term->c_lflag &= ~ICANON;
-	term->c_lflag &= ~ECHO;
-	term->c_cc[VMIN] = 1;
-	term->c_cc[VTIME] = 0;
-	if (tcsetattr(0, 0, term) == -1)
-		return (-1);
-	return (0);
-}
-
 int		main(void)
 {
 	char			*term_name;
@@ -56,10 +36,10 @@ int		main(void)
 		return (-1);
 	if (tgetent(NULL, term_name) != 1)
 		return (-1);
-	if (tcgetattr(0, &term) == -1)
+	if (raw_mode(&term) == -1)
 		return (-1);
-	raw_mode(&term);
+	ft_signals();
 	get_key();
-	reset_struct(&term);
+	reset_settings();
 	return (0);
 }
