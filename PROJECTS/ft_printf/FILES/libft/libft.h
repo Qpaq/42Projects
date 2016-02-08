@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/01 12:24:44 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/08 09:09:10 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void			ft_bzero(void *s, size_t n);
 char			*ft_strnew(size_t size);
 void			ft_strclr(char *s);
 void			ft_strdel(char **as);
+void			ft_strdel_array(char ***as);
 
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);

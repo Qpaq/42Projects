@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:28:21 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/18 10:39:58 by abungert          #+#    #+#             */
+/*   Updated: 2016/01/18 10:40:05 by abungert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "libft.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <term.h>
-
-#endif
+int		ft_max(int i, int y)
+{
+	return (i > y ? i : y);
+}

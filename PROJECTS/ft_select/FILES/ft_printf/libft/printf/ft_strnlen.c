@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:28:21 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/15 15:36:16 by antoinebungert    #+#    #+#             */
+/*   Updated: 2016/01/18 10:41:54 by abungert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "libft.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <term.h>
+size_t		ft_strnlen(const char *s, size_t len)
+{
+	size_t	i;
 
-#endif
+	i = 0;
+	while (s[i] && i < len)
+		i++;
+	return (i);
+}

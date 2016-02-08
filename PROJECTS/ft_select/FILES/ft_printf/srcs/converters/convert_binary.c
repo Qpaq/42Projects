@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   convert_binary.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:28:21 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/26 15:40:28 by abungert          #+#    #+#             */
+/*   Updated: 2016/01/26 16:45:34 by abungert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "ft_printf.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <term.h>
+int		convert_binary(t_tag *tag, va_list *args)
+{
+	uintmax_t	nbr;
 
-#endif
+	nbr = va_arg(*args, int);
+	nbr = get_unsigned_length(nbr, tag);
+	return (print_uint(tag, nbr, "01", "0b"));
+}

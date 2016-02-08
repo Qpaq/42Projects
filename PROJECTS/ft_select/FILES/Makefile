@@ -4,18 +4,22 @@ FILES		= main.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)
-
-LIBFT		= ./libft
-HEADERS		= .
-
+	
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -I $(HEADERS) 
+CFLAGS		= -Wall -Werror -Wextra
+
+FT_PRINTF	= ./ft_printf
+
+INCLUDES	= -I$(FT_PRINTF)/includes -I.
+CFLAGS		+= $(INCLUDES)
+
+LIBS		= -ltermcap -L$(FT_PRINTF) -lftprintf
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C $(LIBFT)
-	@$(CC) $(CFLAGS) -o $@ $^ -L $(LIBFT) -lft
+	@make -C $(FT_PRINTF)
+	@$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 	@echo "\033[1;32m$@ COMPILED ✓\033[0m"
 
 %.o: %.c
@@ -24,11 +28,11 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	@make -C $(LIBFT) clean
+	@make -C $(FT_PRINTF) clean
 
 fclean: clean
 	rm -f $(NAME)
-	@make -C $(LIBFT) fclean
+	@make -C $(FT_PRINTF) fclean
 
 re: fclean all
 

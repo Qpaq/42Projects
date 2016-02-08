@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_max.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:28:21 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/02/02 10:43:57 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/02/02 10:43:58 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "libft.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <term.h>
-
-#endif
+void	ft_putnbr_max(intmax_t n)
+{
+	ft_putnbr_fd_max(n, 1);
+}

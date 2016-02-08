@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/01 12:24:44 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/08 09:09:10 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,17 @@ typedef struct	s_list_gnl
 	char				*temp;
 	struct s_list_gnl	*next;
 }				t_list_gnl;
+
+/*
+** PRINTF
+*/
+int				ft_max(int i, int y);
+size_t			ft_strnlen(const char *s, size_t len);
+size_t			ft_strnwlen(wchar_t *s, size_t len);
+size_t			ft_strwlen(wchar_t *s);
+void			ft_putnwstr(wchar_t *str, size_t n);
+void			ft_putnbr_max(intmax_t n);
+void			ft_putnbr_fd_max(intmax_t n, int fd);
+void			ft_putnbr_base_max(uintmax_t nbr, char *base);
 
 #endif

@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_putnwstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abungert <abungert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:28:21 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/01/26 14:25:38 by abungert          #+#    #+#             */
+/*   Updated: 2016/01/26 14:27:35 by abungert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "libft.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <term.h>
-
-#endif
+void	ft_putnwstr(wchar_t *str, size_t n)
+{
+	if (!str)
+		write(1, "(null)", 6);
+	while (*str && n-- > 0)
+	{
+		ft_putwchar(*str);
+		str++;
+	}
+}

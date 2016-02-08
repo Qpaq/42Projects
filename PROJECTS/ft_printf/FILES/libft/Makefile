@@ -16,7 +16,8 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			memory/ft_memchr.c memory/ft_memcmp.c memory/ft_memdel.c \
 			memory/ft_memmove.c memory/ft_memset.c \
 			strings/ft_strlen.c strings/ft_strlen_char.c strings/ft_bzero.c \
-			strings/ft_strnew.c strings/ft_strclr.c strings/ft_strdel.c \
+			strings/ft_strnew.c strings/ft_strclr.c \
+			strings/ft_strdel.c strings/ft_strdel_array.c \
 			strings/ft_strcat.c strings/ft_strncat.c strings/ft_strlcat.c \
 			strings/ft_strcpy.c strings/ft_strncpy.c strings/ft_strdup.c strings/ft_strndup.c \
 			strings/ft_strchr.c strings/ft_strrchr.c strings/ft_strstr.c strings/ft_strnstr.c \
@@ -36,7 +37,6 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			printf/ft_putnbr_max.c printf/ft_putnbr_fd_max.c printf/ft_putnbr_base_max.c \
 			printf/ft_putnwstr.c
 
-
 OBJ		= $(SRC:.c=.o)
 
 CC		= gcc
@@ -47,15 +47,19 @@ ARFLAGS	= rcs
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $@ $^
+	@$(AR) $(ARFLAGS) $@ $^
+	@echo "\033[32mLIBFT COMPILED ✓\033[0m"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	@echo "Building: $@"
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
+	@echo "\033[31mlibft objects deleted\033[0m"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[31mlibft.a deleted\033[0m"
 
 re: fclean all

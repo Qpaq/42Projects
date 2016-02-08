@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd_max.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:28:21 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/02/02 10:43:47 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/02/02 10:43:49 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "libft.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <term.h>
+void	ft_putnbr_fd_max(intmax_t n, int fd)
+{
+	uintmax_t nbr;
 
-#endif
+	nbr = n;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr = -n;
+	}
+	if (nbr >= 10)
+	{
+		ft_putnbr_fd_max(nbr / 10, fd);
+		ft_putnbr_fd_max(nbr % 10, fd);
+	}
+	else
+		ft_putchar_fd(nbr + '0', fd);
+}
