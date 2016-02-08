@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 12:12:45 by dtedgui          ###   ########.fr       */
+/*   Created: 2016/02/08 12:11:41 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/02/08 12:12:03 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "ft_select.h"
 
-# include "ft_printf.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/ioctl.h>
-# include <term.h>
-# include <termios.h>
+void	ft_signals(void)
+{
+	void	*one;
+	void	*two;
 
-#endif
+	signal(SIGWINCH, one);
+	signal(SIGCONT, two);
+}
