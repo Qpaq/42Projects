@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 12:12:45 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:14:55 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <termios.h>
 
 int		reset_settings(void);
-int		raw_mode(struct termios *term);
+int		raw_mode(void);
 
 void	ft_signals(void);
 

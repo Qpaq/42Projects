@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 12:12:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 14:07:31 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:24:51 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ void	get_key(void)
 int		main(void)
 {
 	char			*term_name;
-	struct termios	term;
 
 	if ((term_name = getenv("TERM")) == NULL)
+	{
+		ft_putendl("Cannot find environment variable TERM");
 		return (-1);
+	}
 	if (tgetent(NULL, term_name) != 1)
 		return (-1);
-	if (raw_mode(&term) == -1)
+	if (raw_mode() == -1)
 		return (-1);
 	ft_signals();
 	get_key();
