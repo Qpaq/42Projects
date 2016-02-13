@@ -19,15 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tLA-de-6nj">
-                                <rect key="frame" x="20" y="45" width="560" height="510"/>
+                                <rect key="frame" x="0.0" y="60" width="600" height="491"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tLA-de-6nj" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="4wJ-GN-rWa"/>
-                            <constraint firstItem="tLA-de-6nj" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="ML9-gx-3N2"/>
-                            <constraint firstItem="tLA-de-6nj" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="25" id="aCe-5O-TK7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tLA-de-6nj" secondAttribute="trailing" id="j0d-cn-fNW"/>
+                            <constraint firstItem="tLA-de-6nj" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="4wJ-GN-rWa"/>
+                            <constraint firstItem="tLA-de-6nj" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="40" id="aCe-5O-TK7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tLA-de-6nj" secondAttribute="trailing" constant="-20" id="j0d-cn-fNW"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="tLA-de-6nj" secondAttribute="bottom" id="ro2-i8-HVo"/>
                             <constraint firstItem="tLA-de-6nj" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="shx-Jb-j3h"/>
                         </constraints>
                     </view>
