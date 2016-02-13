@@ -17,6 +17,7 @@
 		BA1FA1201C6F8BE9000A65CE /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA11F1C6F8BE9000A65CE /* MoreViewController.swift */; };
 		BA1FA1221C6F9046000A65CE /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA1211C6F9046000A65CE /* ListTableViewController.swift */; };
 		BA1FA1261C6F9E47000A65CE /* ListPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA1251C6F9E47000A65CE /* ListPlacesTableViewCell.swift */; };
+		BA1FA1281C6FAD75000A65CE /* ListPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FA1271C6FAD75000A65CE /* ListPlaces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BA1FA11F1C6F8BE9000A65CE /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		BA1FA1211C6F9046000A65CE /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		BA1FA1251C6F9E47000A65CE /* ListPlacesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPlacesTableViewCell.swift; sourceTree = "<group>"; };
+		BA1FA1271C6FAD75000A65CE /* ListPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPlaces.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				BA1FA1211C6F9046000A65CE /* ListTableViewController.swift */,
 				BA1FA1251C6F9E47000A65CE /* ListPlacesTableViewCell.swift */,
 				BA1FA11F1C6F8BE9000A65CE /* MoreViewController.swift */,
+				BA1FA1271C6FAD75000A65CE /* ListPlaces.swift */,
 				BA1FA0F51C6F7A86000A65CE /* Main.storyboard */,
 				BA1FA0F81C6F7A86000A65CE /* Assets.xcassets */,
 				BA1FA0FA1C6F7A86000A65CE /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1FA1261C6F9E47000A65CE /* ListPlacesTableViewCell.swift in Sources */,
+				BA1FA1281C6FAD75000A65CE /* ListPlaces.swift in Sources */,
 				BA1FA1201C6F8BE9000A65CE /* MoreViewController.swift in Sources */,
 				BA1FA0F01C6F7A86000A65CE /* AppDelegate.swift in Sources */,
 				BA1FA0F21C6F7A86000A65CE /* MapViewController.swift in Sources */,

@@ -10,12 +10,7 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
-    var places: [String] = [
-        "Paris",
-        "London",
-        "Medellin",
-        "Tel Aviv",
-    ]
+    let places = ListPlaces().returnCities()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +36,9 @@ class ListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as! ListPlacesTableViewCell
-        
         let place = places[indexPath.row]
-        cell.textLabel!.text = place
-
+        
+        cell.namePlaceLabel.text = place
         return cell
     }
     

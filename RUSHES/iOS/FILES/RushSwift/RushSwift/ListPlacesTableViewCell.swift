@@ -12,12 +12,12 @@ class ListPlacesTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var namePlaceLabel: UILabel!
-    
     @IBOutlet weak var imagePlaceCell: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imagePlaceCell.image = UIImage(named: "cell-arrow")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

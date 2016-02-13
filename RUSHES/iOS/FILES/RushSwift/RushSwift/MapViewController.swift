@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor.redColor()
+        mapView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
