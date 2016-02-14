@@ -13,6 +13,7 @@ class ListPlacesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var namePlaceLabel: UILabel!
     @IBOutlet weak var imagePlaceCell: UIImageView!
+    @IBOutlet weak var cityPhoto: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

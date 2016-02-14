@@ -9,10 +9,10 @@
 import UIKit
 
 class ListTableViewController: UITableViewController {
-    
-    let places = ListPlaces().places
+	
     let cities = ListPlaces().returnCities()
-    
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,8 +34,9 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as! ListPlacesTableViewCell
         let city = cities[indexPath.row]
-        
+		
         cell.namePlaceLabel.text = city
+		cell.cityPhoto.image = ListPlaces().returnPlaceInfo(city).photo
         return cell
     }
 
