@@ -26,14 +26,14 @@ struct PlaceDetails {
 
 struct ListPlaces {
     var places: [String: PlaceDetails] = [
-		"Paris": PlaceDetails(subtitle: "The city of love", latitude: 48.864716, longitude: 2.349014, zoom: 0.2, photo: "city-paris"),
-		"San Francisco": PlaceDetails(subtitle: "The city of love", latitude: 37.774929, longitude: -122.419416, zoom: 0.2, photo: "city-sanfran"),
-		"New York": PlaceDetails(subtitle: "The city of love", latitude: 40.712784, longitude: -74.005941, zoom: 0.2, photo: "city-ny"),
-		"London": PlaceDetails(subtitle: "The city of love", latitude: 51.508530, longitude: -0.076132, zoom: 0.2, photo: "city-london"),
-		"Barcelona": PlaceDetails(subtitle: "The city of love", latitude: 41.390205, longitude: 2.154007, zoom: 0.2, photo: "city-bcn"),
-		"Bogota": PlaceDetails(subtitle: "The city of love", latitude: 4.624335, longitude: -74.063644, zoom: 0.2, photo: "city-bog"),
-		"Tokyo": PlaceDetails(subtitle: "The city of love", latitude: 35.652832, longitude: 139.839478, zoom: 0.3, photo: "city-tokyo"),
-        "Tel Aviv": PlaceDetails(subtitle: "The city of love", latitude: 32.109333, longitude: 34.855499, zoom: 0.2, photo: "city-tlv"),
+		"Paris": PlaceDetails(subtitle: "The City of Love", latitude: 48.864716, longitude: 2.349014, zoom: 0.2, photo: "city-paris"),
+		"San Francisco": PlaceDetails(subtitle: "Silicon Valley", latitude: 37.774929, longitude: -122.419416, zoom: 0.2, photo: "city-sanfran"),
+		"New York": PlaceDetails(subtitle: "The Big Apple", latitude: 40.712784, longitude: -74.005941, zoom: 0.2, photo: "city-ny"),
+		"London": PlaceDetails(subtitle: "The Old Smoke", latitude: 51.508530, longitude: -0.076132, zoom: 0.2, photo: "city-london"),
+		"Barcelona": PlaceDetails(subtitle: "Spain", latitude: 41.390205, longitude: 2.154007, zoom: 0.2, photo: "city-bcn"),
+		"Bogota": PlaceDetails(subtitle: "Colombia", latitude: 4.624335, longitude: -74.063644, zoom: 0.2, photo: "city-bog"),
+		"Tokyo": PlaceDetails(subtitle: "Japan", latitude: 35.652832, longitude: 139.839478, zoom: 0.3, photo: "city-tokyo"),
+        "Tel Aviv": PlaceDetails(subtitle: "The City that Never Sleeps", latitude: 32.109333, longitude: 34.855499, zoom: 0.2, photo: "city-tlv"),
 		"42": PlaceDetails(subtitle: "Born to Code", latitude: 48.896684, longitude: 2.318376, zoom: 0.01, photo: "icon-42") ]
 	
     
