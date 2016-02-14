@@ -7,26 +7,25 @@
 //
 
 import UIKit
+import MapKit
 
-class ListTableViewController: UITableViewController {
+
+class ListTableViewController: UITableViewController, MKMapViewDelegate {
 	
     let cities = ListPlaces().returnCities()
+	
+	var settingsMapType: MKMapType = MKMapType.Satellite
 	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-    
+	
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
     }
@@ -50,6 +49,7 @@ class ListTableViewController: UITableViewController {
 		let i = sender as! Int
 		
 		dest.showLocation = cities.sort()[i]
+		dest.currentMapType = settingsMapType
 	}
 
 	

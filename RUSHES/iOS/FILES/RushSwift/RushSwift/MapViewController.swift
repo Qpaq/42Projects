@@ -23,9 +23,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 	var currentMapType: MKMapType = .Satellite
 	var showLocation = "42"
 	
-    override func viewDidLoad() {
+	override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
         self.mapView.delegate = self
         self.locationManager.delegate = self
 		
@@ -37,6 +37,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
 		centerMapOnPlace(showLocation)
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		mapView.mapType = currentMapType
+		switch currentMapType {
+			case MKMapType.Standard: changeMapStateSegmentedControl.selectedSegmentIndex = 0
+			case MKMapType.Satellite: changeMapStateSegmentedControl.selectedSegmentIndex = 1
+			case MKMapType.Hybrid: changeMapStateSegmentedControl.selectedSegmentIndex = 2
+			default: changeMapStateSegmentedControl.selectedSegmentIndex = 0
+		}
+	}
 
 	
     override func didReceiveMemoryWarning() {

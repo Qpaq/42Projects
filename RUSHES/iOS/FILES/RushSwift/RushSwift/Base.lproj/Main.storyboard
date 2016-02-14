@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -32,6 +33,7 @@
                                     <segment title="Satellite"/>
                                     <segment title="Hybrid"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="changeMapState:" destination="9pv-A4-QxB" eventType="valueChanged" id="0pq-Ca-2hr"/>
                                 </connections>
@@ -83,7 +85,61 @@
                     <view key="view" contentMode="scaleToFill" id="S3Z-e5-Rvb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed with ❤️ at 42 by Christopher Denis and David Tedgui" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KP6-ql-M0M">
+                                <rect key="frame" x="163" y="482" width="275" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rhino" translatesAutoresizingMaskIntoConstraints="NO" id="SvR-Yo-DUa">
+                                <rect key="frame" x="108" y="216" width="384" height="258"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="385" id="0BJ-Rh-BJf"/>
+                                    <constraint firstAttribute="height" constant="259" id="HBX-5p-dFv"/>
+                                    <constraint firstAttribute="width" secondItem="SvR-Yo-DUa" secondAttribute="height" multiplier="55:37" id="wvc-ax-ngm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0BJ-Rh-BJf"/>
+                                        <exclude reference="HBX-5p-dFv"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default map type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSI-E4-WNG">
+                                <rect key="frame" x="234" y="28" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zmt-NM-PtU">
+                                <rect key="frame" x="194" y="57" width="212" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="1wR-Gs-P4x"/>
+                                    <constraint firstAttribute="height" constant="28" id="IHZ-Nd-yAd"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="settingsMapType:" destination="8PJ-rr-lsI" eventType="valueChanged" id="buK-Wt-RwA"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jSI-E4-WNG" firstAttribute="top" secondItem="U0U-AX-tR3" secondAttribute="bottom" constant="8" id="1In-Bg-tr2"/>
+                            <constraint firstItem="Zmt-NM-PtU" firstAttribute="top" secondItem="jSI-E4-WNG" secondAttribute="bottom" constant="8" id="3YA-cF-ixu"/>
+                            <constraint firstItem="SvR-Yo-DUa" firstAttribute="centerX" secondItem="S3Z-e5-Rvb" secondAttribute="centerX" id="IS6-Fx-RwD"/>
+                            <constraint firstItem="KP6-ql-M0M" firstAttribute="centerX" secondItem="S3Z-e5-Rvb" secondAttribute="centerX" id="NHB-Zv-Q2U"/>
+                            <constraint firstItem="uim-uZ-FlX" firstAttribute="top" secondItem="KP6-ql-M0M" secondAttribute="bottom" constant="8" symbolic="YES" id="UGQ-FY-SMz"/>
+                            <constraint firstItem="KP6-ql-M0M" firstAttribute="top" secondItem="SvR-Yo-DUa" secondAttribute="bottom" constant="8" id="V8O-Oa-f0u"/>
+                            <constraint firstItem="Zmt-NM-PtU" firstAttribute="centerX" secondItem="S3Z-e5-Rvb" secondAttribute="centerX" id="X1K-gE-K7a"/>
+                            <constraint firstItem="jSI-E4-WNG" firstAttribute="centerX" secondItem="S3Z-e5-Rvb" secondAttribute="centerX" id="le8-oS-226"/>
+                            <constraint firstItem="SvR-Yo-DUa" firstAttribute="leading" secondItem="S3Z-e5-Rvb" secondAttribute="leadingMargin" constant="88" id="tq9-ch-5yE"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="More..." image="tabbar-info" id="UCR-JL-nFr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -238,6 +294,7 @@
                                     <segment title="Satellite"/>
                                     <segment title="Hybrid"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="changeMapState:" destination="KrC-W3-sb5" eventType="valueChanged" id="fYa-rt-gjm"/>
                                 </connections>
@@ -281,6 +338,7 @@
     </scenes>
     <resources>
         <image name="geolocation" width="100" height="87"/>
+        <image name="rhino" width="992" height="558"/>
         <image name="tabbar-info" width="30" height="30"/>
         <image name="tabbar-list" width="27" height="33"/>
         <image name="tabbar-map" width="30" height="23"/>
