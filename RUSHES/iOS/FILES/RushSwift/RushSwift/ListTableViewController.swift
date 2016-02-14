@@ -16,9 +16,6 @@ class ListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -31,7 +28,6 @@ class ListTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return cities.count
     }
     
@@ -44,16 +40,15 @@ class ListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let city = cities[indexPath.row]
-        print(city)
-        print(places[city])
+		self.performSegueWithIdentifier("showNewLocation", sender: indexPath.row)
     }
 
 	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		// Get the new view controller using segue.destinationViewController.
-		// Pass the selected object to the new view controller.
+		let dest = segue.destinationViewController as! MapViewController
+		let i = sender as! Int
+		
+		dest.showLocation = cities.sort()[i]
 	}
 
 	

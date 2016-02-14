@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
+var mainViewBool: Int = 0
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -19,8 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let locationManager = CLLocationManager()
 	
 	var currentMapType: MKMapType = .Satellite
-	let defautLocation = "42"
-
+	var showLocation = "42"
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.locationManager.delegate = self
 		
 		mapView.mapType = currentMapType
-		centerMapOnPlace(defautLocation)
+		if mainViewBool == 0 {
+			setAllAnnotations()
+			mainViewBool = 1
+		}
+
+		centerMapOnPlace(showLocation)
     }
 
 	
@@ -81,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         placeAnnotation.title = placeName
         placeAnnotation.subtitle = placeInfos.subtitle
         mapView.addAnnotation(placeAnnotation)
-        mapView.selectAnnotation(placeAnnotation, animated: true)
+		mapView.selectAnnotation(placeAnnotation, animated: true)
     }
     
     func centerMapOnPlace(placeName: String) {
@@ -89,5 +95,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.setRegion(placeCoordinates, animated: true)
         addAnnotationToPlace(placeName)
     }
+	
+	func setAllAnnotations() {
+		let cities = ListPlaces().returnCities()
+		for city in cities {
+			if city != "42" {
+				addAnnotationToPlace(city)
+			}
+		}
+	}
 	
 }

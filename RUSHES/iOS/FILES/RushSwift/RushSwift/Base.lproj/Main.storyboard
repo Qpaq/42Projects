@@ -132,7 +132,6 @@
                                 <connections>
                                     <outlet property="imagePlaceCell" destination="wcw-LD-tTB" id="B2B-F2-937"/>
                                     <outlet property="namePlaceLabel" destination="TSA-XZ-YmZ" id="aTn-hF-20a"/>
-                                    <segue destination="KrC-W3-sb5" kind="show" identifier="showNewLocation" id="r6u-n1-TWe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -142,6 +141,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="bN7-H7-aeo"/>
+                    <connections>
+                        <segue destination="KrC-W3-sb5" kind="show" identifier="showNewLocation" id="zU2-Nd-xsr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qr-M2-pF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

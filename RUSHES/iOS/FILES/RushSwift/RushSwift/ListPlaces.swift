@@ -24,9 +24,9 @@ struct PlaceDetails {
 
 struct ListPlaces {
     var places: [String: PlaceDetails] = [
-		"Paris": PlaceDetails(subtitle: "The city of love", latitude: 48.864716, longitude: 2.349014, zoom: 0.3),
-        "London": PlaceDetails(subtitle: "The city of love", latitude: 51.508530, longitude: -0.076132, zoom: 0.3),
-        "Barcelona": PlaceDetails(subtitle: "The city of love", latitude: 41.390205, longitude: 2.154007, zoom: 0.3),
+		"Paris": PlaceDetails(subtitle: "The city of love", latitude: 48.864716, longitude: 2.349014, zoom: 1),
+        "London": PlaceDetails(subtitle: "The city of love", latitude: 51.508530, longitude: -0.076132, zoom: 5),
+        "Barcelona": PlaceDetails(subtitle: "The city of love", latitude: 41.390205, longitude: 2.154007, zoom: 0.02),
         "Jerusalem": PlaceDetails(subtitle: "The city of love", latitude: 31.771959, longitude: 35.217018, zoom: 0.3),
         "Bogota": PlaceDetails(subtitle: "The city of love", latitude: 4.624335, longitude: -74.063644, zoom: 0.3),
         "Tokyo": PlaceDetails(subtitle: "The city of love", latitude: 35.652832, longitude: 139.839478, zoom: 0.3),
