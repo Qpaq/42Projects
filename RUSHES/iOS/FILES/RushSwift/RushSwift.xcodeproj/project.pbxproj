@@ -91,6 +91,7 @@
 				BA1FA0ED1C6F7A86000A65CE /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		BA1FA0ED1C6F7A86000A65CE /* Products */ = {
 			isa = PBXGroup;

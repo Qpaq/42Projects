@@ -10,7 +10,8 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
-    let places = ListPlaces().returnCities()
+    let places = ListPlaces().places
+    let cities = ListPlaces().returnCities()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +32,35 @@ class ListTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return places.count
+        return cities.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as! ListPlacesTableViewCell
-        let place = places[indexPath.row]
+        let city = cities[indexPath.row]
         
-        cell.namePlaceLabel.text = place
+        cell.namePlaceLabel.text = city
         return cell
     }
-    
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let city = cities[indexPath.row]
+        print(city)
+        print(places[city])
+    }
+
+	
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		// Get the new view controller using segue.destinationViewController.
+		// Pass the selected object to the new view controller.
+	}
+
+	
+	
+	
+
+	
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -75,16 +93,6 @@ class ListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 
