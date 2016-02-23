@@ -12,19 +12,59 @@
 
 #include "ft_select.h"
 
-void	get_key(void)
+int		putchar_select(int c)
 {
-	char	*key;
+	int		fd;
 
-	while (42)
+	fd = open(ttyname(0), O_WRONLY);
+	write(fd, &c, 1);
+	close(fd);
+	return (1);
+}
+
+void	test_capabilities(void)
+{
+	char	*cm;
+	char	*cl;
+
+	cm = tgetstr("cm", NULL);
+	cl = tgetstr("cl", NULL);
+	/*
+	tputs(cm, 1, putchar_select);
+	tputs(tgoto(cm, 1, 1), 1, putchar_select);
+	*/
+}
+
+int		check_capability(char *cap)
+{
+	if (tgetflag(cap) == 0 && tgetnum(cap) == -1 && tgetstr(cap, NULL) == 0)
+		return (0);
+	return (1);
+}
+
+int		execute_capability(char *cap, int type)
+{
+	int		res_int;
+	char	*res_str;
+
+	if (check_capability(cap) == 0)
+		return (0);
+	if (type == 1)
 	{
-		key = ft_strnew(3);
-		read(0, key, 3);
-		if (key[0] == 27 && key[1] == 0)
-			break ;
-		ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
-		free(key);
+		res_int = tgetflag(cap);
+		res_str = 0;
 	}
+	else if (type == 2)
+	{
+		res_int = tgetnum(cap);
+		res_str = 0;
+	}
+	else if (type == 3)
+	{
+		res_str = tgetstr(cap, NULL);
+		res_int = 0;
+	}
+	return (1);
 }
 
 int		main(void)
@@ -38,10 +78,11 @@ int		main(void)
 	}
 	if (tgetent(NULL, term_name) != 1)
 		return (-1);
-	if (raw_mode() == -1)
+	if (init_raw_mode() == -1)
 		return (-1);
-	ft_signals();
+//	ft_signals();
 	get_key();
-	reset_settings();
+	test_capabilities();
+	restore_terminal();
 	return (0);
 }

@@ -21,9 +21,11 @@
 # include <term.h>
 # include <termios.h>
 
-int		reset_settings(void);
-int		raw_mode(void);
+int		restore_terminal(void);
+int		init_raw_mode(void);
 
 void	ft_signals(void);
+
+void	get_key(void);
 
 #endif

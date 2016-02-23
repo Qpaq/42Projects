@@ -16,24 +16,24 @@ void	catch_signal(int code)
 {
 	if (code == SIGINT || code == SIGQUIT || code == SIGKILL)
 	{
-		reset_settings();
+		restore_terminal();
 		ft_putendl("exiting");
 		exit(0);
 	}
 	if (code == SIGTSTP)
 	{
-		reset_settings();
+		restore_terminal();
 		ft_putendl("ctrlZ");
 		exit(0);
 	}
 	if (code == SIGCONT)
 	{
-		raw_mode();
+		init_raw_mode();
 		ft_putendl("returning with fg");
 	}
 	if (code == SIGSEGV)
 	{
-		reset_settings();
+		restore_terminal();
 		ft_putendl("Attention ! SEGFAULT");
 		exit(0);
 	}
@@ -43,6 +43,9 @@ void	check_window_size(int code)
 {
 	int		width;
 	int		height;
+	struct winsize	max_size;
+
+	ft_printf("%d %d", max_size.ws_col, max_size.ws_row);
 
 	if (code == SIGWINCH)
 	{
