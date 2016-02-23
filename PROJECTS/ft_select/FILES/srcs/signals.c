@@ -34,7 +34,7 @@ void	catch_signal(int code)
 	if (code == SIGSEGV)
 	{
 		restore_terminal();
-		ft_putendl("Attention ! SEGFAULT");
+		ft_putendl("Wrong action\nExiting program...\n");
 		exit(0);
 	}
 }
@@ -63,5 +63,5 @@ void	ft_signals(void)
 	signal(SIGCONT, catch_signal);
 	signal(SIGWINCH, check_window_size);
 //	signal(SIGTSTP, catch_signal);
-//	signal(SIGSEGV, catch_signal);
+	signal(SIGSEGV, catch_signal);
 }

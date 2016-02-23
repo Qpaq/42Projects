@@ -3,7 +3,8 @@ NAME		= ft_select
 FILES		= main.c \
 			  terminal.c \
 			  signals.c \
-			  keys.c
+			  get_key.c \
+			  move.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)

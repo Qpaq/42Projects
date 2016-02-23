@@ -22,48 +22,10 @@ int		putchar_select(int c)
 	return (1);
 }
 
-void	test_capabilities(void)
-{
-	char	*cm;
-	char	*cl;
-
-	cm = tgetstr("cm", NULL);
-	cl = tgetstr("cl", NULL);
-	/*
-	tputs(cm, 1, putchar_select);
-	tputs(tgoto(cm, 1, 1), 1, putchar_select);
-	*/
-}
-
 int		check_capability(char *cap)
 {
 	if (tgetflag(cap) == 0 && tgetnum(cap) == -1 && tgetstr(cap, NULL) == 0)
 		return (0);
-	return (1);
-}
-
-int		execute_capability(char *cap, int type)
-{
-	int		res_int;
-	char	*res_str;
-
-	if (check_capability(cap) == 0)
-		return (0);
-	if (type == 1)
-	{
-		res_int = tgetflag(cap);
-		res_str = 0;
-	}
-	else if (type == 2)
-	{
-		res_int = tgetnum(cap);
-		res_str = 0;
-	}
-	else if (type == 3)
-	{
-		res_str = tgetstr(cap, NULL);
-		res_int = 0;
-	}
 	return (1);
 }
 
@@ -80,9 +42,9 @@ int		main(void)
 		return (-1);
 	if (init_raw_mode() == -1)
 		return (-1);
-//	ft_signals();
+	ft_signals();
+	ft_putchar('o');
 	get_key();
-	test_capabilities();
 	restore_terminal();
 	return (0);
 }

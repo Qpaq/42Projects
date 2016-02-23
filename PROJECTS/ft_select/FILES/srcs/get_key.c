@@ -9,7 +9,7 @@ int		is_escape(char *key)
 
 int		is_enter(char *key)
 {
-	if ((key[0] == 10 || key[0] == 4) && key[1] == 0 && key[2] == 0)
+	if (key[0] == 10 && key[1] == 0 && key[2] == 0)
 		return (1);
 	return (0);
 }
@@ -43,8 +43,8 @@ void	get_key(void)
 		else if (is_enter(key))
 			ft_putendl("enter");
 		else if (is_arrow(key))
-			ft_putendl("arrow");
-		ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
+			ft_move(key[2] - 64);
+	//	ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
 		ft_bzero(key, 4);
 	}
 }

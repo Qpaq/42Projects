@@ -28,4 +28,8 @@ void	ft_signals(void);
 
 void	get_key(void);
 
+int		putchar_select(int c);
+
+void	ft_move(int key);
+
 #endif
