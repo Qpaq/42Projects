@@ -21,12 +21,20 @@
 # include <term.h>
 # include <termios.h>
 
+typedef struct	s_select
+{
+	char				*value;
+	int					selected;
+	struct s_select		*previous;
+	struct s_select		*next;
+}				t_select;
+
 int		restore_terminal(void);
 int		init_raw_mode(void);
 
 void	ft_signals(void);
 
-void	get_key(void);
+void	get_key(t_select *main_list);
 
 int		putchar_select(int c);
 

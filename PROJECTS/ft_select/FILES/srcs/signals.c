@@ -41,17 +41,12 @@ void	catch_signal(int code)
 
 void	check_window_size(int code)
 {
-	int		width;
-	int		height;
-	struct winsize	max_size;
-
-	ft_printf("%d %d", max_size.ws_col, max_size.ws_row);
+	struct winsize	win_size;
 
 	if (code == SIGWINCH)
 	{
-		width = tgetnum("co");
-		height = tgetnum("li");
-		ft_printf("cols: %d, lines: %d\n", width, height);
+		ioctl(0, TIOCGWINSZ, &win_size);
+		ft_printf("rows: %d / cols: %d\n", win_size.ws_row, win_size.ws_col);
 	}
 }
 
@@ -63,5 +58,5 @@ void	ft_signals(void)
 	signal(SIGCONT, catch_signal);
 	signal(SIGWINCH, check_window_size);
 //	signal(SIGTSTP, catch_signal);
-	signal(SIGSEGV, catch_signal);
+//	signal(SIGSEGV, catch_signal);
 }

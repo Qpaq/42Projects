@@ -29,7 +29,7 @@ int		is_arrow(char *key)
 }
 
 
-void	get_key(void)
+void	get_key(t_select *main_list)
 {
 	char	*key;
 	
@@ -41,7 +41,10 @@ void	get_key(void)
 		else if (is_space(key))
 			ft_putendl("space");
 		else if (is_enter(key))
+		{
 			ft_putendl("enter");
+			ft_putendl(main_list->value);
+		}
 		else if (is_arrow(key))
 			ft_move(key[2] - 64);
 	//	ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
