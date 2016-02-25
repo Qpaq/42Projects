@@ -29,19 +29,21 @@ int		check_capability(char *cap)
 	return (1);
 }
 
-void	parse_arguments(int argc, char **argv, t_select *main_list)
+void	parse_arguments(int argc, char **argv, t_select *params)
 {
 	int			i;
-	t_select	*new;
-	
-	main_list->value = ft_strdup(argv[0]);
-	i = 1;
+	t_args_list	*new;
+	t_args_list	*list;
+
+	list = params->list;
+	list->value = ft_strdup(argv[0]);
+	i = 0;
 	while(i < argc)
 	{
-		new = (t_select *)ft_memalloc(sizeof(t_select));
+		new = (t_args_list *)ft_memalloc(sizeof(t_args_list));
 		new->value = ft_strdup(argv[i]);
-		main_list->next = new;
-		main_list = main_list->next;
+		list->next = new;
+		list = list->next;
 		i++;
 	}
 }
@@ -55,11 +57,23 @@ void	test_capability(void)
 	tputs(res, 1, putchar_select);
 }
 
+t_select	*init_struct(void)
+{
+	t_select	*params;
+	t_args_list	*head_list;
+
+	if ((params = (t_select *)ft_memalloc(sizeof(t_select))) == NULL)
+		return (NULL);
+	if ((head_list = (t_args_list *)ft_memalloc(sizeof(t_args_list))) == NULL)
+		return (NULL);
+	params->list = head_list;
+	return (params);
+}
 
 int		main(int argc, char **argv)
 {
 	char			*term_name;
-	t_select		*main_list;
+	t_select		*params;
 
 	if (argc <= 1)
 		return (-1);
@@ -72,12 +86,12 @@ int		main(int argc, char **argv)
 		return (-1);
 	if (init_raw_mode() == -1)
 		return (-1);
-	main_list = (t_select *)ft_memalloc(sizeof(t_select));
-	parse_arguments(--argc, ++argv, main_list);
+	params = init_struct();
+	parse_arguments(--argc, ++argv, params);
 	ft_signals();
 //	test_capability();
 	ft_putchar('o');
-	get_key(main_list);
+	get_key(params);
 	restore_terminal();
 	return (0);
 }

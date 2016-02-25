@@ -21,12 +21,20 @@
 # include <term.h>
 # include <termios.h>
 
-typedef struct	s_select
+typedef struct	s_args_list
 {
 	char				*value;
 	int					selected;
-	struct s_select		*previous;
-	struct s_select		*next;
+	struct s_args_list	*previous;
+	struct s_args_list	*next;
+}				t_args_list;
+
+typedef struct	s_select
+{
+	int					win_x;
+	int					win_y;
+	int					length_col; // longueur du mot le plus long
+	t_args_list			*list;
 }				t_select;
 
 int		restore_terminal(void);
@@ -34,7 +42,7 @@ int		init_raw_mode(void);
 
 void	ft_signals(void);
 
-void	get_key(t_select *main_list);
+void	get_key(t_select *params);
 
 int		putchar_select(int c);
 

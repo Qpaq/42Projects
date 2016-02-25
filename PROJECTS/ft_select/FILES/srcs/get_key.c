@@ -29,10 +29,12 @@ int		is_arrow(char *key)
 }
 
 
-void	get_key(t_select *main_list)
+void	get_key(t_select *params)
 {
 	char	*key;
 	
+	(void)params; // DELTE
+
 	key = ft_strnew(4);
 	while (read(0, key, 3))
 	{
@@ -43,7 +45,7 @@ void	get_key(t_select *main_list)
 		else if (is_enter(key))
 		{
 			ft_putendl("enter");
-			ft_putendl(main_list->value);
+			//ft_putendl(params->value);
 		}
 		else if (is_arrow(key))
 			ft_move(key[2] - 64);
