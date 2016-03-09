@@ -29,34 +29,6 @@ int		check_capability(char *cap)
 	return (1);
 }
 
-void	parse_arguments(int argc, char **argv, t_select *params)
-{
-	int			i;
-	t_args_list	*new;
-	t_args_list	*list;
-
-	list = params->list;
-	list->value = ft_strdup(argv[0]);
-	i = 0;
-	while(i < argc)
-	{
-		new = (t_args_list *)ft_memalloc(sizeof(t_args_list));
-		new->value = ft_strdup(argv[i]);
-		list->next = new;
-		list = list->next;
-		i++;
-	}
-}
-
-
-// A SUPPRIMER
-void	test_capability(void)
-{
-	char	*res;
-	res = tgetstr("cl", NULL);
-	tputs(res, 1, putchar_select);
-}
-
 t_select	*init_struct(void)
 {
 	t_select	*params;
@@ -69,6 +41,17 @@ t_select	*init_struct(void)
 	params->list = head_list;
 	return (params);
 }
+
+
+// A SUPPRIMER
+void	test_capability(void)
+{
+	char	*res;
+	res = tgetstr("cl", NULL);
+	tputs(res, 1, putchar_select);
+}
+
+
 
 int		main(int argc, char **argv)
 {
@@ -90,7 +73,7 @@ int		main(int argc, char **argv)
 	parse_arguments(--argc, ++argv, params);
 	ft_signals();
 //	test_capability();
-	ft_putchar('o');
+	print_list(params);
 	get_key(params);
 	restore_terminal();
 	return (0);

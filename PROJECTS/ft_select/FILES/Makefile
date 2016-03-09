@@ -4,7 +4,8 @@ FILES		= main.c \
 			  terminal.c \
 			  signals.c \
 			  get_key.c \
-			  move.c
+			  move.c \
+			  list.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)
