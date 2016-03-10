@@ -22,13 +22,6 @@ int		putchar_select(int c)
 	return (1);
 }
 
-int		check_capability(char *cap)
-{
-	if (tgetflag(cap) == 0 && tgetnum(cap) == -1 && tgetstr(cap, NULL) == 0)
-		return (0);
-	return (1);
-}
-
 t_select	*init_struct(void)
 {
 	t_select	*params;
@@ -43,12 +36,15 @@ t_select	*init_struct(void)
 }
 
 
-// A SUPPRIMER
-void	test_capability(void)
+void	screen_size(t_select *params)
 {
-	char	*res;
-	res = tgetstr("cl", NULL);
-	tputs(res, 1, putchar_select);
+	int		col;
+	int		li;
+	
+	col = tgetnum("co");
+	li = tgetnum("li");
+	params->win_x = col;
+	params->win_y = li;
 }
 
 
@@ -72,7 +68,7 @@ int		main(int argc, char **argv)
 	params = init_struct();
 	parse_arguments(--argc, ++argv, params);
 	ft_signals();
-//	test_capability();
+	screen_size(params);
 	print_list(params);
 	get_key(params);
 	restore_terminal();

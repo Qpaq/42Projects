@@ -37,6 +37,7 @@ typedef struct	s_select
 	int			curs_y;
 	size_t		max_length; // longueur du mot le plus long
 	t_args_list	*list;
+	int			size_list;
 }				t_select;
 
 int		restore_terminal(void);
@@ -44,7 +45,7 @@ int		init_raw_mode(void);
 void	ft_signals(void);
 void	get_key(t_select *params);
 int		putchar_select(int c);
-void	ft_move(int key);
+void	ft_move(int key, t_select *params);
 void	print_list(t_select *params);
 void	parse_arguments(int argc, char **argv, t_select *params);
 

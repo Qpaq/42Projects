@@ -41,11 +41,14 @@ void	get_key(t_select *params)
 		if (is_escape(key))
 			break ;
 		else if (is_space(key))
-			ft_putendl("space");
+		{
+			ft_printf("Window: %d / %d\nCursor: %d / %d\nList: %d", params->win_x, params->win_y, params->curs_x, params->curs_y, params->size_list);
+			ft_putnbr(lines);
+		}
 		else if (is_enter(key))
 			ft_printf("%zd", params->max_length);
 		else if (is_arrow(key))
-			ft_move(key[2] - 64);
+			ft_move(key[2] - 64, params);
 	//	ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
 		ft_bzero(key, 4);
 	}

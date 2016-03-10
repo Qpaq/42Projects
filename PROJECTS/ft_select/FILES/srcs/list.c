@@ -32,4 +32,5 @@ void	parse_arguments(int argc, char **argv, t_select *params)
 			params->max_length = ft_strlen(argv[i]);
 		i++;
 	}
+	params->size_list = i;
 }
