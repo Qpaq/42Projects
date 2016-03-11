@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 12:11:41 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/10 09:45:55 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:22:32 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	catch_signal(int code)
 	if (code == SIGINT || code == SIGQUIT || code == SIGKILL)
 	{
 		restore_terminal();
-		ft_putendl("exiting");
 		exit(0);
 	}
 	if (code == SIGTSTP)
@@ -57,6 +56,6 @@ void	ft_signals(void)
 	signal(SIGKILL, catch_signal);
 	signal(SIGCONT, catch_signal);
 	signal(SIGWINCH, check_window_size);
-//	signal(SIGTSTP, catch_signal);
+	signal(SIGTSTP, catch_signal);
 //	signal(SIGSEGV, catch_signal);
 }

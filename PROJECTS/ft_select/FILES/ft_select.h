@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/09 11:14:55 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:37:17 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,27 @@ typedef struct	s_select
 	int			win_y;
 	int			curs_x;
 	int			curs_y;
-	size_t		max_length; // longueur du mot le plus long
+	size_t		max_length;
 	t_args_list	*list;
 	int			size_list;
 }				t_select;
 
-int		restore_terminal(void);
-int		init_raw_mode(void);
-void	ft_signals(void);
-void	get_key(t_select *params);
-int		putchar_select(int c);
-void	ft_move(int key, t_select *params);
-void	print_list(t_select *params);
-void	parse_arguments(int argc, char **argv, t_select *params);
+int				putchar_select(int c);
+
+void			parse_arguments(int argc, char **argv, t_select *params);
+void			print_list(t_select *params);
+void			return_list(t_select *params);
+void			free_args_list(t_args_list *head);
+void			free_select_struct(t_select **params);
+
+int				init_raw_mode(void);
+int				restore_terminal(void);
+
+void			get_key_pressed(t_select *params);
+void			return_key_pressed(t_select *params);
+void			space_key_pressed(t_select *params);
+void			arrow_key_pressed(int key, t_select *params);
+
+void			ft_signals(void);
 
 #endif

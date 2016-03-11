@@ -7,7 +7,7 @@ int		is_escape(char *key)
 	return (0);
 }
 
-int		is_enter(char *key)
+int		is_return(char *key)
 {
 	if (key[0] == 10 && key[1] == 0 && key[2] == 0)
 		return (1);
@@ -28,12 +28,9 @@ int		is_arrow(char *key)
 	return (0);
 }
 
-
-void	get_key(t_select *params)
+void	get_key_pressed(t_select *params)
 {
 	char	*key;
-	
-	(void)params; // DELTE
 
 	key = ft_strnew(4);
 	while (read(0, key, 3))
@@ -41,15 +38,11 @@ void	get_key(t_select *params)
 		if (is_escape(key))
 			break ;
 		else if (is_space(key))
-		{
-			ft_printf("Window: %d / %d\nCursor: %d / %d\nList: %d", params->win_x, params->win_y, params->curs_x, params->curs_y, params->size_list);
-			ft_putnbr(lines);
-		}
-		else if (is_enter(key))
-			ft_printf("%zd", params->max_length);
+			space_key_pressed(params);
+		else if (is_return(key))
+			return_key_pressed(params);
 		else if (is_arrow(key))
-			ft_move(key[2] - 64, params);
-	//	ft_printf("0: %d\n1: %d\n2: %d\n3: %d\n\n", key[0], key[1], key[2], key[3]);
+			arrow_key_pressed(key[2] - 64, params);
 		ft_bzero(key, 4);
 	}
 }

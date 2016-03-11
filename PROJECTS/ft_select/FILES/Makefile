@@ -4,7 +4,7 @@ FILES		= main.c \
 			  terminal.c \
 			  signals.c \
 			  get_key.c \
-			  move.c \
+			  key_actions.c \
 			  list.c
 
 SRC			= $(addprefix srcs/, $(FILES))

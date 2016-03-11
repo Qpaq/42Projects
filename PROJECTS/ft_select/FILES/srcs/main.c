@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/08 12:12:58 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/09 11:24:51 by dtedgui          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_select.h"
 
-int		putchar_select(int c)
+int			putchar_select(int c)
 {
 	int		fd;
 
@@ -20,6 +8,17 @@ int		putchar_select(int c)
 	write(fd, &c, 1);
 	close(fd);
 	return (1);
+}
+
+void		screen_size(t_select *params)
+{
+	int		col;
+	int		li;
+
+	col = tgetnum("co");
+	li = tgetnum("li");
+	params->win_x = col;
+	params->win_y = li;
 }
 
 t_select	*init_struct(void)
@@ -32,24 +31,11 @@ t_select	*init_struct(void)
 	if ((head_list = (t_args_list *)ft_memalloc(sizeof(t_args_list))) == NULL)
 		return (NULL);
 	params->list = head_list;
+	screen_size(params);
 	return (params);
 }
 
-
-void	screen_size(t_select *params)
-{
-	int		col;
-	int		li;
-	
-	col = tgetnum("co");
-	li = tgetnum("li");
-	params->win_x = col;
-	params->win_y = li;
-}
-
-
-
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	char			*term_name;
 	t_select		*params;
@@ -68,9 +54,9 @@ int		main(int argc, char **argv)
 	params = init_struct();
 	parse_arguments(--argc, ++argv, params);
 	ft_signals();
-	screen_size(params);
-	print_list(params);
-	get_key(params);
+	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, putchar_select);
+	get_key_pressed(params);
 	restore_terminal();
+	free_select_struct(&params);
 	return (0);
 }
