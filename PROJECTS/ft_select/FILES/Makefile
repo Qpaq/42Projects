@@ -5,7 +5,8 @@ FILES		= main.c \
 			  signals.c \
 			  get_key.c \
 			  key_actions.c \
-			  list.c
+			  list.c \
+			  utils.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)
@@ -44,5 +45,5 @@ re: fclean all
 git: fclean
 	git add .
 	@echo "Enter your commit message: "
-	@read commit_ftselect ; git commit -m "$$commit_ftselect"
+	@read commit_ftselect ; git commit -m "ft_select: $$commit_ftselect"
 	git push

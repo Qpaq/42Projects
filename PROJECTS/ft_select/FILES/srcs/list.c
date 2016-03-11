@@ -7,7 +7,6 @@ void	free_args_list(t_args_list *head)
 	while (head)
 	{
 		ft_memdel((void **)&(head->value));
-		ft_memdel((void **)&(head->previous));
 		next = head->next;
 		ft_memdel((void **)&head);
 		head = next;
@@ -29,10 +28,12 @@ void	return_list(t_select *params)
 	current = params->list;
 	while (current)
 	{
-		if (space)
-			ft_putchar(' ');
-		//if (current->selected)
+		if (current->selected)
+		{
+			if (space)
+				ft_putchar(' ');
 			ft_putstr(current->value);
+		}
 		current = current->next;
 		space = 1;
 	}
@@ -41,14 +42,20 @@ void	return_list(t_select *params)
 
 void	print_list(t_select *params)
 {
-	t_args_list	*current;
+	t_args_list	*element;
 
-	current = params->list;
-	while (current)
+	element = params->list;
+	ft_tputs("cl");
+	if (params->curs_y == params->size_list)
+		params->curs_y = 0;
+	if (params->curs_y == -1)
+		params->curs_y = params->size_list - 1;
+	while (element)
 	{
-		ft_putendl(current->value);
-		current = current->next;
+		add_visual_effects(element, params);
+		element = element->next;
 	}
+	ft_move_cursor(params);
 }
 
 void	parse_arguments(int argc, char **argv, t_select *params)

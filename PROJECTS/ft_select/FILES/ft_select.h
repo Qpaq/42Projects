@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 15:50:24 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/03/11 16:37:17 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/03/11 19:22:05 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct	s_args_list
 {
 	char				*value;
 	int					selected;
-	struct s_args_list	*previous;
 	struct s_args_list	*next;
 }				t_args_list;
 
@@ -41,6 +40,10 @@ typedef struct	s_select
 }				t_select;
 
 int				putchar_select(int c);
+void			ft_move_cursor(t_select *params);
+void			ft_tputs(char *cap);
+t_args_list		*return_current_element(t_select *params);
+void			add_visual_effects(t_args_list *element, t_select *params);
 
 void			parse_arguments(int argc, char **argv, t_select *params);
 void			print_list(t_select *params);

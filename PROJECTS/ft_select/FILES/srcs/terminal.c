@@ -10,8 +10,8 @@ int		restore_terminal(void)
 	term.c_lflag |= ECHO;
 	if (tcsetattr(0, 0, &term) == -1)
 		return (-1);
-	tputs(tgetstr("ve", NULL), 1, putchar_select);
-	tputs(tgetstr("te", NULL), 1, putchar_select);
+	ft_tputs("ve");
+	ft_tputs("te");
 	return (0);
 }
 
@@ -27,7 +27,7 @@ int		init_raw_mode(void)
 	term.c_cc[VTIME] = 0;
 	if (tcsetattr(0, 0, &term) == -1)
 		return (-1);
-	tputs(tgetstr("ti", NULL), 1, putchar_select);
-	tputs(tgetstr("vs", NULL), 1, putchar_select);
+	ft_tputs("ti");
+	ft_tputs("vi");
 	return (0);
 }

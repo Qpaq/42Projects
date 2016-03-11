@@ -1,15 +1,5 @@
 #include "ft_select.h"
 
-int			putchar_select(int c)
-{
-	int		fd;
-
-	fd = open(ttyname(0), O_WRONLY);
-	write(fd, &c, 1);
-	close(fd);
-	return (1);
-}
-
 void		screen_size(t_select *params)
 {
 	int		col;
@@ -54,7 +44,7 @@ int			main(int argc, char **argv)
 	params = init_struct();
 	parse_arguments(--argc, ++argv, params);
 	ft_signals();
-	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, putchar_select);
+	print_list(params);
 	get_key_pressed(params);
 	restore_terminal();
 	free_select_struct(&params);
