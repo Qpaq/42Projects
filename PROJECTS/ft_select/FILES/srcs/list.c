@@ -33,9 +33,9 @@ void	return_list(t_select *params)
 			if (space)
 				ft_putchar(' ');
 			ft_putstr(current->value);
+			space = 1;
 		}
 		current = current->next;
-		space = 1;
 	}
 	free_select_struct(&params);
 }
