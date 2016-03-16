@@ -14,39 +14,50 @@ int		ft_isnumber(char *value)
 	return (1);
 }
 
-char	**init_pile(char **argv, int argc)
+char	**init_pile(t_pushswap *data, char **argv, int argc)
 {
 	char	**pile;
 	int		i;
 
 	pile = (char **)ft_memalloc(sizeof(char *) * argc);
 	i = 0;
-	while (argv[i])
+	while (i < argc)
 	{
 		if (!ft_isnumber(argv[i]))
 			return (NULL);
 		pile[i] = ft_strdup(argv[i]);
 		i++;
 	}
-	pile[i] = NULL;
+	data->pile_a = pile;
+	data->length_a = i;
 	return (pile);
+}
+
+void	print_pile(char **pile, int length)
+{
+	int		i;
+
+	i = 0;
+	while (i < length)
+	{
+		ft_putendl(pile[i]);
+		i++;
+	}
 }
 
 int		main(int argc, char **argv)
 {
-	char	**pile_a;
+	t_pushswap	*data;
 
 	if (argc == 1)
 		return (0);
-	if ((pile_a = init_pile(++argv, --argc)) == NULL)
+	data = (t_pushswap *)ft_memalloc(sizeof(t_pushswap));
+	if (init_pile(data, ++argv, --argc) == NULL)
 	{
 		ft_printf("{red}Error in command line arguments{eoc}");
 		return (0);
 	}
-	while (*pile_a)
-	{
-		ft_putendl(*pile_a);
-		pile_a++;
-	}
+	print_pile(data->pile_a, data->length_a);
+	ft_putnbr(data->length_a);
 	return (0);
 }
