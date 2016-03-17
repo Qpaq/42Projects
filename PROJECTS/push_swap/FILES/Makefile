@@ -1,6 +1,7 @@
 NAME		= push_swap
 
-FILES		= main.c
+FILES		= main.c \
+			  push.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)

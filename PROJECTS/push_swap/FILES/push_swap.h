@@ -7,10 +7,13 @@
 
 typedef struct	s_pushswap
 {
-	char	**pile_a;
+	int		*pile_a;
 	int		length_a;
-	char	**pile_b;
+	int		*pile_b;
 	int		length_b;
 }				t_pushswap;
+
+void			push_a(t_pushswap *data);
+void			push_b(t_pushswap *data);
 
 #endif
