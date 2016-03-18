@@ -1,7 +1,10 @@
 NAME		= push_swap
 
 FILES		= main.c \
-			  push.c
+			  push.c \
+			  swap.c \
+			  rotate.c \
+			  reverse_rotate.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)

@@ -72,19 +72,11 @@ int		main(int argc, char **argv)
 	ft_printf("\na: %d, b: %d\n", data->length_a, data->length_b);
 	print_pile(data->pile_b, data->length_b);
 
-	ft_putendl("\npush");
-	push_b(data);
-	push_b(data);
-	push_b(data);
-	push_a(data);
-	push_b(data);
-	push_a(data);
-	ft_putendl("bbbaba\n");
+	reverse_rotate_a(data);
 
 	print_pile(data->pile_a, data->length_a);
 	ft_printf("\na: %d, b: %d\n", data->length_a, data->length_b);
 	print_pile(data->pile_b, data->length_b);
-
 
 	return (0);
 }

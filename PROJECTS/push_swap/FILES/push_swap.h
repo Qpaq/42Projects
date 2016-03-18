@@ -16,4 +16,16 @@ typedef struct	s_pushswap
 void			push_a(t_pushswap *data);
 void			push_b(t_pushswap *data);
 
+void			swap_a(t_pushswap *data);
+void			swap_b(t_pushswap *data);
+void			swap_ab(t_pushswap *data);
+
+void			rotate_a(t_pushswap *data);
+void			rotate_b(t_pushswap *data);
+void			rotate_ab(t_pushswap *data);
+
+void			reverse_rotate_a(t_pushswap *data);
+void			reverse_rotate_b(t_pushswap *data);
+void			reverse_rotate_ab(t_pushswap *data);
+
 #endif
