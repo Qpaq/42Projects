@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 12:11:41 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/03/11 16:22:32 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/03/21 19:24:27 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	ft_signals(void)
 	signal(SIGCONT, catch_signal);
 	signal(SIGWINCH, check_window_size);
 	signal(SIGTSTP, catch_signal);
-//	signal(SIGSEGV, catch_signal);
+	signal(SIGSEGV, catch_signal);
 }

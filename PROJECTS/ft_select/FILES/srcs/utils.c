@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/21 19:22:28 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/03/21 19:23:14 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_select.h"
 
 int			putchar_select(int c)
@@ -35,10 +47,10 @@ t_args_list	*return_current_element(t_select *params)
 	return (element);
 }
 
-void	add_visual_effects(t_args_list *element, t_select *params)
+void		add_visual_effects(t_args_list *element, t_select *params)
 {
 	t_args_list		*current;
-	
+
 	current = return_current_element(params);
 	if (element->selected)
 		ft_tputs("mr");
