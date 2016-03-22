@@ -9,23 +9,27 @@ typedef struct	s_pushswap
 {
 	int		*pile_a;
 	int		length_a;
+	int		smallest_a;
+	int		pos_smallest_a;
 	int		*pile_b;
 	int		length_b;
 }				t_pushswap;
 
 void			push_a(t_pushswap *data);
 void			push_b(t_pushswap *data);
-
 void			swap_a(t_pushswap *data);
 void			swap_b(t_pushswap *data);
 void			swap_ab(t_pushswap *data);
-
 void			rotate_a(t_pushswap *data);
 void			rotate_b(t_pushswap *data);
 void			rotate_ab(t_pushswap *data);
-
 void			reverse_rotate_a(t_pushswap *data);
 void			reverse_rotate_b(t_pushswap *data);
 void			reverse_rotate_ab(t_pushswap *data);
+
+int				check_pile(int *pile, int length);
+int				sort_pile(t_pushswap *data);
+
+void			print_pile(int *pile, int length);
 
 #endif

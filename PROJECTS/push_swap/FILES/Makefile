@@ -4,7 +4,9 @@ FILES		= main.c \
 			  push.c \
 			  swap.c \
 			  rotate.c \
-			  reverse_rotate.c
+			  reverse_rotate.c \
+			  algo.c \
+			  utils.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)
