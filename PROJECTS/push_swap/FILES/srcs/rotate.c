@@ -15,6 +15,9 @@ void	rotate_a(t_pushswap *data)
 			i++;
 		}
 		data->pile_a[i - 1] = first;
+		data->pos_smallest_a -= 1;
+		if (data->pos_smallest_a == -1)
+			data->pos_smallest_a = data->length_a - 1;
 	}
 }
 

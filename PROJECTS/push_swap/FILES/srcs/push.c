@@ -13,12 +13,18 @@ void	push_a(t_pushswap *data)
 		data->pile_a = new_pile_a;
 		data->length_a += 1;
 		data->length_b -= 1;
+		if (data->pile_a[data->length_a - 1] <= data->smallest_a)
+		{
+			data->smallest_a = data->pile_a[data->length_a - 1];
+			data->pos_smallest_a = data->length_a - 1;
+		}
 	}
 }
 
 void	push_b(t_pushswap *data)
 {
 	int		*new_pile_b;
+	int		i;
 
 	if (data->length_a > 0)
 	{
@@ -29,5 +35,20 @@ void	push_b(t_pushswap *data)
 		data->pile_b = new_pile_b;
 		data->length_b += 1;
 		data->length_a -= 1;
+		if (data->pile_b[data->length_b - 1] == data->smallest_a)
+		{
+			i = 0;
+			data->smallest_a = data->pile_a[0];
+			data->pos_smallest_a = 0;
+			while (i < data->length_a)
+			{
+				if (data->pile_a[i] <= data->smallest_a)
+				{
+					data->smallest_a = data->pile_a[i];
+					data->pos_smallest_a = i;
+				}
+				i++;
+			}
+		}
 	}
 }

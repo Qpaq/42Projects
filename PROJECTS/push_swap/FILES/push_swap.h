@@ -28,7 +28,7 @@ void			reverse_rotate_b(t_pushswap *data);
 void			reverse_rotate_ab(t_pushswap *data);
 
 int				check_pile(int *pile, int length);
-int				sort_pile(t_pushswap *data);
+void			sort_pile(t_pushswap *data);
 
 void			print_pile(int *pile, int length);
 

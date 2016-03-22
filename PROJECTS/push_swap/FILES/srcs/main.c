@@ -17,6 +17,20 @@ int		ft_isnumber(char *value)
 	return (1);
 }
 
+int		check_duplicate(int nb, int *pile, int length)
+{
+	int		i;
+
+	i = 0;
+	while (i < length)
+	{
+		if (pile[i] == nb)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int		*init_piles(t_pushswap *data, char **argv, int argc)
 {
 	int		*pile;
@@ -32,6 +46,8 @@ int		*init_piles(t_pushswap *data, char **argv, int argc)
 		if (!ft_isnumber(argv[i]))
 			return (NULL);
 		nb = ft_atoi(argv[i]);
+		if (!check_duplicate(nb, pile, i))
+			return (NULL);
 		if (nb <= data->smallest_a)
 		{
 			data->smallest_a = nb;
@@ -58,17 +74,9 @@ int		main(int argc, char **argv)
 		ft_printf("{red}Error in command line arguments{eoc}");
 		return (0);
 	}
+
+	print_pile(data->pile_a, data->length_a);
 	sort_pile(data);
 	print_pile(data->pile_a, data->length_a);
-	print_pile(data->pile_b, data->length_b);
-	/*
-	print_pile(data->pile_a, data->length_a);
-	ft_printf("\na: %d, b: %d\n", data->length_a, data->length_b);
-	print_pile(data->pile_b, data->length_b);
-	reverse_rotate_a(data);
-	print_pile(data->pile_a, data->length_a);
-	ft_printf("\na: %d, b: %d\n", data->length_a, data->length_b);
-	print_pile(data->pile_b, data->length_b);
-	*/
 	return (0);
 }

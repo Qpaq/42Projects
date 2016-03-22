@@ -9,6 +9,10 @@ void	swap_a(t_pushswap *data)
 		temp = data->pile_a[data->length_a - 1];
 		data->pile_a[data->length_a - 1] = data->pile_a[data->length_a - 2];
 		data->pile_a[data->length_a - 2] = temp;
+		if (data->pos_smallest_a == data->length_a - 1)
+			data->pos_smallest_a = data->length_a - 2;
+		else if (data->pos_smallest_a == data->length_a - 2)
+			data->pos_smallest_a = data->length_a - 1;
 	}
 }
 

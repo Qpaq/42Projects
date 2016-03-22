@@ -15,6 +15,9 @@ void	reverse_rotate_a(t_pushswap *data)
 			i--;
 		}
 		data->pile_a[0] = last;
+		data->pos_smallest_a += 1;
+		if (data->pos_smallest_a == data->length_a)
+			data->pos_smallest_a = 0;
 	}
 }
 
