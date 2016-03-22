@@ -1,21 +1,5 @@
 #include "push_swap.h"
 
-/*
-int		check_pile_reverse(int *pile, int length)
-{
-	int		i;
-
-	i = 1;
-	while (i < length)
-	{
-		if (pile[i - 1] > pile[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-*/
-
 int		check_pile(int *pile, int length)
 {
 	int		i;
@@ -26,14 +10,7 @@ int		check_pile(int *pile, int length)
 	while (i < length)
 	{
 		if (pile[i - 1] < pile[i])
-		{
-			/*
-			if (check_pile_reverse(pile, length))
-				return (-1);
-			else
-			*/
-				return (0);
-		}
+			return (0);
 		i++;
 	}
 	return (1);

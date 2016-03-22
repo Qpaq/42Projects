@@ -69,14 +69,19 @@ int		main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	data = (t_pushswap *)ft_memalloc(sizeof(t_pushswap));
+	data->sequence = ft_strnew(1);
+	if (ft_strcmp(argv[1], "-v") == 0)
+	{
+		data->verbose = 1;
+		argc--;
+		argv++;
+	}
 	if (init_piles(data, ++argv, --argc) == NULL)
 	{
-		ft_printf("{red}Error in command line arguments{eoc}");
+		ft_putendl_fd("Error", 2);
 		return (0);
 	}
-
-	print_pile(data->pile_a, data->length_a);
 	sort_pile(data);
-	print_pile(data->pile_a, data->length_a);
+	ft_printf("{red}FINAL SEQUENCE:\n%s{eoc}", data->sequence);
 	return (0);
 }

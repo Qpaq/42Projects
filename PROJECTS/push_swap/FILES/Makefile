@@ -6,7 +6,7 @@ FILES		= main.c \
 			  rotate.c \
 			  reverse_rotate.c \
 			  algo.c \
-			  utils.c
+			  print_piles.c
 
 SRC			= $(addprefix srcs/, $(FILES))
 OBJ			= $(SRC:.c=.o)

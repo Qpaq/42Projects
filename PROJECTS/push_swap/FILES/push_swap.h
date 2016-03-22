@@ -13,6 +13,8 @@ typedef struct	s_pushswap
 	int		pos_smallest_a;
 	int		*pile_b;
 	int		length_b;
+	int		verbose;
+	char	*sequence;
 }				t_pushswap;
 
 void			push_a(t_pushswap *data);
@@ -31,5 +33,6 @@ int				check_pile(int *pile, int length);
 void			sort_pile(t_pushswap *data);
 
 void			print_pile(int *pile, int length);
+void			print_state(t_pushswap *data);
 
 #endif

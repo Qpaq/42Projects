@@ -18,6 +18,9 @@ void	reverse_rotate_a(t_pushswap *data)
 		data->pos_smallest_a += 1;
 		if (data->pos_smallest_a == data->length_a)
 			data->pos_smallest_a = 0;
+		if (data->verbose)
+			print_state(data);
+		data->sequence = ft_strjoin(data->sequence, "rra ");
 	}
 }
 
@@ -36,6 +39,9 @@ void	reverse_rotate_b(t_pushswap *data)
 			i--;
 		}
 		data->pile_b[0] = last;
+		if (data->verbose)
+			print_state(data);
+		data->sequence = ft_strjoin(data->sequence, "rrb ");
 	}
 }
 

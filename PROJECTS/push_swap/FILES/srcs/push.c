@@ -18,6 +18,9 @@ void	push_a(t_pushswap *data)
 			data->smallest_a = data->pile_a[data->length_a - 1];
 			data->pos_smallest_a = data->length_a - 1;
 		}
+		if (data->verbose)
+			print_state(data);
+		data->sequence = ft_strjoin(data->sequence, "pa ");
 	}
 }
 
@@ -50,5 +53,8 @@ void	push_b(t_pushswap *data)
 				i++;
 			}
 		}
+		if (data->verbose)
+			print_state(data);
+		data->sequence = ft_strjoin(data->sequence, "pb ");
 	}
 }
