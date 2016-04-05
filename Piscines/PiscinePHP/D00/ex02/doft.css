@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'Open Sans';
+	src: url(https://fonts.googleapis.com/css?family=Open+Sans);
+}
+
 #container {
 	width: 1325px;
 	margin: 0 auto;
+	margin-top: 30px;
 }
 header, aside, #main {
 	background-color: rgb(144, 144, 144);;
@@ -15,10 +21,9 @@ header {
 }
 
 #banniere {
-	position: relative;
-	left: 0;
-	height: 100%;
-	width: 35%;
+	float: left;
+	width: 500px;
+	border-radius: 10px;
 }
 
 header nav {
@@ -30,7 +35,7 @@ header nav img {
 	width: 20px;
 }
 #reload {
-	margin-bottom: 65px;
+	margin-bottom: 75px;
 }
 #loupe {
 	width: 250px;
@@ -71,4 +76,27 @@ aside {
 #oeil {
 	padding: 5px;
 	border: 3px solid red;
+}
+
+#green {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	background-color: rgb(158,252,150);
+	width: 497px;
+	height: 170px;
+	position: relative;
+	margin-left: 11%;
+	margin-top: -60px;
+	padding-left: 8px;
+	font-size: 16px;
+	font-weight: 450;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#green .big {
+	font-size: 2em;
 }
