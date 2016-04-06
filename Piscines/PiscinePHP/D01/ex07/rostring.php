@@ -9,8 +9,19 @@ function ft_split($string)
 		if ($elem)
 			array_push($result, $elem);
 	}
-	sort($result);
 	return $result;
 }
-print_r(ft_split("Hello    world AAA"));
+
+if ($argv[1])
+{
+	$result = ft_split($argv[1]);
+	if (count($result) == 1)
+		echo "$argv[1]\n";
+	else
+	{
+		$first = array_shift($result);
+		array_push($result, $first);
+		echo implode(" ", $result);
+	}
+}
 ?>
