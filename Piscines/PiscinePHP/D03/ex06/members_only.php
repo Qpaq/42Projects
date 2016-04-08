@@ -7,9 +7,8 @@ if ($_SERVER['PHP_AUTH_USER'] == 'zaz' && $_SERVER['PHP_AUTH_PW'] == 'jaimelespe
 {
 	$img = base64_encode(file_get_contents("../img/42.png"));
 	header("WWW-Authenticate: Basic realm=''Espace membres''");
-	echo "<html><body>\n";
-    echo "Bonjour Zaz<br />\n";
-	echo "<img src='$img'>\n";
+	echo "<html><body>\nBonjour Zaz<br />\n";
+	echo "<img src='data:image/png;base64,$img'>\n";
     echo "</body></html>";
 }
 else
