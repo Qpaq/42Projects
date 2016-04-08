@@ -1,30 +1,22 @@
 <?php
 session_start();
 
-$user = 'zaz';
-$pass = 'jaimelespetitsponeys';
 header('Content-Type: text/html');
 
-//curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-if (!isset($_SERVER['PHP_AUTH_USER']))
+if ($_SERVER['PHP_AUTH_USER'] == 'zaz' && $_SERVER['PHP_AUTH_PW'] == 'jaimelespetitsponeys')
 {
-    header('WWW-Authenticate: Basic realm="My Realm"');
-    header('HTTP/1.0 401 Unauthorized');
-    echo '<html><body>Cette zone est accessible uniquement aux membres du site</body></html>';
-    exit();
+	$img = base64_encode(file_get_contents("../img/42.png"));
+	header("WWW-Authenticate: Basic realm=''Espace membres''");
+	echo "<html><body>\n";
+    echo "Bonjour Zaz<br />\n";
+	echo "<img src='$img'>\n";
+    echo "</body></html>";
 }
 else
 {
-	if (USEROK)
-	{
-		header('WWW-Authenticate: Basic '. base64_encode($user.":".$pass));
-	    echo "<p>Bonjour, {$_SERVER['PHP_AUTH_USER']}.</p>";
-	    echo "<p>Votre mot de passe est {$_SERVER['PHP_AUTH_PW']}.</p>";
-	}
-	else
-	{
-	}
+	header("WWW-Authenticate: Basic realm=''Espace membres''");
+	header('HTTP/1.0 401 Unauthorized');
+	echo "<html><body>Cette zone est accessible uniquement aux membres du site</body></html>\n";
 }
 
 ?>
