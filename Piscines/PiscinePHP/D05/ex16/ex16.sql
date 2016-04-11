@@ -1,0 +1,1 @@
+SELECT COUNT(*) AS films FROM film WHERE date BETWEEN "2006-10-30" AND "2007-07-27" OR date == "%-12-24";
