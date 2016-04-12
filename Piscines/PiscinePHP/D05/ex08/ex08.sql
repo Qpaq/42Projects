@@ -1,1 +1,1 @@
-SELECT nom, prenom, DATE(date_de_naissance) FROM fiche_personne WHERE DATE_FORMAT(date_de_naissance, "%Y") == 1989;
+SELECT nom, prenom, DATE(date_naissance) AS "date de naissance" FROM fiche_personne WHERE DATE_FORMAT(date_de_naissance, "%Y") == 1989 ORDER BY nom;

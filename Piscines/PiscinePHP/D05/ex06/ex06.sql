@@ -1,1 +1,1 @@
-SELECT titre, resum FROM ft_table WHERE "vincent" IN lower(resum) ORDER BY id;
+SELECT titre, resum FROM film WHERE LOWER(resum) LIKE "%vincent%" ORDER BY id;
