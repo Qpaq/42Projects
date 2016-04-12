@@ -1,0 +1,4 @@
+La classe Color permet de créer une nouvelle couleur RGB.
+Lorsqu'elle est instanciée, elle prend en paramètre un tableau contenant les valeurs $red, $green et $blue.
+Exemple:
+$black = new Color(array("red" => 255, "green" => 255, "blue" => 255));
