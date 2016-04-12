@@ -1,1 +1,1 @@
-SELECT ROUND(AVG(salle), 0) AS moyenne FROM ...;
+SELECT ROUND(AVG(nbr_siege), 0) AS moyenne FROM salle;
