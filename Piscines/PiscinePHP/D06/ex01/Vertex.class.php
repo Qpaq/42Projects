@@ -19,7 +19,7 @@ class Vertex {
 	public function setW($val) { $this->_w = $val; }
 	public function setColor($val) { $this->_color = clone $val; }
 
-	public function doc() {
+	public static function doc() {
 		echo file_get_contents("Vertex.doc.txt");
 	}
 
@@ -34,13 +34,20 @@ class Vertex {
 			$this->_w = $kwargs['w'];
 		if ($kwargs['color'])
 			$this->_color = clone $kwargs['color'];
+		if (self::$verbose)
+			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d, %s ) constructed", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
 	}
 
 	public function __destruct() {
+		if (self::$verbose)
+			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d, %s ) destructed", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
 		return;
 	}
 
 	public function __toString() {
-		echo "x: {$this->_x}, y: {$this->_y}, z: {$this->_z}";
+		if (self::$verbose)
+			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d, %s )", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
+		else
+			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d )", $this->_x, $this->_y, $this->_z, $this->_w);
 	}
 }

@@ -7,12 +7,10 @@ class Color {
 	public static $verbose = False;
 
 	public static function doc() {
-		return file_get_contents("Color.doc.text");
+		return file_get_contents("Color.doc.txt");
 	}
 
 	public function __construct(array $rgb) {
-		if (self::$verbose)
-			echo "Constructor called";
 		if ($rgb['rgb']) {
 			$this->red = convert_base($rgb['rgb'][0].$rgb['rgb'][1], 16, 10);
 			$this->green = convert_base($rgb['rgb'][2].$rgb['rgb'][3], 16, 10);
@@ -24,15 +22,19 @@ class Color {
 		} else {
 			return die("Error");
 		}
+		if (self::$verbose)
+			printf("Color( red: %3d, green: %3d, blue: %3d ) constructed.", $this->red, $this->green, $this->blue);
+		return;
 	}
 
 	public function __destruct() {
 		if (self::$verbose)
-			echo "Destructor called";
+			printf("Color( red: %3d, green: %3d, blue: %3d ) constructed.", $this->red, $this->green, $this->blue);
 		return;
 	}
 
 	public function __toString() {
+			return sprintf("Color( red: %3d, green: %3d, blue: %3d ) constructed.", $this->red, $this->green, $this->blue);
 	}
 	
 	public function add($instance) {
