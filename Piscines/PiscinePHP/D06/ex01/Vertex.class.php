@@ -24,30 +24,30 @@ class Vertex {
 	}
 
 	public function __construct(array $kwargs) {
-		if (!($kwargs['x'] && $kwargs['y'] && $kwargs['z']))
+		if (!(array_key_exists('x', $kwargs) && array_key_exists('y', $kwargs) && array_key_exists('z', $kwargs)))
 			die("Error Vertex");
 		$this->_x = $kwargs['x'];
 		$this->_y = $kwargs['y'];
 		$this->_z = $kwargs['z'];
 
-		if ($kwargs['w'])
+		if (array_key_exists('w', $kwargs))
 			$this->_w = $kwargs['w'];
-		if ($kwargs['color'])
+		if (array_key_exists('color', $kwargs))
 			$this->_color = clone $kwargs['color'];
 		if (self::$verbose)
-			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d, %s ) constructed", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
+			printf("Vertex( x: %.2f, y: %.2f, z:%.2f, w:%.2f, %s ) constructed", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
 	}
 
 	public function __destruct() {
 		if (self::$verbose)
-			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d, %s ) destructed", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
+			printf("Vertex( x: %.2f, y: %.2f, z:%.2f, w:%.2f, %s ) destructed", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
 		return;
 	}
 
 	public function __toString() {
 		if (self::$verbose)
-			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d, %s )", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
+			printf("Vertex( x: %.2f, y: %.2f, z:%.2f, w:%.2f, %s )", $this->_x, $this->_y, $this->_z, $this->_w, $this->_color);
 		else
-			printf("Vertex( x: %.2d, y: %.2d, z:%.2d, w:%.2d )", $this->_x, $this->_y, $this->_z, $this->_w);
+			printf("Vertex( x: %.2f, y: %.2f, z:%.2f, w:%.2f )", $this->_x, $this->_y, $this->_z, $this->_w);
 	}
 }
