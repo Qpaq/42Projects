@@ -8,8 +8,7 @@ class Color {
 	public static $verbose = False;
 
 	public static function doc() {
-		if (file_exists("Color.doc.txt"))
-			return file_get_contents("Color.doc.txt");
+		return file_get_contents("Color.doc.txt");
 	}
 
 	public function __construct(array $rgb) {
