@@ -1,11 +1,11 @@
 <?php
 
-class Lannister {
-
+class Jaime extends Lannister {
 	public function sleepWith($person) {
-		"Not even if I'm drunk !";
-		"Let's do this.";
-		"With pleasure, but only in a tower in Winterfell, then.";
+		if (is_a($person, "Cersei"))
+			echo "With pleasure, but only in a tower in Winterfell, then.\n";
+		else
+			parent::sleepWith($person);
 	}
 }
 

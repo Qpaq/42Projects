@@ -1,10 +1,10 @@
 <?php
 
 class Greyjoy {
-	public static $familyMotto;
+	protected $familyMotto;
 
 	public function __construct() {
-		Greyjoy::familyMotto = "We do not sow";
+		$this->familyMotto = "We do not sow";
 	}
 }
 
