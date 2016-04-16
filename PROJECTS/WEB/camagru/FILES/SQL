@@ -1,0 +1,39 @@
+CREATE PHOTO:
+"INSERT INTO photos (id_user, path) VALUES('{$_SESSION['user_id']}', '$imgPath')"
+
+COUNT LIKES PER PHOTO:
+$BDD->query("SELECT COUNT(*) FROM likes WHERE id_photo = '{$photoId}'");
+
+has_user_liked_photo($_SESSION['user_id'], $photoId):
+$res = db_query("SELECT * FROM likes WHERE id_user = '{$id}' AND id_photo = '{$photoId}'");
+if (empty($res))
+	USER_HAS_NOT_LIKED
+else
+	USER_ALREADY_LIKED
+
+
+ADD NEW COMMENT
+$message = $BDD->quote($message);
+"INSERT INTO comments (id_user, id_photo, message) VALUES('{$_SESSION['user_id']}','{$photoId}',{$message})"
+
+GET ALL COMMENTS OF PHOTO
+$photoId = '123';
+$q = "SELECT user.login AS user_login, comments.message AS message, DATE_FORMAT("%b %e %Y, %H:%i", comments.date_and_time) AS date_message
+FROM comments
+INNER JOIN user ON comments.id_user = user.id
+WHERE comments.id_photo = '{$photoId}'
+ORDER BY comments.date_and_time DESC"
+db_query($q)
+
+comments (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id_user smallint(1) NOT NULL,
+	id_photo smallint(1) NOT NULL,
+	message text(1000) NOT NULL,
+	date_and_time datetime NOT NULL DEFAULT CURRENT_TIMESTAMP)
+
+likes (
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id_user smallint(1) NOT NULL,
+	id_photo smallint(1) NOT NULL,
+	date_and_time datetime NOT NULL DEFAULT CURRENT_TIMESTAMP)
