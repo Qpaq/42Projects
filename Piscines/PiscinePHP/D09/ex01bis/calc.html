@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -20,11 +21,6 @@
 
 		<script>
 			setInterval(function(){ alert("Please, use me..."); }, 30000);
-
-			var form = document.querySelector("form");
-			var first = document.querySelector("#first");
-			var op = document.querySelector("#op");
-			var second = document.querySelector("#second");
 
 			function myParseInt(val) {
 				if (/^\+?[0-9]+$/.test(val))
@@ -51,14 +47,14 @@
 				}
 			}
 
-			form.addEventListener("submit", function(e) {
+			$("form").submit(function(e) {
 				e.preventDefault();
 
-				var firstOp = myParseInt(first.value);
-				var secondOp = myParseInt(second.value);
+				var firstOp = myParseInt($("#first").val());
+				var secondOp = myParseInt($("#second").val());
 
 				if (!isNaN(firstOp) && !isNaN(secondOp)) {
-					var res = calc(firstOp, secondOp, op.value);
+					var res = calc(firstOp, secondOp, $("#op").val());
 					console.log(res);
 					alert(res);
 				} else {
