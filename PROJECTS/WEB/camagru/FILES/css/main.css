@@ -1,0 +1,19 @@
+body {
+	text-align: center;
+}
+
+header {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	border: 1px solid black;
+	line-height: 30px;
+	padding: 10px;
+}
+
+header a {
+	font-weight: bold;
+	color: red;
+	font-size: 20px;
+	text-decoration: none;
+}
