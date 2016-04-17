@@ -12,7 +12,7 @@ include_once('config/header.php');
 	</head>
 	<body>
 		<header>
-			<a href="index.php">Camagru</a>
+			<a href="index.php">Index</a>
 			<a href="index.php?page=gallery">Gallery</a>
 			<?php
 				if (isset($_SESSION['user_id']))
@@ -20,14 +20,19 @@ include_once('config/header.php');
 				else
 					echo "<a href='login.php'>Login</a>";
 			?>
+			<a href="index.php?page=account">My Account</a>
 		</header>
 <?php
 if (isset($_SESSION['user_id']) && $_GET['page'] != 'gallery') {
+	if ($_GET['page'] == 'account')
+		include_once('account.php');
+	else {
 ?>
 		<section>
 			TEST
 		</section>
 <?php
+	}
 } else if ($_GET['page'] == 'gallery') {
 	include_once('gallery.php');
 }
