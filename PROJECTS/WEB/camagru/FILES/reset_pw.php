@@ -5,8 +5,7 @@ function random_pass() {
 	$i = 0;
 	$res = "";
 
-	while ($i < 12)
-	{
+	while ($i < 7) {
 		if ($i % 2 == 0)
 			$char = chr(rand(97, 122));
 		else

@@ -8,7 +8,6 @@ header {
 	text-align: center;
 	border: 1px solid black;
 	line-height: 30px;
-	padding: 10px;
 }
 
 header a {
@@ -16,4 +15,95 @@ header a {
 	color: red;
 	font-size: 20px;
 	text-decoration: none;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#gallery tr {
+	max-height: 200px;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+
+#gallery td {
+	border: 1px solid black;
+	overflow-x: scroll;
+	overflow-y: scroll;
+	max-height: 200px;
+}
+
+
+html {
+/*    background: #111111;
+	background: linear-gradient( #333, #000);*/
+
+    height: 100%;
+}
+canvas {
+    display: none;
+}
+
+#startbutton {
+    display: block;
+    float: left;
+    border: 10px solid #fff;
+    border-radius: 10px;
+	background-color: red;
+	border: none;
+	color: #fff;
+	margin: 100px 20px 20px 20px;
+	padding: 10px 20px;
+	font-size: 20px;
+
+}
+
+#photo
+{
+ display: block;
+    float: left;
+    border: 10px solid #fff;
+    border-radius: 10px;
+}
+
+#container {
+    margin: 0px auto;
+    width: 500px;
+    height: 375px;
+    border: 10px #333 solid;
+}
+#video {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+}
+/*********   Image Picker      **********/
+
+
+label > input{ /* HIDE RADIO */
+  display:none;
+}
+label > input + img{ /* IMAGE STYLES */
+
+  border-radius: 10px;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:2px solid green;
+}
+
+.choiceImg {
+
+    width: 70px;
+    height: 50px
+}
+
+/***********     upload img   *****************/
+
+#myImg {
+
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+    display : none;
 }

@@ -7,8 +7,8 @@ if (isset($_SESSION['user_id']))
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Login') {
 	if (isset($_POST['login']) && trim($_POST['login']) != "" && isset($_POST['pass']) && trim($_POST['pass']) != "") {
-		$log = $BDD->quote($_POST['login']);
-		$pass = hash("sha256", $_POST['pass']);
+		$log = $BDD->quote(trim($_POST['login']));
+		$pass = hash("sha256", trim($_POST['pass']));
 		$res = check_password($log, $pass, $BDD);
 		if ($res !== FALSE) {
 			$_SESSION['user_id'] = $res['id'];
