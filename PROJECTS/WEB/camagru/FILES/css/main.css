@@ -19,6 +19,27 @@ header a {
 	margin-right: 20px;
 }
 
+#pages {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	border: 1px solid black;
+}
+
+#pages a {
+	color: red;
+	text-decoration: none;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#gallery {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
 #gallery tr {
 	max-height: 200px;
 	overflow-x: scroll;
@@ -26,10 +47,11 @@ header a {
 }
 
 #gallery td {
-	border: 1px solid black;
 	overflow-x: scroll;
 	overflow-y: scroll;
 	max-height: 200px;
+	border: 1px solid black;
+
 }
 
 
