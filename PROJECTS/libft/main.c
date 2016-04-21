@@ -3,9 +3,7 @@
 
 int		main(void)
 {
-	printf("%s\n", ft_itoa_base(10, 16, 1));
-	printf("%s\n", ft_itoa_base(16, 16, 1));
-	printf("%s\n", ft_itoa_base(17, 16, 1));
-	printf("%s\n", ft_itoa_base(5, 16, 1));
+	char test[] = "salut";
+	printf("%s", ft_str_replace(test, "l", ""));
 	return (0);
 }
