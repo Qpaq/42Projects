@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/02/08 09:09:10 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/22 19:53:02 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int				ft_strcount(char *str, char to_find);
 
 char			*ft_str_realloc(char *old, size_t size);
 char			*ft_str_replace(char *origin, char *rep, char *with);
+char			*ft_str_insert(char *string, char *insert, size_t start);
 
 /*
 ** MEMORY

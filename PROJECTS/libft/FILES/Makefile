@@ -27,7 +27,7 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			strings/ft_strjoin.c strings/ft_strjoin_nolimit.c strings/ft_strjoin_array.c \
 			strings/ft_strtrim.c strings/ft_strtrim_nolimit.c \
 			strings/ft_strcount.c strings/ft_str_realloc.c \
-			strings/ft_str_replace.c \
+			strings/ft_str_replace.c strings/ft_str_insert.c \
 			get_next_line.c \
 			lists/ft_lstnew.c lists/ft_lstdel.c lists/ft_lstdelone.c \
 			lists/ft_lstadd_beginning.c lists/ft_lstadd_end.c \
