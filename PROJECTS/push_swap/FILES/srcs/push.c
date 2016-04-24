@@ -20,7 +20,7 @@ void	push_a(t_pushswap *data)
 		}
 		if (data->verbose)
 			print_state(data);
-		data->sequence = ft_strjoin(data->sequence, "pa ");
+	//	data->sequence = ft_strjoin(data->sequence, "pa ");
 	}
 }
 
@@ -55,6 +55,6 @@ void	push_b(t_pushswap *data)
 		}
 		if (data->verbose)
 			print_state(data);
-		data->sequence = ft_strjoin(data->sequence, "pb ");
+	//	data->sequence = ft_strjoin(data->sequence, "pb ");
 	}
 }

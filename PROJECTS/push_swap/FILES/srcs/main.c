@@ -82,6 +82,6 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	sort_pile(data);
-	ft_printf("{red}FINAL SEQUENCE:\n%s{eoc}", data->sequence);
+	ft_printf("{red}FINAL SEQUENCE (%d):\n%s{eoc}", data->nb_of_moves, ft_strtrim(data->sequence));
 	return (0);
 }

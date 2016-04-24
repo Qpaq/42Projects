@@ -15,7 +15,7 @@ void	swap_a(t_pushswap *data)
 			data->pos_smallest_a = data->length_a - 1;
 		if (data->verbose)
 			print_state(data);
-		data->sequence = ft_strjoin(data->sequence, "sa ");
+	//	data->sequence = ft_strjoin(data->sequence, "sa ");
 	}
 }
 
@@ -30,7 +30,7 @@ void	swap_b(t_pushswap *data)
 		data->pile_b[data->length_b - 2] = temp;
 		if (data->verbose)
 			print_state(data);
-		data->sequence = ft_strjoin(data->sequence, "sb ");
+	//	data->sequence = ft_strjoin(data->sequence, "sb ");
 	}
 }
 

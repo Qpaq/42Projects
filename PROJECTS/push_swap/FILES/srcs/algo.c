@@ -22,11 +22,21 @@ void	put_smallest_last(t_pushswap *data)
 
 	i = 0;
 	if (data->pos_smallest_a < data->length_a / 2)
+	{
 		while (data->pos_smallest_a != data->length_a - 1)
+		{
 			rotate_a(data);
+			data->nb_of_moves++;
+		}
+	}
 	else
+	{
 		while (data->pos_smallest_a != data->length_a - 1)
+		{
 			reverse_rotate_a(data);
+			data->nb_of_moves++;
+		}
+	}
 }
 
 void	sort_pile(t_pushswap *data)
@@ -39,11 +49,19 @@ void	sort_pile(t_pushswap *data)
 			if (data->length_b == 0)
 				break ;
 			else
+			{
 				while (data->length_b > 0)
+				{
 					push_a(data);
+					data->nb_of_moves++;
+				}
+			}
 		}
 		else
+		{
 			push_b(data);
+			data->nb_of_moves++;
+		}
 	}
 }
 /*

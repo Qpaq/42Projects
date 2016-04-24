@@ -15,6 +15,7 @@ typedef struct	s_pushswap
 	int		length_b;
 	int		verbose;
 	char	*sequence;
+	int		nb_of_moves;
 }				t_pushswap;
 
 void			push_a(t_pushswap *data);

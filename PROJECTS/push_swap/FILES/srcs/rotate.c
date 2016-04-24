@@ -20,7 +20,7 @@ void	rotate_a(t_pushswap *data)
 			data->pos_smallest_a = data->length_a - 1;
 		if (data->verbose)
 			print_state(data);
-		data->sequence = ft_strjoin(data->sequence, "ra ");
+	//	data->sequence = ft_strjoin(data->sequence, "ra ");
 	}
 }
 
@@ -41,7 +41,7 @@ void	rotate_b(t_pushswap *data)
 		data->pile_b[i - 1] = first;
 		if (data->verbose)
 			print_state(data);
-		data->sequence = ft_strjoin(data->sequence, "rb ");
+	//	data->sequence = ft_strjoin(data->sequence, "rb ");
 	}
 }
 
