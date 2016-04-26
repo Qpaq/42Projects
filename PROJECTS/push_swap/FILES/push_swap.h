@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:36:44 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/04/26 17:36:46 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -13,9 +25,10 @@ typedef struct	s_pushswap
 	int		pos_smallest_a;
 	int		*pile_b;
 	int		length_b;
-	int		verbose;
 	char	*sequence;
 	int		nb_of_moves;
+	int		verbose;
+	int		fast;
 }				t_pushswap;
 
 void			push_a(t_pushswap *data);

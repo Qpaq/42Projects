@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:14:55 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/04/26 17:36:11 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	push_a(t_pushswap *data)
@@ -20,14 +32,30 @@ void	push_a(t_pushswap *data)
 		}
 		if (data->verbose)
 			print_state(data);
-	//	data->sequence = ft_strjoin(data->sequence, "pa ");
+		if (!data->fast)
+			data->sequence = ft_strjoin(data->sequence, "pa ");
+	}
+}
+
+void	get_smallest_a(t_pushswap *data)
+{
+	int		i;
+
+	i = 0;
+	while (i < data->length_a)
+	{
+		if (data->pile_a[i] <= data->smallest_a)
+		{
+			data->smallest_a = data->pile_a[i];
+			data->pos_smallest_a = i;
+		}
+		i++;
 	}
 }
 
 void	push_b(t_pushswap *data)
 {
 	int		*new_pile_b;
-	int		i;
 
 	if (data->length_a > 0)
 	{
@@ -40,21 +68,13 @@ void	push_b(t_pushswap *data)
 		data->length_a -= 1;
 		if (data->pile_b[data->length_b - 1] == data->smallest_a)
 		{
-			i = 0;
 			data->smallest_a = data->pile_a[0];
 			data->pos_smallest_a = 0;
-			while (i < data->length_a)
-			{
-				if (data->pile_a[i] <= data->smallest_a)
-				{
-					data->smallest_a = data->pile_a[i];
-					data->pos_smallest_a = i;
-				}
-				i++;
-			}
+			get_smallest_a(data);
 		}
 		if (data->verbose)
 			print_state(data);
-	//	data->sequence = ft_strjoin(data->sequence, "pb ");
+		if (!data->fast)
+			data->sequence = ft_strjoin(data->sequence, "pb ");
 	}
 }

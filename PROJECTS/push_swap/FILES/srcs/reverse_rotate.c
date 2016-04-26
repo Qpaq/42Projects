@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:15:06 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/04/26 17:15:08 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	reverse_rotate_a(t_pushswap *data)
@@ -20,7 +32,8 @@ void	reverse_rotate_a(t_pushswap *data)
 			data->pos_smallest_a = 0;
 		if (data->verbose)
 			print_state(data);
-	//	data->sequence = ft_strjoin(data->sequence, "rra ");
+		if (!data->fast)
+			data->sequence = ft_strjoin(data->sequence, "rra ");
 	}
 }
 
@@ -41,7 +54,8 @@ void	reverse_rotate_b(t_pushswap *data)
 		data->pile_b[0] = last;
 		if (data->verbose)
 			print_state(data);
-	//	data->sequence = ft_strjoin(data->sequence, "rrb ");
+		if (!data->fast)
+			data->sequence = ft_strjoin(data->sequence, "rrb ");
 	}
 }
 

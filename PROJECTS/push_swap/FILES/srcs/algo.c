@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/04/26 17:08:30 by dtedgui           #+#    #+#             */
+/*   Updated: 2016/04/26 17:08:32 by dtedgui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		check_pile(int *pile, int length)
@@ -64,15 +76,3 @@ void	sort_pile(t_pushswap *data)
 		}
 	}
 }
-/*
-	print_pile(data->pile_a, data->length_a);
-	print_pile(data->pile_b, data->length_b);
-	ft_printf("\na: %d, b: %d // Smallest: %d (%d)\n", data->length_a, data->length_b, data->smallest_a, data->pos_smallest_a);
-
-	ft_putchar('\n');
-	sort_pile(data);
-
-	print_pile(data->pile_a, data->length_a);
-	print_pile(data->pile_b, data->length_b);
-	ft_printf("\na: %d, b: %d // Smallest: %d (%d)\n", data->length_a, data->length_b, data->smallest_a, data->pos_smallest_a);
-	*/
