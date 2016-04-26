@@ -36,7 +36,7 @@ SRC		=	printing/ft_putchar.c printing/ft_putchar_fd.c printing/ft_putwchar.c \
 			lists/ft_lstiter.c lists/ft_lstmap.c lists/ft_lstconcat.c \
 			printf/ft_max.c printf/ft_strnlen.c printf/ft_strwlen.c printf/ft_strnwlen.c \
 			printf/ft_putnbr_max.c printf/ft_putnbr_fd_max.c printf/ft_putnbr_base_max.c \
-			printf/ft_putnwstr.c
+			printf/ft_putnwstr.c ft_remove_null.c
 
 OBJ		= $(SRC:.c=.o)
 

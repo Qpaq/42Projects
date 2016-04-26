@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:42 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/26 16:08:46 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/26 16:13:39 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,5 +177,10 @@ void			ft_putnwstr(wchar_t *str, size_t n);
 void			ft_putnbr_max(intmax_t n);
 void			ft_putnbr_fd_max(intmax_t n, int fd);
 void			ft_putnbr_base_max(uintmax_t nbr, char *base);
+
+/*
+** OTHER
+*/
+void			ft_remove_null(char **arr, int origin_size);
 
 #endif
