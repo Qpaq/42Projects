@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 15:39:38 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/27 17:40:58 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 19:01:51 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,26 +88,25 @@ int		ft_isnumber(char *value)
 	int		i;
 
 	i = 0;
+	if (value[i] == '+' && ft_strlen(value) > 1)
+		value++;
+	if (value[i] == '-' && ft_strlen(value) > 1)
+		i++;
 	while (value[i])
 	{
-		if (!ft_isdigit(value[i]) && value[i] != '-' && value[i] != '+')
+		if (!ft_isdigit(value[i]))
 			return (0);
 		i++;
 	}
-	if (ft_strlen(value) == 1 && (value[0] == '-' || value[0] == '+'))
+	if (ft_strlen(value) > 11)
 		return (0);
-	if (ft_strlen(value) >= 10)
+	if (value[0] == '-')
 	{
-		if (value[0] == '-')
-		{
-			if (ft_strcmp(value, ft_itoa(INT_MIN)) >= 0)
-				return (0);
-		}
-		else
-		{
-			if (ft_strcmp(value, ft_itoa(INT_MAX)) >= 0)
-				return (0);
-		}
+		if (ft_strlen(value) >= 11 && ft_strcmp(value, ft_itoa(INT_MIN)) > 0)
+			return (0);
 	}
+	else
+		if (ft_strlen(value) >= 10 && ft_strcmp(value, ft_itoa(INT_MAX)) > 0)
+			return (0);
 	return (1);
 }
