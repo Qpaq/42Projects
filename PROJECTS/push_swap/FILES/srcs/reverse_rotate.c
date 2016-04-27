@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	reverse_rotate_a(t_pushswap *data)
+void	reverse_rotate_a(t_pushswap *data, int final)
 {
 	int		last;
 	int		i;
@@ -30,14 +30,12 @@ void	reverse_rotate_a(t_pushswap *data)
 		data->pos_smallest_a += 1;
 		if (data->pos_smallest_a == data->length_a)
 			data->pos_smallest_a = 0;
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "rra ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 3, final);
 	}
 }
 
-void	reverse_rotate_b(t_pushswap *data)
+void	reverse_rotate_b(t_pushswap *data, int final)
 {
 	int		last;
 	int		i;
@@ -52,15 +50,14 @@ void	reverse_rotate_b(t_pushswap *data)
 			i--;
 		}
 		data->pile_b[0] = last;
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "rrb ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 4, final);
 	}
 }
 
-void	reverse_rotate_ab(t_pushswap *data)
+void	reverse_rotate_ab(t_pushswap *data, int final)
 {
-	reverse_rotate_a(data);
-	reverse_rotate_b(data);
+	data->nb_of_moves--;
+	reverse_rotate_a(data, final);
+	reverse_rotate_b(data, final);
 }

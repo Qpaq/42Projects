@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rotate_a(t_pushswap *data)
+void	rotate_a(t_pushswap *data, int final)
 {
 	int		first;
 	int		i;
@@ -30,14 +30,12 @@ void	rotate_a(t_pushswap *data)
 		data->pos_smallest_a -= 1;
 		if (data->pos_smallest_a == -1)
 			data->pos_smallest_a = data->length_a - 1;
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "ra ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 5, final);
 	}
 }
 
-void	rotate_b(t_pushswap *data)
+void	rotate_b(t_pushswap *data, int final)
 {
 	int		first;
 	int		i;
@@ -52,15 +50,14 @@ void	rotate_b(t_pushswap *data)
 			i++;
 		}
 		data->pile_b[i - 1] = first;
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "rb ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 6, final);
 	}
 }
 
-void	rotate_ab(t_pushswap *data)
+void	rotate_ab(t_pushswap *data, int final)
 {
-	rotate_a(data);
-	rotate_b(data);
+	data->nb_of_moves--;
+	rotate_a(data, final);
+	rotate_b(data, final);
 }

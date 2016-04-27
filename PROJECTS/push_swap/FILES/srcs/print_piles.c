@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/26 17:15:52 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/26 17:15:53 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 16:58:09 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	print_pile(int *pile, int length)
 void	print_state(t_pushswap *data)
 {
 	if (ft_strlen(data->sequence) > 0)
-		ft_printf("{red}%s{eoc}\n", data->sequence);
+		ft_printf("{red}%s{eoc}\nMoves: %d\n",
+				data->sequence, data->nb_of_moves);
 	ft_putstr("Pile A: ");
 	ft_putstr("\033[32m");
 	print_pile(data->pile_a, data->length_a);
@@ -44,6 +45,5 @@ void	print_state(t_pushswap *data)
 	ft_putstr("\033[33m");
 	print_pile(data->pile_b, data->length_b);
 	ft_putstr("\033[0m");
-	ft_putchar('\n');
-	ft_putchar('\n');
+	ft_putstr("\n\n");
 }

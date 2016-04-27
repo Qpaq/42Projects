@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	push_a(t_pushswap *data)
+void	push_a(t_pushswap *data, int final)
 {
 	int		*new_pile_a;
 
@@ -30,10 +30,8 @@ void	push_a(t_pushswap *data)
 			data->smallest_a = data->pile_a[data->length_a - 1];
 			data->pos_smallest_a = data->length_a - 1;
 		}
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "pa ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 1, final);
 	}
 }
 
@@ -53,7 +51,7 @@ void	get_smallest_a(t_pushswap *data)
 	}
 }
 
-void	push_b(t_pushswap *data)
+void	push_b(t_pushswap *data, int final)
 {
 	int		*new_pile_b;
 
@@ -72,9 +70,7 @@ void	push_b(t_pushswap *data)
 			data->pos_smallest_a = 0;
 			get_smallest_a(data);
 		}
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "pb ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 2, final);
 	}
 }

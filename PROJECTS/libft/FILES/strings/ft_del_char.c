@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/26 16:05:59 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/26 16:06:02 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 10:11:36 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_del_char(char *origin, char c)
 	int		i;
 
 	i = 0;
-	new = ft_strnew(ft_strlen(origin) - ft_count_char(origin, c));
+	new = ft_strnew(ft_strlen(origin) - ft_strcount(origin, c));
 	while (*origin)
 	{
 		while (*origin == c)

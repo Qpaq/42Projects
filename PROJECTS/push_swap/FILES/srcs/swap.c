@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	swap_a(t_pushswap *data)
+void	swap_a(t_pushswap *data, int final)
 {
 	int		temp;
 
@@ -25,14 +25,12 @@ void	swap_a(t_pushswap *data)
 			data->pos_smallest_a = data->length_a - 2;
 		else if (data->pos_smallest_a == data->length_a - 2)
 			data->pos_smallest_a = data->length_a - 1;
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "sa ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 7, final);
 	}
 }
 
-void	swap_b(t_pushswap *data)
+void	swap_b(t_pushswap *data, int final)
 {
 	int		temp;
 
@@ -41,15 +39,14 @@ void	swap_b(t_pushswap *data)
 		temp = data->pile_b[data->length_b - 1];
 		data->pile_b[data->length_b - 1] = data->pile_b[data->length_b - 2];
 		data->pile_b[data->length_b - 2] = temp;
-		if (data->verbose)
-			print_state(data);
-		if (!data->fast)
-			data->sequence = ft_strjoin(data->sequence, "sb ");
+		data->nb_of_moves++;
+		print_move_with_options(data, 8, final);
 	}
 }
 
-void	swap_ab(t_pushswap *data)
+void	swap_ab(t_pushswap *data, int final)
 {
-	swap_a(data);
-	swap_b(data);
+	data->nb_of_moves--;
+	swap_a(data, final);
+	swap_b(data, final);
 }
