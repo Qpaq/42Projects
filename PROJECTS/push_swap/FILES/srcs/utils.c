@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 15:39:38 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/27 19:01:51 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 19:13:06 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int		ft_isnumber(char *value)
 {
 	int		i;
 
-	i = 0;
-	if (value[i] == '+' && ft_strlen(value) > 1)
+	if ((i = 0) && value[i] == '+' && ft_strlen(value) > 1)
 		value++;
 	if (value[i] == '-' && ft_strlen(value) > 1)
 		i++;
@@ -106,7 +105,9 @@ int		ft_isnumber(char *value)
 			return (0);
 	}
 	else
+	{
 		if (ft_strlen(value) >= 10 && ft_strcmp(value, ft_itoa(INT_MAX)) > 0)
 			return (0);
+	}
 	return (1);
 }
