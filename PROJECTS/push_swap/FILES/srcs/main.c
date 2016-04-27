@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 15:46:21 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/27 17:06:37 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 17:15:23 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ int		main(int argc, char **argv)
 	data->pile_b = (int *)ft_memalloc(sizeof(int));
 	sort_pile(data);
 	final_print(data);
+	ft_putchar('\n');
 	return (0);
 }
