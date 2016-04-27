@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 15:39:38 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/27 17:10:20 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 17:40:58 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_move_with_options2(t_pushswap *data, int move, int final)
 {
-	if (data->fast == 0 && data->mute == 0)
+	if (data->verbose && data->fast == 0 && data->mute == 0)
 	{
 		move == 1 ? data->sequence = ft_strjoin(data->sequence, "pa") : NULL;
 		move == 2 ? data->sequence = ft_strjoin(data->sequence, "pb") : NULL;

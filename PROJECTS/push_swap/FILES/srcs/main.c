@@ -6,7 +6,7 @@
 /*   By: dtedgui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/27 15:46:21 by dtedgui           #+#    #+#             */
-/*   Updated: 2016/04/27 17:15:23 by dtedgui          ###   ########.fr       */
+/*   Updated: 2016/04/27 17:40:40 by dtedgui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ int		add_options(char *options, t_pushswap *data, int *argc, char ***argv)
 void	final_print(t_pushswap *data)
 {
 	if (data->verbose && data->mute == 0 && data->fast == 0)
-		ft_printf("Final sequence: {green}%s{eoc}\n",
+		ft_printf("\nFinal sequence: {green}%s{eoc}\n",
 				ft_strtrim(data->sequence));
 	if (data->show_moves)
-		ft_printf("Total number of moves: {green}%d{eoc}\n", data->nb_of_moves);
+		ft_printf("\nTotal number of moves: {green}%d{eoc}\n", data->nb_of_moves);
 }
 
 int		main(int argc, char **argv)
