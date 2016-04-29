@@ -1,0 +1,23 @@
+3
+##start
+1 2 3
+##end
+2 3 4
+#COMMENT
+#map/sample9.map
+#map/sample13.map
+#map/sample12.map
+#map/sample14.map
+#map/sample16.map
+#map/sample17.map
+#map/sample19.map
+#map/sample100.map
+#map/sample101.map
+3 4 5
+4 5 6
+5 6 7
+1-3
+3-4
+##COMMAND
+5-4
+5-2
